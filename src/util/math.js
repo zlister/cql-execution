@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-undef,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -16,13 +21,13 @@ module.exports.MIN_INT_VALUE = (MIN_INT_VALUE = Math.pow(-2,31));
 module.exports.MAX_FLOAT_VALUE = (MAX_FLOAT_VALUE = ( Math.pow(10,37)-1 ) / Math.pow(10,8));
 module.exports.MIN_FLOAT_VALUE = (MIN_FLOAT_VALUE = (Math.pow(-10,37)+1) / Math.pow(10,8));
 module.exports.MIN_FLOAT_PRECISION_VALUE = (MIN_FLOAT_PRECISION_VALUE = Math.pow(10,-8));
-module.exports.MIN_DATE_VALUE = (MIN_DATE_VALUE = DateTime.parse("0001-01-01T00:00:00.000"));
-module.exports.MAX_DATE_VALUE = (MAX_DATE_VALUE = DateTime.parse("9999-12-31T23:59:59.999"));
+module.exports.MIN_DATE_VALUE = (MIN_DATE_VALUE = DateTime.parse('0001-01-01T00:00:00.000'));
+module.exports.MAX_DATE_VALUE = (MAX_DATE_VALUE = DateTime.parse('9999-12-31T23:59:59.999'));
 
 module.exports.OverFlowException = (OverFlowException = (OverFlowException = class OverFlowException extends Exception {}));
 
 module.exports.successor = (successor = function(val) {
-  if (typeof val === "number") {
+  if (typeof val === 'number') {
     if (parseInt(val) === val) {
       if (val === MAX_INT_VALUE) { throw  new OverFlowException(); } else { return val + 1; }
     } else {
@@ -46,7 +51,7 @@ module.exports.successor = (successor = function(val) {
 });
 
 module.exports.predecessor = (predecessor = function(val) {
-  if (typeof val === "number") {
+  if (typeof val === 'number') {
     if (parseInt(val) === val) {
       if (val === MIN_INT_VALUE) { throw  new OverFlowException(); } else { return val - 1; }
     } else {
@@ -70,7 +75,7 @@ module.exports.predecessor = (predecessor = function(val) {
 });
 
 module.exports.maxValueForInstance = function(val) {
-  if (typeof val === "number") {
+  if (typeof val === 'number') {
     if (parseInt(val) === val) { return MAX_INT_VALUE; } else { return MAX_FLOAT_VALUE; }
   } else if (val instanceof DateTime) {
     return MAX_DATE_VALUE;
@@ -84,7 +89,7 @@ module.exports.maxValueForInstance = function(val) {
 };
 
 module.exports.minValueForInstance = function(val) {
-  if (typeof val === "number") {
+  if (typeof val === 'number') {
     if (parseInt(val) === val) { return MIN_INT_VALUE; } else { return MIN_FLOAT_VALUE; }
   } else if (val instanceof DateTime) {
     return MIN_DATE_VALUE;

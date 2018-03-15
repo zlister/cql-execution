@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -31,17 +36,17 @@ describe('Using CommonLib', function() {
     return setup(this, data, [ p1, p2 ], {}, {}, new Repository(data));
   });
 
-  it("should have using models defined", function() {
+  it('should have using models defined', function() {
     this.lib.usings.should.not.be.empty;
     this.lib.usings.length.should.equal(1);
-    return this.lib.usings[0].name.should.equal("QUICK");
+    return this.lib.usings[0].name.should.equal('QUICK');
   });
 
   it('Should have included a library', function() {
     return this.lib.includes.should.not.be.empty;
   });
 
-  return it("should be able to execute expression from included library", function() {
+  return it('should be able to execute expression from included library', function() {
     this.results = this.executor.withLibrary(this.lib).exec_patient_context(this.patientSource);
     this.results.patientResults['1'].ID.should.equal(false);
     this.results.patientResults['2'].ID.should.equal(true);
@@ -55,43 +60,43 @@ describe('Using CommonLib2', function() {
     return setup(this, data, [], {}, {}, new Repository(data));
   });
 
-  it("should execute expression from included library that uses parameter", function() {
+  it('should execute expression from included library that uses parameter', function() {
     return this.exprUsesParam.exec(this.ctx).should.equal(17);
   });
 
-  it("should execute expression from included library that uses sent-in parameter", function() {
+  it('should execute expression from included library that uses sent-in parameter', function() {
     return this.exprUsesParam.exec(this.ctx.withParameters({SomeNumber: 42})).should.equal(42);
   });
 
-  it("should execute parameter from included library", function() {
+  it('should execute parameter from included library', function() {
     return this.exprUsesParamDirectly.exec(this.ctx).should.equal(17);
   });
 
-  it("should execute sent-in parameter from included library", function() {
+  it('should execute sent-in parameter from included library', function() {
     return this.exprUsesParamDirectly.exec(this.ctx.withParameters({SomeNumber: 73})).should.equal(73);
   });
 
-  it("should execute function from included library that uses parameter", function() {
+  it('should execute function from included library that uses parameter', function() {
     return this.funcUsesParam.exec(this.ctx).should.equal(22);
   });
 
-  it("should execute expression from included library that calls function", function() {
+  it('should execute expression from included library that calls function', function() {
     return this.exprCallsFunc.exec(this.ctx).should.equal(6);
   });
 
-  it("should execute function from included library that calls function", function() {
+  it('should execute function from included library that calls function', function() {
     return this.funcCallsFunc.exec(this.ctx).should.equal(25);
   });
 
-  it("should execute expression from included library that uses expression", function() {
+  it('should execute expression from included library that uses expression', function() {
     return this.exprUsesExpr.exec(this.ctx).should.equal(3);
   });
 
-  it("should execute function from included library that uses expression", function() {
+  it('should execute function from included library that uses expression', function() {
     return this.funcUsesExpr.exec(this.ctx).should.equal(7);
   });
 
-  return it("should execute function from included library that uses expression", function() {
+  return it('should execute function from included library that uses expression', function() {
     return this.exprSortsOnFunc.exec(this.ctx).should.eql([{N: 1}, {N: 2}, {N: 3}, {N: 4}, {N: 5}]);
-});
+  });
 });

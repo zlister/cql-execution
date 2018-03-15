@@ -1,3 +1,6 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
+/* eslint-env mocha */
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -29,9 +32,9 @@ describe('Uncertainty', function() {
     should(everything.low).be.null;
     should(everything.high).be.null;
 
-    const differentTypes = new Uncertainty(1, "1");
+    const differentTypes = new Uncertainty(1, '1');
     differentTypes.low.should.eql(1);
-    return differentTypes.high.should.eql("1");
+    return differentTypes.high.should.eql('1');
   });
 
   it('should swap low and high when constructed in wrong order', function() {
@@ -54,7 +57,7 @@ describe('Uncertainty', function() {
     new Uncertainty(null, 2).isPoint().should.be.false();
     new Uncertainty(1, 2).isPoint().should.be.false();
     new Uncertainty().isPoint().should.be.false();
-    return new Uncertainty(1, "1").isPoint().should.be.false();
+    return new Uncertainty(1, '1').isPoint().should.be.false();
   });
 
   it('should properly calculate equality', function() {
@@ -140,7 +143,7 @@ describe('Uncertainty', function() {
     new Uncertainty(1, 1).lessThan(new Uncertainty(2, 2)).should.be.true();
     new Uncertainty(1, 1).lessThan(new Uncertainty(2, 3)).should.be.true();
     new Uncertainty(1, 1).lessThan(new Uncertainty(2, null)).should.be.true();
-    should.not.exist(new Uncertainty(1, "1").lessThan(new Uncertainty(2, null)));
+    should.not.exist(new Uncertainty(1, '1').lessThan(new Uncertainty(2, null)));
 
     // <=
     should.not.exist(new Uncertainty(null, 1).lessThan(new Uncertainty(1, 1)));

@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 module.exports = require('./core');
 module.exports.Condition = require('./condition').Condition;
 module.exports.Supply = require('./supply').Supply;

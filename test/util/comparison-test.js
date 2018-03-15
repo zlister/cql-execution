@@ -1,3 +1,11 @@
+/* eslint-disable
+    constructor-super,
+    no-constant-condition,
+    no-this-before-super,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
+/* eslint-env mocha */
 /*
  * decaffeinate suggestions:
  * DS001: Remove Babel/TypeScript constructor workaround
@@ -105,9 +113,9 @@ describe('equals', function() {
 
       asInt() {
         switch (typeof(this.num)) {
-          case 'number': return Math.floor(this.num);
-          case 'string': return parseInt(this.num);
-          default: return Number.NaN;
+        case 'number': return Math.floor(this.num);
+        case 'string': return parseInt(this.num);
+        default: return Number.NaN;
         }
       }
 

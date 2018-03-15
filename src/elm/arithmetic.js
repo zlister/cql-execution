@@ -1,3 +1,9 @@
+/* eslint-disable
+    no-undef,
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -272,7 +278,7 @@ module.exports.Power = (Power = class Power extends Expression {
 module.exports.MinValue = (MinValue = (function() {
   MinValue = class MinValue extends Expression {
     static initClass() {
-      this.prototype.MIN_VALUES = {"Integer" : MathUtil.MIN_INT_VALUE, "Real" : MathUtil.MIN_FLOAT_VALUE, "DateTime" : MathUtil.MIN_DATE_VALUE};
+      this.prototype.MIN_VALUES = {'Integer' : MathUtil.MIN_INT_VALUE, 'Real' : MathUtil.MIN_FLOAT_VALUE, 'DateTime' : MathUtil.MIN_DATE_VALUE};
     }
     constructor(json) {
       super(...arguments);
@@ -294,7 +300,7 @@ module.exports.MinValue = (MinValue = (function() {
 module.exports.MaxValue = (MaxValue = (function() {
   MaxValue = class MaxValue extends Expression {
     static initClass() {
-      this.prototype.MAX_VALUES = {"Integer" : MathUtil.MAX_INT_VALUE, "Real" :MathUtil. MAX_FLOAT_VALUE, "DateTime" : MathUtil.MAX_DATE_VALUE};
+      this.prototype.MAX_VALUES = {'Integer' : MathUtil.MAX_INT_VALUE, 'Real' :MathUtil. MAX_FLOAT_VALUE, 'DateTime' : MathUtil.MAX_DATE_VALUE};
     }
     constructor(json) {
       super(...arguments);

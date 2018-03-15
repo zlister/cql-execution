@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -19,8 +24,8 @@ const quantitiesOrArg = function(arr) {
     return arr;
   }
 
-  const allQs = arr.every(x => x.constructor.name === "Quantity");
-  const someQs = arr.some(x => x.constructor.name === "Quantity");
+  const allQs = arr.every(x => x.constructor.name === 'Quantity');
+  const someQs = arr.some(x => x.constructor.name === 'Quantity');
   if (allQs) {
     const { unit } = arr[0];
     const values = [];
@@ -29,7 +34,7 @@ const quantitiesOrArg = function(arr) {
     }
     return values;
   } else if (someQs) {
-    throw new Exception("Cannot perform aggregate operations on mixed values of Quantities and non Quantities");
+    throw new Exception('Cannot perform aggregate operations on mixed values of Quantities and non Quantities');
   } else {
     return arr;
   }
@@ -89,7 +94,7 @@ module.exports.Min = (Min = class Min extends AggregateExpression {
   exec(ctx) {
     const arg = this.source.execute(ctx);
     if (typeIsArray(arg)) {
-      const filtered =  numerical_sort(quantitiesOrArg(arg),"asc");
+      const filtered =  numerical_sort(quantitiesOrArg(arg),'asc');
       return quantityOrValue(filtered[0],arg);
     }
   }
@@ -103,7 +108,7 @@ module.exports.Max = (Max = class Max extends AggregateExpression {
   exec(ctx) {
     const arg = this.source.execute(ctx);
     if (typeIsArray(arg)) {
-      const filtered =  numerical_sort(quantitiesOrArg(arg),"desc");
+      const filtered =  numerical_sort(quantitiesOrArg(arg),'desc');
       return quantityOrValue(filtered[0],arg);
     }
   }
@@ -133,11 +138,11 @@ module.exports.Median = (Median = class Median extends AggregateExpression {
   exec(ctx) {
     const arg = this.source.execute(ctx);
     if (typeIsArray(arg)) {
-      const filtered =  numerical_sort(quantitiesOrArg(arg),"asc");
+      const filtered =  numerical_sort(quantitiesOrArg(arg),'asc');
       if (filtered.length === 0) {
         return null;
       } else if ((filtered.length % 2) === 1) {
-         return quantityOrValue(filtered[(filtered.length - 1) / 2],arg);
+        return quantityOrValue(filtered[(filtered.length - 1) / 2],arg);
       } else {
         const v = (filtered[(filtered.length / 2) - 1] +
          filtered[(filtered.length / 2)]) / 2;
@@ -182,7 +187,7 @@ module.exports.StdDev = (StdDev = class StdDev extends AggregateExpression {
 
   constructor(json) {
     super(...arguments);
-    this.type = "standard_deviation";
+    this.type = 'standard_deviation';
   }
 
   exec(ctx) {
@@ -218,21 +223,21 @@ module.exports.StdDev = (StdDev = class StdDev extends AggregateExpression {
 module.exports.PopulationStdDev = (PopulationStdDev = class PopulationStdDev extends StdDev {
   constructor(json) {
     super(...arguments);
-    this.type = "population_deviation";
+    this.type = 'population_deviation';
   }
 });
 
 module.exports.Variance = (Variance = class Variance extends  StdDev {
   constructor(json) {
     super(...arguments);
-    this.type = "standard_variance";
+    this.type = 'standard_variance';
   }
 });
 
 module.exports.PopulationVariance = (PopulationVariance = class PopulationVariance extends  StdDev {
   constructor(json) {
     super(...arguments);
-    this.type = "population_variance";
+    this.type = 'population_variance';
   }
 });
 

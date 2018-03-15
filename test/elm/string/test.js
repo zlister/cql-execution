@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -73,11 +75,11 @@ describe('Split', function() {
 
   it('should split strings on comma', function() {
     return this.commaSeparated.exec(this.ctx).should.eql(['a','b','c','','1','2','3']);
-});
+  });
 
   it('should return single-item array when separator is not used', function() {
     return this.separatorNotUsed.exec(this.ctx).should.eql(['a,b,c,,1,2,3']);
-});
+  });
 
   it('should return null when separating null', function() {
     return should(this.separateNull.exec(this.ctx)).be.null;

@@ -1,3 +1,12 @@
+/* eslint-disable
+    constructor-super,
+    no-constant-condition,
+    no-this-before-super,
+    no-undef,
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS001: Remove Babel/TypeScript constructor workaround
@@ -21,7 +30,7 @@ module.exports.Context = (Context = (function() {
   Context = class Context {
     static initClass() {
   
-      this.property("parameters" , {
+      this.property('parameters' , {
         get() {
           return this._parameters || (this.parent != null ? this.parent.parameters : undefined);
         },
@@ -33,7 +42,7 @@ module.exports.Context = (Context = (function() {
       }
       );
   
-      this.property("codeService" , {
+      this.property('codeService' , {
         get() { return this._codeService || (this.parent != null ? this.parent.codeService : undefined); },
         set(cs) { return this._codeService = cs; }
       }
@@ -178,7 +187,7 @@ module.exports.Context = (Context = (function() {
         if ((pVal == null)) {
           return; // Null can theoretically be any type
         }
-        if (typeof pDef === "undefined") {
+        if (typeof pDef === 'undefined') {
           return; // This will happen if the parameter is declared in a different (included) library
         } else if ((pDef.parameterTypeSpecifier != null) && !this.matchesTypeSpecifier(pVal, pDef.parameterTypeSpecifier)) {
           throw new Error(`Passed in parameter '${pName}' is wrong type`);
@@ -191,11 +200,11 @@ module.exports.Context = (Context = (function() {
 
     matchesTypeSpecifier(val, spec) {
       switch (spec.type) {
-        case "NamedTypeSpecifier": return this.matchesNamedTypeSpecifier(val, spec);
-        case "ListTypeSpecifier": return this.matchesListTypeSpecifier(val, spec);
-        case "TupleTypeSpecifier": return this.matchesTupleTypeSpecifier(val, spec);
-        case "IntervalTypeSpecifier": return this.matchesIntervalTypeSpecifier(val, spec);
-        default: return true; // default to true when we don't know
+      case 'NamedTypeSpecifier': return this.matchesNamedTypeSpecifier(val, spec);
+      case 'ListTypeSpecifier': return this.matchesListTypeSpecifier(val, spec);
+      case 'TupleTypeSpecifier': return this.matchesTupleTypeSpecifier(val, spec);
+      case 'IntervalTypeSpecifier': return this.matchesIntervalTypeSpecifier(val, spec);
+      default: return true; // default to true when we don't know
       }
     }
 
@@ -204,45 +213,45 @@ module.exports.Context = (Context = (function() {
     }
 
     matchesTupleTypeSpecifier(val, spec) {
-      return (typeof val === "object") &&
+      return (typeof val === 'object') &&
         !typeIsArray(val) &&
-        spec.element.every(x => ((typeof val[x.name] === "undefined") || this.matchesTypeSpecifier(val[x.name], x.type)));
+        spec.element.every(x => ((typeof val[x.name] === 'undefined') || this.matchesTypeSpecifier(val[x.name], x.type)));
     }
 
     matchesIntervalTypeSpecifier(val, spec) {
-      return ((val.constructor != null ? val.constructor.name : undefined) === "Interval") &&
+      return ((val.constructor != null ? val.constructor.name : undefined) === 'Interval') &&
         (((val.low == null)) || this.matchesTypeSpecifier(val.low, spec.pointType)) &&
         (((val.high == null)) || this.matchesTypeSpecifier(val.high, spec.pointType));
     }
 
     matchesNamedTypeSpecifier(val, spec) {
       switch (spec.name) {
-        case "{urn:hl7-org:elm-types:r1}Boolean": return typeof val === "boolean";
-        case "{urn:hl7-org:elm-types:r1}Decimal": return typeof val === "number";
-        case "{urn:hl7-org:elm-types:r1}Integer": return (typeof val === "number") && (Math.floor(val) === val);
-        case "{urn:hl7-org:elm-types:r1}String": return typeof val === "string";
-        case "{urn:hl7-org:elm-types:r1}Concept": return __guard__(val != null ? val.constructor : undefined, x => x.name) === 'Concept';
-        case "{urn:hl7-org:elm-types:r1}DateTime": return __guard__(val != null ? val.constructor : undefined, x1 => x1.name) === 'DateTime';
-        case "{urn:hl7-org:elm-types:r1}Quantity": return __guard__(val != null ? val.constructor : undefined, x2 => x2.name) === 'Quantity';
-        case "{urn:hl7-org:elm-types:r1}Time": return (__guard__(val != null ? val.constructor : undefined, x3 => x3.name) === 'DateTime') && val.isTime();
-        default: return true; // TODO: Better checking of custom or complex types
+      case '{urn:hl7-org:elm-types:r1}Boolean': return typeof val === 'boolean';
+      case '{urn:hl7-org:elm-types:r1}Decimal': return typeof val === 'number';
+      case '{urn:hl7-org:elm-types:r1}Integer': return (typeof val === 'number') && (Math.floor(val) === val);
+      case '{urn:hl7-org:elm-types:r1}String': return typeof val === 'string';
+      case '{urn:hl7-org:elm-types:r1}Concept': return __guard__(val != null ? val.constructor : undefined, x => x.name) === 'Concept';
+      case '{urn:hl7-org:elm-types:r1}DateTime': return __guard__(val != null ? val.constructor : undefined, x1 => x1.name) === 'DateTime';
+      case '{urn:hl7-org:elm-types:r1}Quantity': return __guard__(val != null ? val.constructor : undefined, x2 => x2.name) === 'Quantity';
+      case '{urn:hl7-org:elm-types:r1}Time': return (__guard__(val != null ? val.constructor : undefined, x3 => x3.name) === 'DateTime') && val.isTime();
+      default: return true; // TODO: Better checking of custom or complex types
       }
     }
 
     matchesInstanceType(val, inst) {
       switch ((inst.constructor != null ? inst.constructor.name : undefined)) {
-        case "BooleanLiteral": return typeof val === "boolean";
-        case "DecimalLiteral": return typeof val === "number";
-        case "IntegerLiteral": return (typeof val === "number") && (Math.floor(val) === val);
-        case "StringLiteral": return typeof val === "string";
-        case "Concept": return __guard__(val != null ? val.constructor : undefined, x => x.name) === "Concept";
-        case "DateTime": return __guard__(val != null ? val.constructor : undefined, x1 => x1.name) === "DateTime";
-        case "Quantity": return __guard__(val != null ? val.constructor : undefined, x2 => x2.name) === "Quantity";
-        case "Time": return (__guard__(val != null ? val.constructor : undefined, x3 => x3.name) === "DateTime") && val.isTime();
-        case "List": return this.matchesListInstanceType(val, inst);
-        case "Tuple": return this.matchesTupleInstanceType(val, inst);
-        case "Interval": return this.matchesIntervalInstanceType(val, inst);
-        default: return true; // default to true when we don't know for sure
+      case 'BooleanLiteral': return typeof val === 'boolean';
+      case 'DecimalLiteral': return typeof val === 'number';
+      case 'IntegerLiteral': return (typeof val === 'number') && (Math.floor(val) === val);
+      case 'StringLiteral': return typeof val === 'string';
+      case 'Concept': return __guard__(val != null ? val.constructor : undefined, x => x.name) === 'Concept';
+      case 'DateTime': return __guard__(val != null ? val.constructor : undefined, x1 => x1.name) === 'DateTime';
+      case 'Quantity': return __guard__(val != null ? val.constructor : undefined, x2 => x2.name) === 'Quantity';
+      case 'Time': return (__guard__(val != null ? val.constructor : undefined, x3 => x3.name) === 'DateTime') && val.isTime();
+      case 'List': return this.matchesListInstanceType(val, inst);
+      case 'Tuple': return this.matchesTupleInstanceType(val, inst);
+      case 'Interval': return this.matchesIntervalInstanceType(val, inst);
+      default: return true; // default to true when we don't know for sure
       }
     }
 
@@ -251,14 +260,14 @@ module.exports.Context = (Context = (function() {
     }
 
     matchesTupleInstanceType(val, tpl) {
-      return (typeof val === "object") &&
+      return (typeof val === 'object') &&
         !typeIsArray(val) &&
-        tpl.elements.every(x => ((typeof val[x.name] === "undefined") || this.matchesInstanceType(val[x.name], x.value)));
+        tpl.elements.every(x => ((typeof val[x.name] === 'undefined') || this.matchesInstanceType(val[x.name], x.value)));
     }
 
     matchesIntervalInstanceType(val, ivl) {
       const pointType = ivl.low != null ? ivl.low : ivl.high;
-      return ((val.constructor != null ? val.constructor.name : undefined) === "Interval") &&
+      return ((val.constructor != null ? val.constructor.name : undefined) === 'Interval') &&
         (((val.low == null)) || this.matchesInstanceType(val.low, pointType)) &&
         (((val.high == null)) || this.matchesInstanceType(val.high, pointType));
     }
@@ -316,18 +325,18 @@ module.exports.PopulationContext = (PopulationContext = class PopulationContext 
   rootContext() { return this; }
 
   findRecords(template) {
-    throw new Exception("Retreives are not currently supported in Population Context");
+    throw new Exception('Retreives are not currently supported in Population Context');
   }
 
   getLibraryContext(library) {
-    throw new Exception("Library expressions are not currently supported in Population Context");
+    throw new Exception('Library expressions are not currently supported in Population Context');
   }
 
   get(identifier) {
     //First check to see if the identifier is a population context expression that has already been cached
     if (this.context_values[identifier]) { return this.context_values[identifier]; }
     //if not look to see if the library has a population expression of that identifier
-    if ((this.library[identifier] != null ? this.library[identifier].context : undefined) === "Population") { return this.library.expressions[identifier]; }
+    if ((this.library[identifier] != null ? this.library[identifier].context : undefined) === 'Population') { return this.library.expressions[identifier]; }
     //lastley attempt to gather all patient level results that have that identifier
     // should this compact null values before return ?
     return (() => {

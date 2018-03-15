@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -48,8 +53,8 @@ module.exports.doExcept = (a, b) =>
   (() => {
     const result = [];
     for (let itm of a) {       if (!doContains(b, itm)) {
-        result.push(itm);
-      }
+      result.push(itm);
+    }
     }
     return result;
   })()
@@ -60,8 +65,8 @@ module.exports.doIntersect = (a, b) =>
   (() => {
     const result = [];
     for (let itm of a) {       if (doContains(b, itm)) {
-        result.push(itm);
-      }
+      result.push(itm);
+    }
     }
     return result;
   })()

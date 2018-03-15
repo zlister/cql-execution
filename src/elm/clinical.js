@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -19,7 +24,7 @@ module.exports.ValueSetDef = (ValueSetDef = class ValueSetDef extends Expression
     this.id = json.id;
     this.version = json.version;
   }
-    //todo: code systems and versions
+  //todo: code systems and versions
 
   exec(ctx) {
     let left;

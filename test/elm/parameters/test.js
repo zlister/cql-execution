@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -37,7 +39,7 @@ describe('ParameterDef', function() {
   it('should work with typed list parameters', function() {
     const listParam = this.lib.parameters.ListParameter;
     return listParam.exec(this.ctx.withParameters({ ListParameter: ['a', 'b', 'c'] })).should.eql(['a', 'b', 'c']);
-});
+  });
 
   return it('should work with typed tuple parameters', function() {
     const tupleParam = this.lib.parameters.TupleParameter;
@@ -178,26 +180,26 @@ describe('ConceptParameterTypes', function() {
   });
 
   it('should execute to provided valid value', function() {
-    const c = new Concept([new Code("foo", "http://foo.org")], "Foo");
+    const c = new Concept([new Code('foo', 'http://foo.org')], 'Foo');
     return this.foo.exec(this.ctx.withParameters({ FooP: c })).should.equal(c);
   });
 
   it('should throw when provided value is wrong type', function() {
-    const c = new Code("foo", "http://foo.org");
+    const c = new Code('foo', 'http://foo.org');
     return should(() => this.foo.exec(this.ctx.withParameters({ FooP: c }))).throw(/.*wrong type.*/);
   });
 
   it('should execute to default value', function() {
-    return this.foo2.exec(this.ctx).should.eql(new Concept([new Code("FooTest", "http://footest.org")], "Foo Test"));
+    return this.foo2.exec(this.ctx).should.eql(new Concept([new Code('FooTest', 'http://footest.org')], 'Foo Test'));
   });
 
   it('should execute to overriding valid value', function() {
-    const c = new Concept([new Code("foo", "http://foo.org")], "Foo");
+    const c = new Concept([new Code('foo', 'http://foo.org')], 'Foo');
     return this.foo2.exec(this.ctx.withParameters({ FooDP: c })).should.equal(c);
   });
 
   return it('should throw when overriding value is wrong type', function() {
-    const c = new Code("foo", "http://foo.org");
+    const c = new Code('foo', 'http://foo.org');
     return should(() => this.foo2.exec(this.ctx.withParameters({ FooDP: c }))).throw(/.*wrong type.*/);
   });
 });
@@ -213,7 +215,7 @@ describe('DateTimeParameterTypes', function() {
   });
 
   it('should throw when provided value is wrong type', function() {
-    const d = "2012-10-25T12:55:14.456+00";
+    const d = '2012-10-25T12:55:14.456+00';
     return should(() => this.foo.exec(this.ctx.withParameters({ FooP: d }))).throw(/.*wrong type.*/);
   });
 
@@ -227,7 +229,7 @@ describe('DateTimeParameterTypes', function() {
   });
 
   return it('should throw when overriding value is wrong type', function() {
-    const d = "2012-10-25T12:55:14.456+00";
+    const d = '2012-10-25T12:55:14.456+00';
     return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: d }))).throw(/.*wrong type.*/);
   });
 });
@@ -238,7 +240,7 @@ describe('QuantityParameterTypes', function() {
   });
 
   it('should execute to provided valid value', function() {
-    const q = new Quantity({value: 5, unit: "mg"});
+    const q = new Quantity({value: 5, unit: 'mg'});
     return this.foo.exec(this.ctx.withParameters({ FooP: q })).should.equal(q);
   });
 
@@ -248,11 +250,11 @@ describe('QuantityParameterTypes', function() {
   });
 
   it('should execute to default value', function() {
-    return this.foo2.exec(this.ctx).should.eql(new Quantity({localId: '4', value: 10, unit: "dL"}));
+    return this.foo2.exec(this.ctx).should.eql(new Quantity({localId: '4', value: 10, unit: 'dL'}));
   });
 
   it('should execute to overriding valid value', function() {
-    const q = new Quantity({value: 5, unit: "mg"});
+    const q = new Quantity({value: 5, unit: 'mg'});
     return this.foo2.exec(this.ctx.withParameters({ FooDP: q })).should.equal(q);
   });
 
@@ -298,31 +300,31 @@ describe('ListParameterTypes', function() {
   });
 
   it('should execute to provided valid value', function() {
-    return this.foo.exec(this.ctx.withParameters({ FooP: ["Hello", "World"] })).should.eql(["Hello", "World"]);
-});
+    return this.foo.exec(this.ctx.withParameters({ FooP: ['Hello', 'World'] })).should.eql(['Hello', 'World']);
+  });
 
   it('should throw when provided value is not a list', function() {
-    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: "Hello World" }))).throw(/.*wrong type.*/);
+    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: 'Hello World' }))).throw(/.*wrong type.*/);
   });
 
   it('should throw when list contains a wrong type', function() {
-    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: ["Hello", 2468] }))).throw(/.*wrong type.*/);
+    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: ['Hello', 2468] }))).throw(/.*wrong type.*/);
   });
 
   it('should execute to default value', function() {
     return this.foo2.exec(this.ctx).should.eql(['a', 'b', 'c']);
-});
+  });
 
   it('should execute to overriding valid value', function() {
-    return this.foo2.exec(this.ctx.withParameters({ FooDP: ["Hello", "World"] })).should.eql(["Hello", "World"]);
-});
+    return this.foo2.exec(this.ctx.withParameters({ FooDP: ['Hello', 'World'] })).should.eql(['Hello', 'World']);
+  });
 
   it('should throw when overriding value is not a list', function() {
-    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: "Hello World" }))).throw(/.*wrong type.*/);
+    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: 'Hello World' }))).throw(/.*wrong type.*/);
   });
 
   return it('should throw when overriding list contains a wrong type', function() {
-    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: ["Hello", 2468] }))).throw(/.*wrong type.*/);
+    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: ['Hello', 2468] }))).throw(/.*wrong type.*/);
   });
 });
 
@@ -366,7 +368,7 @@ describe('TupleParameterTypes', function() {
   });
 
   it('should execute to provided valid value', function() {
-    const t = { Hello: "World", MeaningOfLife: 42 };
+    const t = { Hello: 'World', MeaningOfLife: 42 };
     return this.foo.exec(this.ctx.withParameters({ FooP: t })).should.eql(t);
   });
 
@@ -376,19 +378,19 @@ describe('TupleParameterTypes', function() {
   });
 
   it('should throw when provided value is not a tuple', function() {
-    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: "Hello World" }))).throw(/.*wrong type.*/);
+    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: 'Hello World' }))).throw(/.*wrong type.*/);
   });
 
   it('should throw when tuple contains a wrong property type', function() {
-    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: { Hello: "World", MeaningOfLife: "Forty-Two" } }))).throw(/.*wrong type.*/);
+    return should(() => this.foo.exec(this.ctx.withParameters({ FooP: { Hello: 'World', MeaningOfLife: 'Forty-Two' } }))).throw(/.*wrong type.*/);
   });
 
   it('should execute to default value', function() {
-    return this.foo2.exec(this.ctx).should.eql({ Hello: "Universe", MeaningOfLife: 24 });
-});
+    return this.foo2.exec(this.ctx).should.eql({ Hello: 'Universe', MeaningOfLife: 24 });
+  });
 
   it('should execute to overriding valid value', function() {
-    const t = { Hello: "World", MeaningOfLife: 42 };
+    const t = { Hello: 'World', MeaningOfLife: 42 };
     return this.foo2.exec(this.ctx.withParameters({ FooDP: t })).should.eql(t);
   });
 
@@ -398,11 +400,11 @@ describe('TupleParameterTypes', function() {
   });
 
   it('should throw when overriding value is not a tuple', function() {
-    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: "Hello World" }))).throw(/.*wrong type.*/);
+    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: 'Hello World' }))).throw(/.*wrong type.*/);
   });
 
   return it('should throw when overriding tuple contains a wrong property type', function() {
-    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: { Hello: "World", MeaningOfLife: "Forty-Two" } }))).throw(/.*wrong type.*/);
+    return should(() => this.foo2.exec(this.ctx.withParameters({ FooP: { Hello: 'World', MeaningOfLife: 'Forty-Two' } }))).throw(/.*wrong type.*/);
   });
 });
 
@@ -423,13 +425,13 @@ describe('MeasurementPeriodParameter', function() {
   });
 
   it('should execute expression with a passed in measurement period in a child context', function() {
-    this.ctx = this.ctx.withParameters({"Measurement Period": new Interval(new DateTime(2012, 1, 1, 0, 0, 0, 0), new DateTime(2013, 1, 1, 0, 0, 0, 0))});
+    this.ctx = this.ctx.withParameters({'Measurement Period': new Interval(new DateTime(2012, 1, 1, 0, 0, 0, 0), new DateTime(2013, 1, 1, 0, 0, 0, 0))});
     const rctx = this.ctx.childContext();
     return this.measurementPeriod.exec(rctx).should.equal(true);
   });
 
   return it('should execute expression with a passed in measurement period in a child context', function() {
-    this.ctx = this.ctx.withParameters({"Measurement Period": new Interval(new DateTime(2012, 1, 1, 0, 0, 0, 0), new DateTime(2013, 1, 1, 0, 0, 0, 0))});
+    this.ctx = this.ctx.withParameters({'Measurement Period': new Interval(new DateTime(2012, 1, 1, 0, 0, 0, 0), new DateTime(2013, 1, 1, 0, 0, 0, 0))});
     const r1ctx = this.ctx.childContext();
     const r2ctx = r1ctx.childContext();
     const r3ctx = r2ctx.childContext();

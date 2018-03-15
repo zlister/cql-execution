@@ -1,3 +1,9 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
+/* eslint-env mocha */
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -14,21 +20,21 @@ describe('Record', function() {
   this.beforeEach(function() {
     let ref;
     const patient = new Patient({
-      "records": [{
-        "identifier": { "value": "http://cqframework.org/1/1", "system": "http://cqframework.org" },
-        "profile": "encounter-qicore-qicore-encounter",
-        "topic": "Encounter",
-        "class": { "code": "185349003", "system": "2.16.840.1.113883.6.96", "version": "2013-09", "display": "Encounter for \"check-up\" (procedure)" },
-        "type": { "code": "G0438", "system": "2.16.840.1.113883.6.285", "version": "2014", "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit" },
-        "period": { "start": "1978-07-15T10:00", "end": "1978-07-15T10:45" }
+      'records': [{
+        'identifier': { 'value': 'http://cqframework.org/1/1', 'system': 'http://cqframework.org' },
+        'profile': 'encounter-qicore-qicore-encounter',
+        'topic': 'Encounter',
+        'class': { 'code': '185349003', 'system': '2.16.840.1.113883.6.96', 'version': '2013-09', 'display': 'Encounter for "check-up" (procedure)' },
+        'type': { 'code': 'G0438', 'system': '2.16.840.1.113883.6.285', 'version': '2014', 'display': 'Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit' },
+        'period': { 'start': '1978-07-15T10:00', 'end': '1978-07-15T10:45' }
       }, {
-        "identifier": { "value": "http://cqframework.org/1/2", "system": "http://cqframework.org" },
-        "profile": "condition-qicore-qicore-condition",
-        "topic": "Condition",
-        "code": { "code": "1532007", "system": "2.16.840.1.113883.6.96", "version": "2013-09", "display": "Viral pharyngitis (disorder)" },
-        "onsetDateTime": "1982-03-12",
-        "abatementDateTime": "1982-03-26",
-        "issued": "1982-03-15T15:15:00"
+        'identifier': { 'value': 'http://cqframework.org/1/2', 'system': 'http://cqframework.org' },
+        'profile': 'condition-qicore-qicore-condition',
+        'topic': 'Condition',
+        'code': { 'code': '1532007', 'system': '2.16.840.1.113883.6.96', 'version': '2013-09', 'display': 'Viral pharyngitis (disorder)' },
+        'onsetDateTime': '1982-03-12',
+        'abatementDateTime': '1982-03-26',
+        'issued': '1982-03-15T15:15:00'
       }]
     });
     return [this.encRecord, this.cndRecord] = Array.from((ref = (() => {
@@ -77,26 +83,26 @@ describe('Record', function() {
 describe('Patient', function() {
   this.beforeEach(function() {
     return this.patient = new Patient({
-      "identifier": { "value": "1" },
-      "name": "Bob Jones",
-      "gender": "M",
-      "birthDate" : "1974-07-12T11:15",
-      "records": [{
-          "identifier": { "value": "http://cqframework.org/1/1", "system": "http://cqframework.org" },
-          "profile": "encounter-qicore-qicore-encounter",
-          "topic": "Encounter",
-          "class": { "code": "185349003", "system": "2.16.840.1.113883.6.96", "version": "2013-09", "display": "Encounter for \"check-up\" (procedure)" },
-          "type": { "code": "G0438", "system": "2.16.840.1.113883.6.285", "version": "2014", "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit" },
-          "period": { "start": "1978-07-15T10:00", "end": "1978-07-15T10:45" }
-        }, {
-          "identifier": { "value": "http://cqframework.org/1/2", "system": "http://cqframework.org" },
-          "profile": "condition-qicore-qicore-condition",
-          "topic": "Condition",
-          "code": { "code": "1532007", "system": "2.16.840.1.113883.6.96", "version": "2013-09", "display": "Viral pharyngitis (disorder)" },
-          "onsetDateTime": "1982-03-12",
-          "abatementDateTime": "1982-03-26",
-          "issued": "1982-03-15T15:15:00"
-        }
+      'identifier': { 'value': '1' },
+      'name': 'Bob Jones',
+      'gender': 'M',
+      'birthDate' : '1974-07-12T11:15',
+      'records': [{
+        'identifier': { 'value': 'http://cqframework.org/1/1', 'system': 'http://cqframework.org' },
+        'profile': 'encounter-qicore-qicore-encounter',
+        'topic': 'Encounter',
+        'class': { 'code': '185349003', 'system': '2.16.840.1.113883.6.96', 'version': '2013-09', 'display': 'Encounter for "check-up" (procedure)' },
+        'type': { 'code': 'G0438', 'system': '2.16.840.1.113883.6.285', 'version': '2014', 'display': 'Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit' },
+        'period': { 'start': '1978-07-15T10:00', 'end': '1978-07-15T10:45' }
+      }, {
+        'identifier': { 'value': 'http://cqframework.org/1/2', 'system': 'http://cqframework.org' },
+        'profile': 'condition-qicore-qicore-condition',
+        'topic': 'Condition',
+        'code': { 'code': '1532007', 'system': '2.16.840.1.113883.6.96', 'version': '2013-09', 'display': 'Viral pharyngitis (disorder)' },
+        'onsetDateTime': '1982-03-12',
+        'abatementDateTime': '1982-03-26',
+        'issued': '1982-03-15T15:15:00'
+      }
       ]
     });});
 

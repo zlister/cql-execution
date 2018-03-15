@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -14,7 +19,7 @@ describe('Tuple', function() {
 
   return it('should be able to define a tuple', function() {
     const e = this.tup.exec(this.ctx);
-    e["a"].should.equal(1);
-    return e["b"].should.equal(2);
+    e['a'].should.equal(1);
+    return e['b'].should.equal(2);
   });
 });

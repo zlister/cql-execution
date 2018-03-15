@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -46,6 +51,6 @@ describe('Instance', function() {
 
   return it('should create generic json objects with the correct key values', function() {
     this.med.exec(this.ctx).isBrand.should.eql(false);
-    return this.med.exec(this.ctx).name.should.eql("Best Med Ever");
+    return this.med.exec(this.ctx).name.should.eql('Best Med Ever');
   });
 });

@@ -1,3 +1,11 @@
+/* eslint-disable
+    constructor-super,
+    no-constant-condition,
+    no-this-before-super,
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS001: Remove Babel/TypeScript constructor workaround
@@ -38,14 +46,14 @@ module.exports.Expression = (Expression = class Expression {
 
   execArgs(ctx) {
     switch (false) {
-      case (this.args == null): return ((() => {
-        const result = [];
-        for (let arg of this.args) {           result.push(arg.execute(ctx));
-        }
-        return result;
-      })());
-      case (this.arg == null): return this.arg.execute(ctx);
-      default: return null;
+    case (this.args == null): return ((() => {
+      const result = [];
+      for (let arg of this.args) {           result.push(arg.execute(ctx));
+      }
+      return result;
+    })());
+    case (this.arg == null): return this.arg.execute(ctx);
+    default: return null;
     }
   }
 });

@@ -1,3 +1,12 @@
+/* eslint-disable
+    constructor-super,
+    no-constant-condition,
+    no-this-before-super,
+    no-unused-vars,
+    no-useless-escape,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS001: Remove Babel/TypeScript constructor workaround
@@ -93,7 +102,7 @@ module.exports.Quantity = (Quantity = class Quantity extends Expression {
         return this.value === other.value;
       } else {
         const other_v = convert_value(other.value,ucum_unit(other.unit),ucum_unit(this.unit));
-        return decimalAdjust("round", this.value, -8)  === decimalAdjust("round", other_v, -8);
+        return decimalAdjust('round', this.value, -8)  === decimalAdjust('round', other_v, -8);
       }
     }
   }
@@ -103,11 +112,11 @@ module.exports.Quantity = (Quantity = class Quantity extends Expression {
   }
 
   dividedBy(other) {
-    return this.multiplyDivide(other,"/");
+    return this.multiplyDivide(other,'/');
   }
 
   multiplyBy(other) {
-    return this.multiplyDivide(other,"."); // in ucum . represents multiplication
+    return this.multiplyDivide(other,'.'); // in ucum . represents multiplication
   }
 
   multiplyDivide(other, operator) {
@@ -119,13 +128,13 @@ module.exports.Quantity = (Quantity = class Quantity extends Expression {
         const ucum_value = ucum_multiply(can_val,[[operator,other_can_value]]);
         return createQuantity(ucum_value.value, units_to_string(ucum_value.units));
       } else {
-        value = operator === "/" ? this.value / other.value  : this.value * other.value;
+        value = operator === '/' ? this.value / other.value  : this.value * other.value;
         unit = this.unit || other.unit;
-        return createQuantity(decimalAdjust("round",value,-8), unit);
+        return createQuantity(decimalAdjust('round',value,-8), unit);
       }
     } else {
-      value = operator === "/" ? this.value / other  : this.value * other;
-      return createQuantity( decimalAdjust("round",value,-8), this.unit);
+      value = operator === '/' ? this.value / other  : this.value * other;
+      return createQuantity( decimalAdjust('round',value,-8), this.unit);
     }
   }
 
@@ -156,10 +165,10 @@ var ucum_time_units = {'years': 'a_g', 'year': 'a_g', 'YEARS': 'a_g', 'YEAR': 'a
   , 'minutes': 'min', 'minute': 'min', 'min': 'min', 'MIN': 'min'
   , 'seconds':'s', 'second':'s', 's': 's', 'S': 's'
   , 'milliseconds' : 'ms', 'millisecond' : 'ms', 'ms': 'ms', 'MS': 'ms'
-  };
+};
 
 var ucum_to_cql_units = {
-    'a_j':  'year'
+  'a_j':  'year'
   , 'a_g':  'year'
   , 'mo_j': 'month'
   , 'mo_g': 'month'
@@ -179,7 +188,7 @@ var convert_value = function(value, from, to) {
     if (from === to) {
       return value;
     } else {
-      return decimalAdjust("round", ucum.convert(value,ucum_unit(from),ucum_unit(to)), -8);
+      return decimalAdjust('round', ucum.convert(value,ucum_unit(from),ucum_unit(to)), -8);
     }
   } catch (e) {
     throw new IncompatibleTypesException(from, to, e);
@@ -224,12 +233,12 @@ var units_to_string = function(units = {}) {
     const str = pow === 1 ? key  : key + pow;
     if (v < 0) { denom.push(str); } else { numer.push(str); }
   }
-  let unit_string = "";
-  unit_string += numer.join(".");
+  let unit_string = '';
+  unit_string += numer.join('.');
   if (denom.length > 0) {
-    unit_string += `/${denom.join("/")}`;
+    unit_string += `/${denom.join('/')}`;
   }
-  if (unit_string === "") { return null; } else { return unit_string; }
+  if (unit_string === '') { return null; } else { return unit_string; }
 };
 
 

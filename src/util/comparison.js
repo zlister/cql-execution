@@ -1,3 +1,9 @@
+/* eslint-disable
+    no-unreachable,
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -19,41 +25,41 @@ const isUncertainty = x => x instanceof Uncertainty;
 
 module.exports.lessThan = function(a, b, precision = DateTime.Unit.MILLISECOND) {
   switch (false) {
-    case !areNumbers(a, b): return a < b;
-    case !areDateTimesOrQuantities(a, b): return a.before(b, precision);
-    case !isUncertainty(a): return a.lessThan(b);
-    case !isUncertainty(b): return Uncertainty.from(a).lessThan(b);
-    default: return null;
+  case !areNumbers(a, b): return a < b;
+  case !areDateTimesOrQuantities(a, b): return a.before(b, precision);
+  case !isUncertainty(a): return a.lessThan(b);
+  case !isUncertainty(b): return Uncertainty.from(a).lessThan(b);
+  default: return null;
   }
 };
 
 module.exports.lessThanOrEquals = function(a, b, precision = DateTime.Unit.MILLISECOND) {
   switch (false) {
-    case !areNumbers(a, b): return a <= b;
-    case !areDateTimesOrQuantities(a, b): return a.sameOrBefore(b, precision);
-    case !isUncertainty(a): return a.lessThanOrEquals(b);
-    case !isUncertainty(b): return Uncertainty.from(a).lessThanOrEquals(b);
-    default: return null;
+  case !areNumbers(a, b): return a <= b;
+  case !areDateTimesOrQuantities(a, b): return a.sameOrBefore(b, precision);
+  case !isUncertainty(a): return a.lessThanOrEquals(b);
+  case !isUncertainty(b): return Uncertainty.from(a).lessThanOrEquals(b);
+  default: return null;
   }
 };
 
 module.exports.greaterThan = function(a, b, precision = DateTime.Unit.MILLISECOND) {
   switch (false) {
-    case !areNumbers(a, b): return a > b;
-    case !areDateTimesOrQuantities(a, b): return a.after(b, precision);
-    case !isUncertainty(a): return a.greaterThan(b);
-    case !isUncertainty(b): return Uncertainty.from(a).greaterThan(b);
-    default: return null;
+  case !areNumbers(a, b): return a > b;
+  case !areDateTimesOrQuantities(a, b): return a.after(b, precision);
+  case !isUncertainty(a): return a.greaterThan(b);
+  case !isUncertainty(b): return Uncertainty.from(a).greaterThan(b);
+  default: return null;
   }
 };
 
 module.exports.greaterThanOrEquals = function(a, b, precision = DateTime.Unit.MILLISECOND) {
   switch (false) {
-    case !areNumbers(a, b): return a >= b;
-    case !areDateTimesOrQuantities(a, b): return a.sameOrAfter(b, precision);
-    case !isUncertainty(a): return a.greaterThanOrEquals(b);
-    case !isUncertainty(b): return Uncertainty.from(a).greaterThanOrEquals(b);
-    default: return null;
+  case !areNumbers(a, b): return a >= b;
+  case !areDateTimesOrQuantities(a, b): return a.sameOrAfter(b, precision);
+  case !isUncertainty(a): return a.greaterThanOrEquals(b);
+  case !isUncertainty(b): return Uncertainty.from(a).greaterThanOrEquals(b);
+  default: return null;
   }
 };
 
@@ -85,38 +91,38 @@ module.exports.equals = (equals = function(a, b) {
   if (aClass !== bClass) { return false; }
 
   switch (aClass) {
-    case '[object Date]':
-      // Compare the ms since epoch
-      return a.getTime() === b.getTime();
-      break;
-    case '[object RegExp]':
-      // Compare the components of the regular expression
-      return ['source', 'global', 'ignoreCase', 'multiline'].every(p => a[p] === b[p]);
-      break;
-    case '[object Array]':
-      // Compare every item in the array
-      return (a.length === b.length) && a.every((item, i) => equals(item, b[i]));
-      break;
-    case '[object Object]':
-      // Return false if they are instances of different classes
-      if (!(b instanceof a.constructor) || !(a instanceof b.constructor)) { return false; }
-      // Do deep comparison of keys and values
-      var aKeys = (typeof(key) !== 'function' ? (() => {
-        const result = [];
-        for (key in a) {
-          result.push(key);
-        }
-        return result;
-      })() : undefined);
-      var bKeys = (typeof(key) !== 'function' ? (() => {
-        const result1 = [];
-        for (key in b) {
-          result1.push(key);
-        }
-        return result1;
-      })() : undefined);
-      return (aKeys.length === bKeys.length) && aKeys.every(key => equals(a[key], b[key]));
-      break;
+  case '[object Date]':
+    // Compare the ms since epoch
+    return a.getTime() === b.getTime();
+    break;
+  case '[object RegExp]':
+    // Compare the components of the regular expression
+    return ['source', 'global', 'ignoreCase', 'multiline'].every(p => a[p] === b[p]);
+    break;
+  case '[object Array]':
+    // Compare every item in the array
+    return (a.length === b.length) && a.every((item, i) => equals(item, b[i]));
+    break;
+  case '[object Object]':
+    // Return false if they are instances of different classes
+    if (!(b instanceof a.constructor) || !(a instanceof b.constructor)) { return false; }
+    // Do deep comparison of keys and values
+    var aKeys = (typeof(key) !== 'function' ? (() => {
+      const result = [];
+      for (key in a) {
+        result.push(key);
+      }
+      return result;
+    })() : undefined);
+    var bKeys = (typeof(key) !== 'function' ? (() => {
+      const result1 = [];
+      for (key in b) {
+        result1.push(key);
+      }
+      return result1;
+    })() : undefined);
+    return (aKeys.length === bKeys.length) && aKeys.every(key => equals(a[key], b[key]));
+    break;
   }
 
   // If we made it this far, we can't handle it

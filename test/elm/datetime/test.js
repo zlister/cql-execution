@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -20,7 +22,7 @@ describe('DateTime', function() {
     d.year.should.equal(2012);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'month', 'day', 'hour', 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute month precision correctly', function() {
     const d = this.month.exec(this.ctx);
@@ -29,7 +31,7 @@ describe('DateTime', function() {
     d.month.should.equal(2);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'day', 'hour', 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute day precision correctly', function() {
     const d = this.day.exec(this.ctx);
@@ -39,7 +41,7 @@ describe('DateTime', function() {
     d.day.should.equal(15);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'hour', 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute hour precision correctly', function() {
     const d = this.hour.exec(this.ctx);
@@ -50,7 +52,7 @@ describe('DateTime', function() {
     d.hour.should.equal(12);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute minute precision correctly', function() {
     const d = this.minute.exec(this.ctx);
@@ -62,7 +64,7 @@ describe('DateTime', function() {
     d.minute.should.equal(10);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute second precision correctly', function() {
     const d = this.second.exec(this.ctx);
@@ -119,7 +121,7 @@ describe('Time', function() {
     d.hour.should.equal(12);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute minute precision correctly', function() {
     const d = this.minute.exec(this.ctx);
@@ -131,7 +133,7 @@ describe('Time', function() {
     d.minute.should.equal(10);
     d.timezoneOffset.should.equal(this.defaultOffset);
     return [ 'second', 'millisecond' ].map((field) => should.not.exist(d[field]));
-});
+  });
 
   it('should execute second precision correctly', function() {
     const d = this.second.exec(this.ctx);
@@ -187,7 +189,7 @@ describe('Today', function() {
     today.day.should.equal(jsDate.getDate());
     today.timezoneOffset.should.equal((jsDate.getTimezoneOffset() / 60) * -1);
     return [ 'hour', 'minute', 'second', 'millisecond' ].map((field) => should.not.exist(today[field]));
-});
+  });
 });
 
 describe('Now', function() {
@@ -274,7 +276,7 @@ describe('DateTimeComponentFrom', function() {
       Second: null,
       Millisecond: null
     });
-});
+  });
 
   return it('should return null for null date', function() {
     return should(this.nullDate.exec(this.ctx)).be.null;

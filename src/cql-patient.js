@@ -1,3 +1,9 @@
+/* eslint-disable
+    no-undef,
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -81,7 +87,7 @@ FHIR.Patient.prototype.records = function() {
 
 FHIR.Patient.prototype.findRecords = function(profile) {
   if (profile === 'patient-qicore-qicore-patient') { return [this]; } else { let left;
-  return (left = (this._bundle != null ? this._bundle.findRecords(profile) : undefined)) != null ? left : []; }
+    return (left = (this._bundle != null ? this._bundle.findRecords(profile) : undefined)) != null ? left : []; }
 };
 
 
@@ -110,7 +116,7 @@ FHIR.Base.prototype.getDate = function(field) {
   const val = this.get(field);
   if (val instanceof DT.DateTime) {
     return val;
-  } else if (typeof val === "string") {
+  } else if (typeof val === 'string') {
     return DT.DateTime.parse(val);
   }
 };
@@ -126,7 +132,7 @@ FHIR.Base.prototype.getDateOrInterval = function(field) {
   const val = this.get(field);
   if (val instanceof FHIR.Period) {
     return this.periodToInterval(val);
-  } else if (typeof val === "string") {
+  } else if (typeof val === 'string') {
     return DT.DateTime.parse(val);
   } else if (val instanceof  DT.DateTime) {
     return val;
@@ -159,8 +165,8 @@ FHIR.Base.prototype.codingToCode = coding => new DT.Code(coding.code(), coding.s
 
 FHIR.Base.prototype.periodToInterval =function(val) {
   if (val instanceof FHIR.Period) {
-    const start =  val.getDate("start");
-    const end =  val.getDate("end");
+    const start =  val.getDate('start');
+    const end =  val.getDate('end');
     return new DT.Interval(start, end);
   }
 };
@@ -179,7 +185,7 @@ class PatientSource {
   nextPatient() {
     this.current = this.patients.shift();
     this.current_bundle = this.current ? new FHIR.Bundle(this.current) : undefined;
-    return this.current_patient = this.current_bundle != null ? this.current_bundle.findRecord("patient-qicore-qicore-patient") : undefined;
+    return this.current_patient = this.current_bundle != null ? this.current_bundle.findRecord('patient-qicore-qicore-patient') : undefined;
   }
 }
 

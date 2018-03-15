@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -181,7 +186,7 @@ module.exports.Collapse = (Collapse = class Collapse extends Expression {
       // we don't handle imprecise intervals at this time
       for (var a of intervals) {
         if ((typeof a.low.isImprecise === 'function' ? a.low.isImprecise() : undefined) || (typeof a.high.isImprecise === 'function' ? a.high.isImprecise() : undefined)) {
-          throw new Error("Collapse does not support imprecise dates at this time.");
+          throw new Error('Collapse does not support imprecise dates at this time.');
         }
       }
 

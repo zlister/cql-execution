@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -28,8 +33,8 @@ module.exports.DateTime = (DateTime = (function() {
       const args = ((() => {
         const result = [];
         for (let p of DateTime.PROPERTIES) {           if (this[p] != null) { result.push(this[p].execute(ctx)); } else {
-            result.push(undefined);
-          }
+          result.push(undefined);
+        }
         }
         return result;
       })());
@@ -56,8 +61,8 @@ module.exports.Time = (Time = (function() {
       const args = ((() => {
         const result = [];
         for (let p of Time.PROPERTIES) {           if (this[p] != null) { result.push(this[p].execute(ctx)); } else {
-            result.push(undefined);
-          }
+          result.push(undefined);
+        }
         }
         return result;
       })());

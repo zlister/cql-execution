@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -47,8 +52,8 @@ module.exports.Executor = (Executor = class Executor {
     const popContext = new PopulationContext(this.library,r,this.codeService,this.parameters);
     for (let key in this.library.expressions) {
       const expr = this.library.expressions[key];
-      if (expr.context === "Population") {
-       r.recordPopulationResult( key, expr.exec(popContext));
+      if (expr.context === 'Population') {
+        r.recordPopulationResult( key, expr.exec(popContext));
       }
     }
     return r;
@@ -62,7 +67,7 @@ module.exports.Executor = (Executor = class Executor {
       const patient_ctx = new PatientContext(this.library,p,this.codeService,this.parameters);
       for (let key in this.library.expressions) {
         const expr = this.library.expressions[key];
-        if (expr.context === "Patient") {
+        if (expr.context === 'Patient') {
           r.recordPatientResult(patient_ctx, key, expr.execute(patient_ctx));
         }
       }

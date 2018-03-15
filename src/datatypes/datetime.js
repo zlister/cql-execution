@@ -1,3 +1,9 @@
+/* eslint-disable
+    no-unused-vars,
+    no-useless-escape,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -25,13 +31,13 @@ module.exports.DateTime = (DateTime = (function() {
       if ((match != null ? match[0] : undefined) === string) {
         let args = [match[1], match[3], match[5], match[8], match[10], match[12], match[14]];
         // fix up milliseconds by padding zeros and/or truncating (5 --> 500, 50 --> 500, 54321 --> 543, etc.)
-        if (args[6] != null) { args[6] = (args[6] + "00").substring(0, 3); }
+        if (args[6] != null) { args[6] = (args[6] + '00').substring(0, 3); }
         // convert them all to integers
         args = ((() => {
           const result = [];
           for (let arg of args) {             if (arg != null) { result.push(parseInt(arg,10)); } else {
-              result.push(undefined);
-            }
+            result.push(undefined);
+          }
           }
           return result;
         })());
@@ -135,9 +141,9 @@ module.exports.DateTime = (DateTime = (function() {
 
       const diff = this.differenceBetween(other, precision);
       switch (false) {
-        case ((diff.low !== 0) || (diff.high !== 0)): return true;
-        case (!(diff.low <= 0) || !(diff.high >= 0)): return null;
-        default: return false;
+      case ((diff.low !== 0) || (diff.high !== 0)): return true;
+      case (!(diff.low <= 0) || !(diff.high >= 0)): return null;
+      default: return false;
       }
     }
 
@@ -150,9 +156,9 @@ module.exports.DateTime = (DateTime = (function() {
 
       const diff = this.differenceBetween(other, precision);
       switch (false) {
-        case (!(diff.low >= 0) || !(diff.high >= 0)): return true;
-        case (!(diff.low < 0) || !(diff.high < 0)): return false;
-        default: return null;
+      case (!(diff.low >= 0) || !(diff.high >= 0)): return true;
+      case (!(diff.low < 0) || !(diff.high < 0)): return false;
+      default: return null;
       }
     }
 
@@ -161,9 +167,9 @@ module.exports.DateTime = (DateTime = (function() {
 
       const diff = this.differenceBetween(other, precision);
       switch (false) {
-        case (!(diff.low <= 0) || !(diff.high <= 0)): return true;
-        case (!(diff.low > 0) || !(diff.high > 0)): return false;
-        default: return null;
+      case (!(diff.low <= 0) || !(diff.high <= 0)): return true;
+      case (!(diff.low > 0) || !(diff.high > 0)): return false;
+      default: return null;
       }
     }
 
@@ -172,9 +178,9 @@ module.exports.DateTime = (DateTime = (function() {
 
       const diff = this.differenceBetween(other, precision);
       switch (false) {
-        case (!(diff.low > 0) || !(diff.high > 0)): return true;
-        case (!(diff.low <= 0) || !(diff.high <= 0)): return false;
-        default: return null;
+      case (!(diff.low > 0) || !(diff.high > 0)): return true;
+      case (!(diff.low <= 0) || !(diff.high <= 0)): return false;
+      default: return null;
       }
     }
 
@@ -183,9 +189,9 @@ module.exports.DateTime = (DateTime = (function() {
 
       const diff = this.differenceBetween(other, precision);
       switch (false) {
-        case (!(diff.low < 0) || !(diff.high < 0)): return true;
-        case (!(diff.low >= 0) || !(diff.high >= 0)): return false;
-        default: return null;
+      case (!(diff.low < 0) || !(diff.high < 0)): return true;
+      case (!(diff.low >= 0) || !(diff.high >= 0)): return false;
+      default: return null;
       }
     }
 

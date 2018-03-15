@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -1241,7 +1243,7 @@ describe('IntegerIntervalExcept', function() {
 
   it('should properly calculate sameAs except', function() {
     return should(this.intSameAsExcept.exec(this.ctx)).be.null;
-   });
+  });
 
   it('should properly calculate before/after except', function() {
     return this.intBeforeExcept.exec(this.ctx).should.eql(new Interval(0,4));
@@ -1325,7 +1327,7 @@ describe('IntegerIntervalIntersect', function() {
     const x = this.intSameAsIntersect.exec(this.ctx);
     const y = this.intFullInterval.exec(this.ctx);
     return x.equals(y).should.be.true();
-   });
+  });
 
   it('should properly calculate before/after intersect', function() {
     return should(this.intBeforeIntersect.exec(this.ctx)).be.null;
@@ -1371,7 +1373,7 @@ describe('DateTimeIntervalIntersect', function() {
     const x = this.dateTimeSameAsIntersect.exec(this.ctx);
     const y = this.dateTimeFullInterval.exec(this.ctx);
     return x.equals(y).should.be.true();
-   });
+  });
 
   it('should properly calculate before/after intersect', function() {
     return should(this.dateTimeBeforeIntersect.exec(this.ctx)).be.null;
@@ -1473,6 +1475,6 @@ describe('DateTimeIntervalCollapse', function() {
   });
 
   return it('throws collapsing imprecise interval', function() {
-    return should(() => this.dateTimeCollapseImpreciseBoundary.exec(this.ctx)).throw("Collapse does not support imprecise dates at this time.");
+    return should(() => this.dateTimeCollapseImpreciseBoundary.exec(this.ctx)).throw('Collapse does not support imprecise dates at this time.');
   });
 });

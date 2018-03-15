@@ -1,3 +1,5 @@
+// TODO: This file was created by bulk-decaffeinate.
+// Sanity-check the conversion and remove this comment.
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -7,9 +9,9 @@
 let typeIsArray;
 module.exports.compact = things=> things.filter(x=> x != null);
 
-module.exports.numerical_sort = (things, direction="asc") =>
+module.exports.numerical_sort = (things, direction='asc') =>
   things.sort(function(a,b){
-    if (direction === "asc") {
+    if (direction === 'asc') {
       return a - b;
     } else {
       return b - a;
