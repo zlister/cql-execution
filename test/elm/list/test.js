@@ -8,7 +8,7 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const {ArrayIndexOutOfBoundsException} = require('../../../lib/elm/overloaded');
+const {ArrayIndexOutOfBoundsException} = require('../../../src/elm/overloaded');
 
 describe('List', function() {
   this.beforeEach(function() {

@@ -8,8 +8,8 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const str = require('../../../lib/elm/string');
-const {ArrayIndexOutOfBoundsException} = require('../../../lib/elm/overloaded');
+const str = require('../../../src/elm/string');
+const {ArrayIndexOutOfBoundsException} = require('../../../src/elm/overloaded');
 
 describe('Concat', function() {
   this.beforeEach(function() {

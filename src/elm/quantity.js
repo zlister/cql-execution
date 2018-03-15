@@ -26,16 +26,9 @@ const ucum = require('ucum');
 
 module.exports.IncompatibleTypesException = (IncompatibleTypesException = (IncompatibleTypesException = class IncompatibleTypesException extends Exception {
   constructor(a , b , e) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(`Incompatible Types '${a}' and '${b}'`, e);
     this.a = a;
     this.b = b;
-    super(`Incompatible Types '${this.a}' and '${this.b}'`, e);
   }
 }));
 

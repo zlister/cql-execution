@@ -10,9 +10,9 @@ const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
 const vsets = require('./valuesets');
-const { Uncertainty } = require('../../../lib/datatypes/uncertainty');
+const { Uncertainty } = require('../../../src/datatypes/uncertainty');
 const { p1, p2 } = require('./patients');
-const { PatientSource} = require('../../../lib/cql-patient');
+const { PatientSource} = require('../../../src/cql-patient');
 
 
 describe('ValueSetDef', function() {

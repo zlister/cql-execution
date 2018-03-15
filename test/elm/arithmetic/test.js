@@ -9,14 +9,14 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const Q = require('../../../lib/elm/quantity');
+const Q = require('../../../src/elm/quantity');
 
 const validateQuantity = function(object,expectedValue,expectedUnit) {
   object.constructor.name.should.equal('Quantity');
   const q = Q.createQuantity(expectedValue,expectedUnit);
   return q.equals(object).should.be.true(`Expected ${object} to equal ${q}`);
 };
-  
+
 const doQuantityMathTests = function(tests, operator) {
   const func = (() => { switch (operator) {
   case '*': return Q.doMultiplication;

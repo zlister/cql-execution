@@ -11,7 +11,7 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const {isNull} = require('../../../lib/util/util');
+const {isNull} = require('../../../src/util/util');
 
 describe('FromString', function() {
   this.beforeEach(function() {

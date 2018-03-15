@@ -11,7 +11,7 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const {Repository} = require('../../../lib/cql');
+const {Repository} = require('../../../src/cql');
 
 const { p1, p2 } = require('./patients');
 

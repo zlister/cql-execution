@@ -16,28 +16,28 @@
 
 // Copyright (c) 2014 The MITRE Corporation
 // All rights reserved.
-// 
-// Redistribution and use in source and binary forms, with or without modification, 
+//
+// Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
-// 
-//     * Redistributions of source code must retain the above copyright notice, this 
+//
+//     * Redistributions of source code must retain the above copyright notice, this
 //       list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright notice, 
-//       this list of conditions and the following disclaimer in the documentation 
+//     * Redistributions in binary form must reproduce the above copyright notice,
+//       this list of conditions and the following disclaimer in the documentation
 //       and/or other materials provided with the distribution.
-//     * Neither the name of HL7 nor the names of its contributors may be used to 
-//       endorse or promote products derived from this software without specific 
+//     * Neither the name of HL7 nor the names of its contributors may be used to
+//       endorse or promote products derived from this software without specific
 //       prior written permission.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 const DT = require('../cql-datatypes');
 const CORE = require('./core');
@@ -66,22 +66,15 @@ const { Identifier } = CORE;
 const { Narrative } = CORE;
 ({ Element } = CORE);
 
-/** 
+/**
 Embedded class
 @class QuestionAnswerComponent
 @exports  QuestionAnswerComponent as QuestionAnswerComponent
 */
 class QuestionAnswerComponent extends BackboneElement {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.json = json;
-    super(this.json);
   }
   /**
   Single-valued answer to the question.
@@ -144,37 +137,30 @@ class QuestionAnswerComponent extends BackboneElement {
   */
   valueReference() { if (this.json['valueReference']) { return new Reference(this.json['valueReference']); } }
 }
-  
 
-/** 
+
+/**
 Embedded class
 @class QuestionComponent
 @exports  QuestionComponent as QuestionComponent
 */
 class QuestionComponent extends BackboneElement {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.json = json;
-    super(this.json);
   }
   /**
   Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.
   @returns {Array} an array of {@link String} objects
   */
   linkId() { return this.json['linkId']; }
-  
+
   /**
   Text of the question as it is shown to the user.
   @returns {Array} an array of {@link String} objects
   */
   text() { return this.json['text']; }
-  
+
   /**
   The respondent's answer(s) to the question.
   @returns {Array} an array of {@link QuestionAnswerComponent} objects
@@ -185,7 +171,7 @@ class QuestionComponent extends BackboneElement {
         new QuestionAnswerComponent(item));
     }
   }
-  
+
   /**
   Nested group, containing nested question for this question. The order of groups within the question is relevant.
   @returns {Array} an array of {@link GroupComponent} objects
@@ -197,49 +183,42 @@ class QuestionComponent extends BackboneElement {
     }
   }
 }
-  
 
-/** 
+
+/**
 Embedded class
 @class GroupComponent
 @exports  GroupComponent as GroupComponent
 */
 class GroupComponent extends BackboneElement {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.json = json;
-    super(this.json);
   }
   /**
   Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource.
   @returns {Array} an array of {@link String} objects
   */
   linkId() { return this.json['linkId']; }
-  
+
   /**
   Text that is displayed above the contents of the group.
   @returns {Array} an array of {@link String} objects
   */
   title() { return this.json['title']; }
-  
+
   /**
   Additional text for the group, used for display purposes.
   @returns {Array} an array of {@link String} objects
   */
   text() { return this.json['text']; }
-  
+
   /**
   More specific subject this section's answers are about, details the subject given in QuestionnaireAnswers.
   @returns {Reference}
   */
   subject() { if (this.json['subject']) { return new Reference(this.json['subject']); } }
-  
+
   /**
   A sub-group within a group. The ordering of groups within this group is relevant.
   @returns {Array} an array of {@link GroupComponent} objects
@@ -250,7 +229,7 @@ class GroupComponent extends BackboneElement {
         new GroupComponent(item));
     }
   }
-  
+
   /**
   Set of questions within this group. The order of questions within the group is relevant.
   @returns {Array} an array of {@link QuestionComponent} objects
@@ -262,7 +241,7 @@ class GroupComponent extends BackboneElement {
     }
   }
 }
-  
+
 /**
 A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
 @class QuestionnaireAnswers
@@ -270,71 +249,64 @@ A structured set of questions and their answers. The questions are ordered and g
 */
 class QuestionnaireAnswers extends DomainResource {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.json = json;
-    super(this.json);
   }
   /**
   A business identifier assigned to a particular completed (or partially completed) questionnaire.
   @returns {Identifier}
   */
   identifier() { if (this.json['identifier']) { return new Identifier(this.json['identifier']); } }
-  
+
   /**
   Indicates the Questionnaire resource that defines the form for which answers are being provided.
   @returns {Reference}
   */
   questionnaire() { if (this.json['questionnaire']) { return new Reference(this.json['questionnaire']); } }
-  
+
   /**
   The lifecycle status of the questionnaire answers as a whole.
   @returns {Array} an array of {@link String} objects
   */
   status() { return this.json['status']; }
-  
+
   /**
   The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.
   @returns {Reference}
   */
   subject() { if (this.json['subject']) { return new Reference(this.json['subject']); } }
-  
+
   /**
   Person who received the answers to the questions in the QuestionnaireAnswers and recorded them in the system.
   @returns {Reference}
   */
   author() { if (this.json['author']) { return new Reference(this.json['author']); } }
-  
+
   /**
   The date and/or time that this version of the questionnaire answers was authored.
   @returns {Array} an array of {@link Date} objects
   */
   authored() { if (this.json['authored']) { return DT.DateTime.parse(this.json['authored']); } }
-  
+
   /**
   The person who answered the questions about the subject. Only used when this is not the subject him/herself.
   @returns {Reference}
   */
   source() { if (this.json['source']) { return new Reference(this.json['source']); } }
-  
+
   /**
   Encounter during which this set of questionnaire answers were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.
   @returns {Reference}
   */
   encounter() { if (this.json['encounter']) { return new Reference(this.json['encounter']); } }
-  
+
   /**
   A group of questions to a possibly similarly grouped set of questions in the questionnaire answers.
   @returns {GroupComponent}
   */
   group() { if (this.json['group']) { return new GroupComponent(this.json['group']); } }
 }
-  
+
 
 
 

@@ -13,8 +13,8 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 const should = require('should');
-const { Patient } = require('../lib/cql-patient');
-const DT = require('../lib/datatypes/datatypes');
+const { Patient } = require('../src/cql-patient');
+const DT = require('../src/datatypes/datatypes');
 
 describe('Record', function() {
   this.beforeEach(function() {
@@ -65,9 +65,9 @@ describe('Record', function() {
   });
 
   it('should get dates', function() {
-    this.cndRecord.getDate('onsetDateTime').should.eql(new DT.DateTime.parse('1982-03-12'));
-    this.cndRecord.getDate('abatementDateTime').should.eql(new DT.DateTime.parse('1982-03-26'));
-    return this.cndRecord.getDate('issued').should.eql(new DT.DateTime.parse('1982-03-15T15:15:00'));
+    this.cndRecord.getDate('onsetDateTime').should.eql(DT.DateTime.parse('1982-03-12'));
+    this.cndRecord.getDate('abatementDateTime').should.eql(DT.DateTime.parse('1982-03-26'));
+    return this.cndRecord.getDate('issued').should.eql(DT.DateTime.parse('1982-03-15T15:15:00'));
   });
 
   it('should get intervals', function() {
@@ -75,7 +75,7 @@ describe('Record', function() {
   });
 
   return it('should get date or interval', function() {
-    this.cndRecord.getDateOrInterval('issued').should.eql(new DT.DateTime.parse('1982-03-15T15:15:00'));
+    this.cndRecord.getDateOrInterval('issued').should.eql(DT.DateTime.parse('1982-03-15T15:15:00'));
     return this.encRecord.getDateOrInterval('period').should.eql(new DT.Interval(DT.DateTime.parse('1978-07-15T10:00'), DT.DateTime.parse('1978-07-15T10:45')));
   });
 });

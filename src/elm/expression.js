@@ -28,14 +28,14 @@ module.exports.Expression = (Expression = class Expression {
       this.localId = json.localId;
     }
   }
-  
+
   execute(ctx) {
     if (this.localId != null) {
       // Store the localId and result on the root context of this library
       const execValue = this.exec(ctx);
       ctx.rootContext().setLocalIdWithResult(this.localId, execValue);
       return execValue;
-    } else { 
+    } else {
       return this.exec(ctx);
     }
   }
@@ -60,15 +60,8 @@ module.exports.Expression = (Expression = class Expression {
 
 module.exports.UnimplementedExpression = (UnimplementedExpression = class UnimplementedExpression extends Expression {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.json = json;
-    super(...arguments);
   }
 
   exec(ctx) {

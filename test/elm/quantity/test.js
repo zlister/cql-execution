@@ -10,7 +10,7 @@
  */
 const should = require('should');
 const setup = require('../../setup');
-const {Quantity} = require('../../../lib/elm/quantity');
+const {Quantity} = require('../../../src/elm/quantity');
 
 describe('Quantity', function() {
   it('should allow creation of Quantity with valid ucum units', () =>

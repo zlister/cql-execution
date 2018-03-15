@@ -83,21 +83,15 @@ module.exports.FunctionRef = (FunctionRef = class FunctionRef extends Expression
 
 module.exports.OperandRef = (OperandRef = class OperandRef extends Expression {
   constructor(json) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(json);
     this.name = json.name;
   }
   exec(ctx) {
-    return ctx.get(this.name); 
+    return ctx.get(this.name);
   }
 });
 
-     
+
 module.exports.IdentifierRef = (IdentifierRef = class IdentifierRef extends Expression {
   constructor(json) {
     super(...arguments);

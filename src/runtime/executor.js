@@ -19,7 +19,7 @@ module.exports.Executor = (Executor = class Executor {
   }
 
   withLibrary(lib) {
-    this.library = lib; 
+    this.library = lib;
     return this;
   }
 
@@ -47,8 +47,7 @@ module.exports.Executor = (Executor = class Executor {
   }
 
   exec(patientSource) {
-    let r;
-    Results(r = this.exec_patient_context(patientSource));
+    const r = this.exec_patient_context(patientSource);
     const popContext = new PopulationContext(this.library,r,this.codeService,this.parameters);
     for (let key in this.library.expressions) {
       const expr = this.library.expressions[key];
@@ -60,10 +59,8 @@ module.exports.Executor = (Executor = class Executor {
   }
 
   exec_patient_context(patientSource) {
-    let r;
-    let p;
-    Results(r = new Results());
-    while ((p = patientSource.currentPatient())) {
+    const r = new Results();
+    for (let p = patientSource.currentPatient(); p != null; p = patientSource.nextPatient()) {
       const patient_ctx = new PatientContext(this.library,p,this.codeService,this.parameters);
       for (let key in this.library.expressions) {
         const expr = this.library.expressions[key];
@@ -71,7 +68,6 @@ module.exports.Executor = (Executor = class Executor {
           r.recordPatientResult(patient_ctx, key, expr.execute(patient_ctx));
         }
       }
-      patientSource.nextPatient();
     }
     return r;
   }

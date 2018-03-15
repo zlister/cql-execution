@@ -8,8 +8,8 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const { Interval } = require('../../../lib/datatypes/interval');
-const { DateTime } = require('../../../lib/datatypes/datetime');
+const { Interval } = require('../../../src/datatypes/interval');
+const { DateTime } = require('../../../src/datatypes/datetime');
 
 describe('Interval', function() {
   this.beforeEach(function() {

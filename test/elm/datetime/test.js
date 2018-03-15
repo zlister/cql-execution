@@ -8,7 +8,7 @@
 const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
-const { Uncertainty } = require('../../../lib/datatypes/uncertainty');
+const { Uncertainty } = require('../../../src/datatypes/uncertainty');
 
 describe('DateTime', function() {
   this.beforeEach(function() {

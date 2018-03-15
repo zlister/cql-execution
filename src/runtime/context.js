@@ -29,19 +29,19 @@ Function.prototype.property = function(prop, desc) {
 module.exports.Context = (Context = (function() {
   Context = class Context {
     static initClass() {
-  
+
       this.property('parameters' , {
         get() {
           return this._parameters || (this.parent != null ? this.parent.parameters : undefined);
         },
-  
+
         set(params) {
           this.checkParameters(params);
           return this._parameters = params;
         }
       }
       );
-  
+
       this.property('codeService' , {
         get() { return this._codeService || (this.parent != null ? this.parent.codeService : undefined); },
         set(cs) { return this._codeService = cs; }
@@ -278,16 +278,9 @@ module.exports.Context = (Context = (function() {
 
 module.exports.PatientContext = (PatientContext = class PatientContext extends Context {
   constructor(library,patient,codeService,parameters) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(library, codeService, parameters);
     this.library = library;
     this.patient = patient;
-    super(this.library,codeService,parameters);
   }
 
   rootContext() { return this; }
@@ -310,16 +303,9 @@ module.exports.PatientContext = (PatientContext = class PatientContext extends C
 module.exports.PopulationContext = (PopulationContext = class PopulationContext extends Context {
 
   constructor(library, results, codeService, parameters) {
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super(library,codeService,parameters);
     this.library = library;
     this.results = results;
-    super(this.library,codeService,parameters);
   }
 
   rootContext() { return this; }

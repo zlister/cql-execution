@@ -7,7 +7,7 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 const should = require('should');
-const { Uncertainty } = require('../../lib/datatypes/uncertainty');
+const { Uncertainty } = require('../../src/datatypes/uncertainty');
 
 describe('Uncertainty', function() {
 
