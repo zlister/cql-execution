@@ -1,174 +1,204 @@
+/*
+ * decaffeinate suggestions:
+ * DS001: Remove Babel/TypeScript constructor workaround
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
 
-# Copyright (c) 2014 The MITRE Corporation
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without modification, 
-# are permitted provided that the following conditions are met:
-# 
-#     * Redistributions of source code must retain the above copyright notice, this 
-#       list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright notice, 
-#       this list of conditions and the following disclaimer in the documentation 
-#       and/or other materials provided with the distribution.
-#     * Neither the name of HL7 nor the names of its contributors may be used to 
-#       endorse or promote products derived from this software without specific 
-#       prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-# POSSIBILITY OF SUCH DAMAGE.
-DT = require '../cql-datatypes'
-CORE = require('./core')
-Element = CORE.Element
-Resource = CORE.Resource
-Timing = CORE.Timing
-Period = CORE.Period
-Parameters = CORE.Parameters
-Coding = CORE.Coding
-Resource = CORE.Resource
-Range = CORE.Range
-Quantity = CORE.Quantity
-Attachment = CORE.Attachment
-BackboneElement = CORE.BackboneElement
-DomainResource = CORE.DomainResource
-ContactPoint = CORE.ContactPoint
-ElementDefinition = CORE.ElementDefinition
-Extension = CORE.Extension
-HumanName = CORE.HumanName
-Address = CORE.Address
-Ratio = CORE.Ratio
-SampledData = CORE.SampledData
-Reference = CORE.Reference
-CodeableConcept = CORE.CodeableConcept
-Identifier = CORE.Identifier
-Narrative = CORE.Narrative
-Element = CORE.Element
+// Copyright (c) 2014 The MITRE Corporation
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without modification, 
+// are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright notice, this 
+//       list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright notice, 
+//       this list of conditions and the following disclaimer in the documentation 
+//       and/or other materials provided with the distribution.
+//     * Neither the name of HL7 nor the names of its contributors may be used to 
+//       endorse or promote products derived from this software without specific 
+//       prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+const DT = require('../cql-datatypes');
+const CORE = require('./core');
+let { Element } = CORE;
+let { Resource } = CORE;
+const { Timing } = CORE;
+const { Period } = CORE;
+const { Parameters } = CORE;
+const { Coding } = CORE;
+({ Resource } = CORE);
+const { Range } = CORE;
+const { Quantity } = CORE;
+const { Attachment } = CORE;
+const { BackboneElement } = CORE;
+const { DomainResource } = CORE;
+const { ContactPoint } = CORE;
+const { ElementDefinition } = CORE;
+const { Extension } = CORE;
+const { HumanName } = CORE;
+const { Address } = CORE;
+const { Ratio } = CORE;
+const { SampledData } = CORE;
+const { Reference } = CORE;
+const { CodeableConcept } = CORE;
+const { Identifier } = CORE;
+const { Narrative } = CORE;
+({ Element } = CORE);
 
-###* 
+/** 
 Embedded class
 @class SupportingDocumentationDetailComponent
 @exports  SupportingDocumentationDetailComponent as SupportingDocumentationDetailComponent
-###
-class SupportingDocumentationDetailComponent extends BackboneElement
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class SupportingDocumentationDetailComponent extends BackboneElement {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   A link Id for the response to reference.
   @returns {Array} an array of {@link Number} objects
-  ###
-  linkId:-> @json['linkId']
+  */
+  linkId() { return this.json['linkId']; }
   
-  ###*
+  /**
   The attached content.
   @returns {Reference}
-  ###
-  contentReference: -> if @json['contentReference'] then new Reference(@json['contentReference'])
-  ###*
+  */
+  contentReference() { if (this.json['contentReference']) { return new Reference(this.json['contentReference']); } }
+  /**
   The attached content.
   @returns {Attachment}
-  ###
-  contentAttachment: -> if @json['contentAttachment'] then new Attachment(@json['contentAttachment'])
+  */
+  contentAttachment() { if (this.json['contentAttachment']) { return new Attachment(this.json['contentAttachment']); } }
   
-  ###*
+  /**
   The date and optionally time when the material was created.
   @returns {Array} an array of {@link Date} objects
-  ###
-  dateTime:-> if @json['dateTime'] then DT.DateTime.parse(@json['dateTime'])
+  */
+  dateTime() { if (this.json['dateTime']) { return DT.DateTime.parse(this.json['dateTime']); } }
+}
   
-###*
+/**
 This resource provides the supporting information for a process, for example clinical or financial  information related to a claim or pre-authorization.
 @class SupportingDocumentation
 @exports SupportingDocumentation as SupportingDocumentation
-###
-class SupportingDocumentation extends DomainResource
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class SupportingDocumentation extends DomainResource {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   The Response Business Identifier.
   @returns {Array} an array of {@link Identifier} objects
-  ###
-  identifier: ->
-    if @json['identifier']
-      for item in @json['identifier']
-        new Identifier(item)
+  */
+  identifier() {
+    if (this.json['identifier']) {
+      return this.json['identifier'].map((item) =>
+        new Identifier(item));
+    }
+  }
   
-  ###*
+  /**
   The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
   @returns {Coding}
-  ###
-  ruleset: -> if @json['ruleset'] then new Coding(@json['ruleset'])
+  */
+  ruleset() { if (this.json['ruleset']) { return new Coding(this.json['ruleset']); } }
   
-  ###*
+  /**
   The style (standard) and version of the original material which was converted into this resource.
   @returns {Coding}
-  ###
-  originalRuleset: -> if @json['originalRuleset'] then new Coding(@json['originalRuleset'])
+  */
+  originalRuleset() { if (this.json['originalRuleset']) { return new Coding(this.json['originalRuleset']); } }
   
-  ###*
+  /**
   The date when this resource was created.
   @returns {Array} an array of {@link Date} objects
-  ###
-  date:-> if @json['date'] then DT.DateTime.parse(@json['date'])
+  */
+  date() { if (this.json['date']) { return DT.DateTime.parse(this.json['date']); } }
   
-  ###*
+  /**
   The Insurer, organization or Provider who is target  of the submission.
   @returns {Reference}
-  ###
-  target: -> if @json['target'] then new Reference(@json['target'])
+  */
+  target() { if (this.json['target']) { return new Reference(this.json['target']); } }
   
-  ###*
+  /**
   The practitioner who is responsible for the services rendered to the patient.
   @returns {Reference}
-  ###
-  provider: -> if @json['provider'] then new Reference(@json['provider'])
+  */
+  provider() { if (this.json['provider']) { return new Reference(this.json['provider']); } }
   
-  ###*
+  /**
   The organization which is responsible for the services rendered to the patient.
   @returns {Reference}
-  ###
-  organization: -> if @json['organization'] then new Reference(@json['organization'])
+  */
+  organization() { if (this.json['organization']) { return new Reference(this.json['organization']); } }
   
-  ###*
+  /**
   Original request identifer.
   @returns {Reference}
-  ###
-  request: -> if @json['request'] then new Reference(@json['request'])
+  */
+  request() { if (this.json['request']) { return new Reference(this.json['request']); } }
   
-  ###*
+  /**
   Original response identifer.
   @returns {Reference}
-  ###
-  response: -> if @json['response'] then new Reference(@json['response'])
+  */
+  response() { if (this.json['response']) { return new Reference(this.json['response']); } }
   
-  ###*
+  /**
   Person who created the submission.
   @returns {Reference}
-  ###
-  author: -> if @json['author'] then new Reference(@json['author'])
+  */
+  author() { if (this.json['author']) { return new Reference(this.json['author']); } }
   
-  ###*
+  /**
   The patient who is directly or indirectly the subject of the supporting information.
   @returns {Reference}
-  ###
-  subject: -> if @json['subject'] then new Reference(@json['subject'])
+  */
+  subject() { if (this.json['subject']) { return new Reference(this.json['subject']); } }
   
-  ###*
+  /**
   Supporting Files.
   @returns {Array} an array of {@link SupportingDocumentationDetailComponent} objects
-  ###
-  detail: ->
-    if @json['detail']
-      for item in @json['detail']
-        new SupportingDocumentationDetailComponent(item)
+  */
+  detail() {
+    if (this.json['detail']) {
+      return this.json['detail'].map((item) =>
+        new SupportingDocumentationDetailComponent(item));
+    }
+  }
+}
   
 
 
 
-module.exports.SupportingDocumentation = SupportingDocumentation
+module.exports.SupportingDocumentation = SupportingDocumentation;

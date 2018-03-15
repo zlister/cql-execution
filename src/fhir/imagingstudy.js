@@ -1,301 +1,347 @@
+/*
+ * decaffeinate suggestions:
+ * DS001: Remove Babel/TypeScript constructor workaround
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
 
-# Copyright (c) 2014 The MITRE Corporation
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without modification, 
-# are permitted provided that the following conditions are met:
-# 
-#     * Redistributions of source code must retain the above copyright notice, this 
-#       list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright notice, 
-#       this list of conditions and the following disclaimer in the documentation 
-#       and/or other materials provided with the distribution.
-#     * Neither the name of HL7 nor the names of its contributors may be used to 
-#       endorse or promote products derived from this software without specific 
-#       prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-# POSSIBILITY OF SUCH DAMAGE.
-DT = require '../cql-datatypes'
-CORE = require('./core')
-Element = CORE.Element
-Resource = CORE.Resource
-Timing = CORE.Timing
-Period = CORE.Period
-Parameters = CORE.Parameters
-Coding = CORE.Coding
-Resource = CORE.Resource
-Range = CORE.Range
-Quantity = CORE.Quantity
-Attachment = CORE.Attachment
-BackboneElement = CORE.BackboneElement
-DomainResource = CORE.DomainResource
-ContactPoint = CORE.ContactPoint
-ElementDefinition = CORE.ElementDefinition
-Extension = CORE.Extension
-HumanName = CORE.HumanName
-Address = CORE.Address
-Ratio = CORE.Ratio
-SampledData = CORE.SampledData
-Reference = CORE.Reference
-CodeableConcept = CORE.CodeableConcept
-Identifier = CORE.Identifier
-Narrative = CORE.Narrative
-Element = CORE.Element
+// Copyright (c) 2014 The MITRE Corporation
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without modification, 
+// are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright notice, this 
+//       list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright notice, 
+//       this list of conditions and the following disclaimer in the documentation 
+//       and/or other materials provided with the distribution.
+//     * Neither the name of HL7 nor the names of its contributors may be used to 
+//       endorse or promote products derived from this software without specific 
+//       prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+const DT = require('../cql-datatypes');
+const CORE = require('./core');
+let { Element } = CORE;
+let { Resource } = CORE;
+const { Timing } = CORE;
+const { Period } = CORE;
+const { Parameters } = CORE;
+const { Coding } = CORE;
+({ Resource } = CORE);
+const { Range } = CORE;
+const { Quantity } = CORE;
+const { Attachment } = CORE;
+const { BackboneElement } = CORE;
+const { DomainResource } = CORE;
+const { ContactPoint } = CORE;
+const { ElementDefinition } = CORE;
+const { Extension } = CORE;
+const { HumanName } = CORE;
+const { Address } = CORE;
+const { Ratio } = CORE;
+const { SampledData } = CORE;
+const { Reference } = CORE;
+const { CodeableConcept } = CORE;
+const { Identifier } = CORE;
+const { Narrative } = CORE;
+({ Element } = CORE);
 
-###* 
+/** 
 Embedded class
 @class ImagingStudySeriesInstanceComponent
 @exports  ImagingStudySeriesInstanceComponent as ImagingStudySeriesInstanceComponent
-###
-class ImagingStudySeriesInstanceComponent extends BackboneElement
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class ImagingStudySeriesInstanceComponent extends BackboneElement {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   The number of this image in the series.
   @returns {Array} an array of {@link Number} objects
-  ###
-  number:-> @json['number']
+  */
+  number() { return this.json['number']; }
   
-  ###*
+  /**
   Formal identifier for this image.
   @returns {oid}
-  ###
-  uid: -> if @json['uid'] then new oid(@json['uid'])
+  */
+  uid() { if (this.json['uid']) { return new oid(this.json['uid']); } }
   
-  ###*
+  /**
   DICOM Image type.
   @returns {oid}
-  ###
-  sopclass: -> if @json['sopclass'] then new oid(@json['sopclass'])
+  */
+  sopclass() { if (this.json['sopclass']) { return new oid(this.json['sopclass']); } }
   
-  ###*
+  /**
   The type of the instance.
   @returns {Array} an array of {@link String} objects
-  ###
-  type:-> @json['type']
+  */
+  type() { return this.json['type']; }
   
-  ###*
+  /**
   The description of the instance.
   @returns {Array} an array of {@link String} objects
-  ###
-  title:-> @json['title']
+  */
+  title() { return this.json['title']; }
   
-  ###*
+  /**
   WADO-RS url where image is available.
   @returns {Array} an array of {@link String} objects
-  ###
-  url:-> @json['url']
+  */
+  url() { return this.json['url']; }
   
-  ###*
+  /**
   A FHIR resource with content for this instance.
   @returns {Reference}
-  ###
-  attachment: -> if @json['attachment'] then new Reference(@json['attachment'])
+  */
+  attachment() { if (this.json['attachment']) { return new Reference(this.json['attachment']); } }
+}
   
 
-###* 
+/** 
 Embedded class
 @class ImagingStudySeriesComponent
 @exports  ImagingStudySeriesComponent as ImagingStudySeriesComponent
-###
-class ImagingStudySeriesComponent extends BackboneElement
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class ImagingStudySeriesComponent extends BackboneElement {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   The Numeric identifier of this series in the study.
   @returns {Array} an array of {@link Number} objects
-  ###
-  number:-> @json['number']
+  */
+  number() { return this.json['number']; }
   
-  ###*
+  /**
   The modality of this series sequence.
   @returns {Array} an array of {@link String} objects
-  ###
-  modality:-> @json['modality']
+  */
+  modality() { return this.json['modality']; }
   
-  ###*
+  /**
   Formal identifier for this series.
   @returns {oid}
-  ###
-  uid: -> if @json['uid'] then new oid(@json['uid'])
+  */
+  uid() { if (this.json['uid']) { return new oid(this.json['uid']); } }
   
-  ###*
+  /**
   A description of the series.
   @returns {Array} an array of {@link String} objects
-  ###
-  description:-> @json['description']
+  */
+  description() { return this.json['description']; }
   
-  ###*
+  /**
   Sequence that contains attributes from the.
   @returns {Array} an array of {@link Number} objects
-  ###
-  numberOfInstances:-> @json['numberOfInstances']
+  */
+  numberOfInstances() { return this.json['numberOfInstances']; }
   
-  ###*
+  /**
   Availability of series (online, offline or nearline).
   @returns {Array} an array of {@link String} objects
-  ###
-  availability:-> @json['availability']
+  */
+  availability() { return this.json['availability']; }
   
-  ###*
+  /**
   WADO-RS URI where Series is available.
   @returns {Array} an array of {@link String} objects
-  ###
-  url:-> @json['url']
+  */
+  url() { return this.json['url']; }
   
-  ###*
+  /**
   Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.
   @returns {Coding}
-  ###
-  bodySite: -> if @json['bodySite'] then new Coding(@json['bodySite'])
+  */
+  bodySite() { if (this.json['bodySite']) { return new Coding(this.json['bodySite']); } }
   
-  ###*
+  /**
   The date when the series was started.
   @returns {Array} an array of {@link Date} objects
-  ###
-  dateTime:-> if @json['dateTime'] then DT.DateTime.parse(@json['dateTime'])
+  */
+  dateTime() { if (this.json['dateTime']) { return DT.DateTime.parse(this.json['dateTime']); } }
   
-  ###*
+  /**
   A single image taken from a patient.
   @returns {Array} an array of {@link ImagingStudySeriesInstanceComponent} objects
-  ###
-  instance: ->
-    if @json['instance']
-      for item in @json['instance']
-        new ImagingStudySeriesInstanceComponent(item)
+  */
+  instance() {
+    if (this.json['instance']) {
+      return this.json['instance'].map((item) =>
+        new ImagingStudySeriesInstanceComponent(item));
+    }
+  }
+}
   
-###*
+/**
 Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.
 @class ImagingStudy
 @exports ImagingStudy as ImagingStudy
-###
-class ImagingStudy extends DomainResource
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class ImagingStudy extends DomainResource {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   Date and Time the study started.
   @returns {Array} an array of {@link Date} objects
-  ###
-  started:-> if @json['started'] then DT.DateTime.parse(@json['started'])
+  */
+  started() { if (this.json['started']) { return DT.DateTime.parse(this.json['started']); } }
   
-  ###*
+  /**
   The patient for whom the images are of.
   @returns {Reference}
-  ###
-  patient: -> if @json['patient'] then new Reference(@json['patient'])
+  */
+  patient() { if (this.json['patient']) { return new Reference(this.json['patient']); } }
   
-  ###*
+  /**
   Formal identifier for the study.
   @returns {oid}
-  ###
-  uid: -> if @json['uid'] then new oid(@json['uid'])
+  */
+  uid() { if (this.json['uid']) { return new oid(this.json['uid']); } }
   
-  ###*
+  /**
   Accession Number.
   @returns {Identifier}
-  ###
-  accession: -> if @json['accession'] then new Identifier(@json['accession'])
+  */
+  accession() { if (this.json['accession']) { return new Identifier(this.json['accession']); } }
   
-  ###*
+  /**
   Other identifiers for the study.
   @returns {Array} an array of {@link Identifier} objects
-  ###
-  identifier: ->
-    if @json['identifier']
-      for item in @json['identifier']
-        new Identifier(item)
+  */
+  identifier() {
+    if (this.json['identifier']) {
+      return this.json['identifier'].map((item) =>
+        new Identifier(item));
+    }
+  }
   
-  ###*
+  /**
   A list of the diagnostic orders that resulted in this imaging study being performed.
   @returns {Array} an array of {@link Reference} objects
-  ###
-  order: ->
-    if @json['order']
-      for item in @json['order']
-        new Reference(item)
+  */
+  order() {
+    if (this.json['order']) {
+      return this.json['order'].map((item) =>
+        new Reference(item));
+    }
+  }
   
-  ###*
+  /**
   A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
   @returns {Array} an array of {@link String} objects
-  ###
-  modalityList:-> @json['modalityList']
+  */
+  modalityList() { return this.json['modalityList']; }
   
-  ###*
+  /**
   The requesting/referring physician.
   @returns {Reference}
-  ###
-  referrer: -> if @json['referrer'] then new Reference(@json['referrer'])
+  */
+  referrer() { if (this.json['referrer']) { return new Reference(this.json['referrer']); } }
   
-  ###*
+  /**
   Availability of study (online, offline or nearline).
   @returns {Array} an array of {@link String} objects
-  ###
-  availability:-> @json['availability']
+  */
+  availability() { return this.json['availability']; }
   
-  ###*
+  /**
   WADO-RS URI where Study is available.
   @returns {Array} an array of {@link String} objects
-  ###
-  url:-> @json['url']
+  */
+  url() { return this.json['url']; }
   
-  ###*
+  /**
   Number of Series in Study.
   @returns {Array} an array of {@link Number} objects
-  ###
-  numberOfSeries:-> @json['numberOfSeries']
+  */
+  numberOfSeries() { return this.json['numberOfSeries']; }
   
-  ###*
+  /**
   Number of SOP Instances in Study.
   @returns {Array} an array of {@link Number} objects
-  ###
-  numberOfInstances:-> @json['numberOfInstances']
+  */
+  numberOfInstances() { return this.json['numberOfInstances']; }
   
-  ###*
+  /**
   Diagnoses etc provided with request.
   @returns {Array} an array of {@link String} objects
-  ###
-  clinicalInformation:-> @json['clinicalInformation']
+  */
+  clinicalInformation() { return this.json['clinicalInformation']; }
   
-  ###*
+  /**
   Type of procedure performed.
   @returns {Array} an array of {@link Coding} objects
-  ###
-  procedure: ->
-    if @json['procedure']
-      for item in @json['procedure']
-        new Coding(item)
+  */
+  procedure() {
+    if (this.json['procedure']) {
+      return this.json['procedure'].map((item) =>
+        new Coding(item));
+    }
+  }
   
-  ###*
+  /**
   Who read study and interpreted the images.
   @returns {Reference}
-  ###
-  interpreter: -> if @json['interpreter'] then new Reference(@json['interpreter'])
+  */
+  interpreter() { if (this.json['interpreter']) { return new Reference(this.json['interpreter']); } }
   
-  ###*
+  /**
   Institution-generated description or classification of the Study (component) performed.
   @returns {Array} an array of {@link String} objects
-  ###
-  description:-> @json['description']
+  */
+  description() { return this.json['description']; }
   
-  ###*
+  /**
   Each study has one or more series of image instances.
   @returns {Array} an array of {@link ImagingStudySeriesComponent} objects
-  ###
-  series: ->
-    if @json['series']
-      for item in @json['series']
-        new ImagingStudySeriesComponent(item)
+  */
+  series() {
+    if (this.json['series']) {
+      return this.json['series'].map((item) =>
+        new ImagingStudySeriesComponent(item));
+    }
+  }
+}
   
 
 
 
-module.exports.ImagingStudy = ImagingStudy
+module.exports.ImagingStudy = ImagingStudy;

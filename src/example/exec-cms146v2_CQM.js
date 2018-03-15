@@ -1,8 +1,8 @@
-cql = require '../cql'
-codes = require '../cql-code-service'
-measure = require './CMS146v2_CQM'
+const cql = require('../cql');
+const codes = require('../cql-code-service');
+const measure = require('./CMS146v2_CQM');
 
-cservice = new codes.CodeService {
+const cservice = new codes.CodeService({
     "1.2.3.4.5": {
       "1": [
         {
@@ -52,14 +52,14 @@ cservice = new codes.CodeService {
         }
       ]
     }
-  }
+  });
 
-lib = new cql.Library(measure)
-parameters = {
+const lib = new cql.Library(measure);
+const parameters = {
   MeasurementPeriod: new cql.Interval(cql.DateTime.parse('2013-01-01'), cql.DateTime.parse('2014-01-01'), true, false)
-}
-executor = new cql.Executor(lib, cservice, parameters)
-psource = new cql.PatientSource [ {
+};
+const executor = new cql.Executor(lib, cservice, parameters);
+const psource = new cql.PatientSource([ {
     "resourceType": "Bundle",
     "id": "example1",
     "meta": {
@@ -97,7 +97,7 @@ psource = new cql.PatientSource [ {
         "birthDate" : "2007-08-02T11:47"}
         }
     ]
-  } ]
+  } ]);
 
-result = executor.exec(psource)
-console.log JSON.stringify(result, undefined, 2)
+const result = executor.exec(psource);
+console.log(JSON.stringify(result, undefined, 2));

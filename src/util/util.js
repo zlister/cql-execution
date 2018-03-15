@@ -1,26 +1,38 @@
-module.exports.compact = (things)-> things.filter (x)-> x?
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+let typeIsArray;
+module.exports.compact = things=> things.filter(x=> x != null);
 
-module.exports.numerical_sort = (things, direction="asc") ->
-  things.sort (a,b)->
-    if direction is "asc"
-      a - b
-    else
-      b - a
+module.exports.numerical_sort = (things, direction="asc") =>
+  things.sort(function(a,b){
+    if (direction === "asc") {
+      return a - b;
+    } else {
+      return b - a;
+    }
+  })
+;
 
-module.exports.isNull = (value) ->
-  return value==null
+module.exports.isNull = value => value===null;
   
-module.exports.typeIsArray  = typeIsArray  = Array.isArray || ( value ) ->
-  return {}.toString.call( value ) is '[object Array]'
+module.exports.typeIsArray  = (typeIsArray  = Array.isArray || ( value  => ({}.toString.call( value ) === '[object Array]')));
 
-module.exports.allTrue = (things) ->
-  if typeIsArray things
-    things.every (x) -> x
-  else
-    things
+module.exports.allTrue = function(things) {
+  if (typeIsArray(things)) {
+    return things.every(x => x);
+  } else {
+    return things;
+  }
+};
 
-module.exports.anyTrue = (things) ->
-  if typeIsArray things
-    things.some (x) -> x
-  else
-    things
+module.exports.anyTrue = function(things) {
+  if (typeIsArray(things)) {
+    return things.some(x => x);
+  } else {
+    return things;
+  }
+};

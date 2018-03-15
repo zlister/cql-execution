@@ -11,4 +11,4 @@ module.exports = {
       { "code": "F", "system": "2.16.840.1.113883.18.2", "version": "HL7V2.5" }
     ]
   }
-}
+};

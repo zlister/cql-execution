@@ -1,240 +1,344 @@
-{ Expression } = require './expression'
-{ typeIsArray , allTrue, anyTrue} = require '../util/util'
-{ build } = require './builder'
-MathUtil = require '../util/math'
-Quantity = require('./quantity')
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS206: Consider reworking classes to avoid initClass
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+let Abs, Add, Ceiling, Divide, Exp, Floor, Ln, Log, MaxValue, MinValue, Modulo, Multiply, Negate, Power, Predecessor, Round, Subtract, Successor, Truncate, TruncatedDivide;
+const { Expression } = require('./expression');
+const { typeIsArray , allTrue, anyTrue} = require('../util/util');
+const { build } = require('./builder');
+const MathUtil = require('../util/math');
+const Quantity = require('./quantity');
 
-module.exports.Add = class Add extends Expression
-  constructor: (json) ->
-    super
+module.exports.Add = (Add = class Add extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args?.reduce (x,y) ->
-        if x.constructor.name == 'Quantity'  or x.constructor.name == 'DateTime'
-          Quantity.doAddition(x,y)
-        else
-          x + y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return (args != null ? args.reduce(function(x,y) {
+        if ((x.constructor.name === 'Quantity')  || (x.constructor.name === 'DateTime')) {
+          return Quantity.doAddition(x,y);
+        } else {
+          return x + y;
+        }
+      }) : undefined);
+    }
+  }
+});
 
-module.exports.Subtract = class Subtract extends Expression
-  constructor: (json) ->
-    super
+module.exports.Subtract = (Subtract = class Subtract extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args.reduce (x,y) ->
-        if x.constructor.name == 'Quantity' or x.constructor.name == 'DateTime'
-          Quantity.doSubtraction(x,y)
-        else
-          x - y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return args.reduce(function(x,y) {
+        if ((x.constructor.name === 'Quantity') || (x.constructor.name === 'DateTime')) {
+          return Quantity.doSubtraction(x,y);
+        } else {
+          return x - y;
+        }
+      });
+    }
+  }
+});
 
-module.exports.Multiply = class Multiply extends Expression
-  constructor: (json) ->
-    super
+module.exports.Multiply = (Multiply = class Multiply extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args?.reduce (x,y) ->
-        if x.constructor.name == 'Quantity' or y.constructor.name == 'Quantity'
-          Quantity.doMultiplication(x,y)
-        else
-          x * y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return (args != null ? args.reduce(function(x,y) {
+        if ((x.constructor.name === 'Quantity') || (y.constructor.name === 'Quantity')) {
+          return Quantity.doMultiplication(x,y);
+        } else {
+          return x * y;
+        }
+      }) : undefined);
+    }
+  }
+});
 
-module.exports.Divide = class Divide extends Expression
-  constructor: (json) ->
-    super
+module.exports.Divide = (Divide = class Divide extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args?.reduce (x,y) ->
-        if x.constructor.name == 'Quantity'
-          Quantity.doDivision(x,y)
-        else
-          x / y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return (args != null ? args.reduce(function(x,y) {
+        if (x.constructor.name === 'Quantity') {
+          return Quantity.doDivision(x,y);
+        } else {
+          return x / y;
+        }
+      }) : undefined);
+    }
+  }
+});
 
-module.exports.TruncatedDivide = class TruncatedDivide extends  Expression
-  constructor: (json) ->
-    super
+module.exports.TruncatedDivide = (TruncatedDivide = class TruncatedDivide extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      Math.floor( args.reduce (x,y) -> x / y)
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return Math.floor( args.reduce((x,y) => x / y));
+    }
+  }
+});
 
-module.exports.Modulo = class Modulo extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Modulo = (Modulo = class Modulo extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args.reduce (x,y) -> x % y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return args.reduce((x,y) => x % y);
+    }
+  }
+});
 
-module.exports.Ceiling = class Ceiling extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Ceiling = (Ceiling = class Ceiling extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      Math.ceil arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return Math.ceil(arg);
+    }
+  }
+});
 
-module.exports.Floor = class Floor extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Floor = (Floor = class Floor extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      Math.floor arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return Math.floor(arg);
+    }
+  }
+});
 
-module.exports.Truncate = class Truncate extends Floor
+module.exports.Truncate = (Truncate = class Truncate extends Floor {});
 
-module.exports.Abs = class Abs extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Abs = (Abs = class Abs extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else if arg.constructor.name == 'Quantity'
-      Quantity.createQuantity( Math.abs(arg.value), arg.unit)
-    else
-      Math.abs arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else if (arg.constructor.name === 'Quantity') {
+      return Quantity.createQuantity( Math.abs(arg.value), arg.unit);
+    } else {
+      return Math.abs(arg);
+    }
+  }
+});
 
-module.exports.Negate = class Negate extends Expression
-  constructor: (json) ->
-    super
+module.exports.Negate = (Negate = class Negate extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else if arg.constructor.name == 'Quantity'
-      Quantity.createQuantity(arg.value * -1, arg.unit)
-    else
-      arg * -1
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else if (arg.constructor.name === 'Quantity') {
+      return Quantity.createQuantity(arg.value * -1, arg.unit);
+    } else {
+      return arg * -1;
+    }
+  }
+});
 
-module.exports.Round = class Round extends  Expression
-  constructor: (json) ->
-    super
-    @precision = build json.precision
+module.exports.Round = (Round = class Round extends  Expression {
+  constructor(json) {
+    super(...arguments);
+    this.precision = build(json.precision);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      dec = if @precision? then @precision.execute(ctx) else 0
-      Math.round(arg * Math.pow(10, dec)) / Math.pow(10, dec)
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      const dec = (this.precision != null) ? this.precision.execute(ctx) : 0;
+      return Math.round(arg * Math.pow(10, dec)) / Math.pow(10, dec);
+    }
+  }
+});
 
-module.exports.Ln = class Ln extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Ln = (Ln = class Ln extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      Math.log arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return Math.log(arg);
+    }
+  }
+});
 
-module.exports.Exp = class Exp extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Exp = (Exp = class Exp extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      Math.exp arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return Math.exp(arg);
+    }
+  }
+});
 
-module.exports.Log = class Log extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Log = (Log = class Log extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args.reduce (x,y) -> Math.log(x)/Math.log(y)
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return args.reduce((x,y) => Math.log(x)/Math.log(y));
+    }
+  }
+});
 
-module.exports.Power = class Power extends Expression
-  constructor: (json) ->
-    super
+module.exports.Power = (Power = class Power extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (not args? || args.some (x) -> not x?)
-      null
-    else
-      args.reduce (x,y) -> Math.pow(x , y)
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if ((args == null) || args.some(x => x == null)) {
+      return null;
+    } else {
+      return args.reduce((x,y) => Math.pow(x , y));
+    }
+  }
+});
 
-module.exports.MinValue = class MinValue extends Expression
-  MIN_VALUES: "Integer" : MathUtil.MIN_INT_VALUE, "Real" : MathUtil.MIN_FLOAT_VALUE, "DateTime" : MathUtil.MIN_DATE_VALUE
-  constructor: (json) ->
-    super
+module.exports.MinValue = (MinValue = (function() {
+  MinValue = class MinValue extends Expression {
+    static initClass() {
+      this.prototype.MIN_VALUES = {"Integer" : MathUtil.MIN_INT_VALUE, "Real" : MathUtil.MIN_FLOAT_VALUE, "DateTime" : MathUtil.MIN_DATE_VALUE};
+    }
+    constructor(json) {
+      super(...arguments);
+    }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      MIN_VALUES[arg]
+    exec(ctx) {
+      const arg = this.execArgs(ctx);
+      if ((arg == null)) {
+        return null;
+      } else {
+        return MIN_VALUES[arg];
+      }
+    }
+  };
+  MinValue.initClass();
+  return MinValue;
+})());
 
-module.exports.MaxValue = class MaxValue extends Expression
-  MAX_VALUES: "Integer" : MathUtil.MAX_INT_VALUE, "Real" :MathUtil. MAX_FLOAT_VALUE, "DateTime" : MathUtil.MAX_DATE_VALUE
-  constructor: (json) ->
-    super
+module.exports.MaxValue = (MaxValue = (function() {
+  MaxValue = class MaxValue extends Expression {
+    static initClass() {
+      this.prototype.MAX_VALUES = {"Integer" : MathUtil.MAX_INT_VALUE, "Real" :MathUtil. MAX_FLOAT_VALUE, "DateTime" : MathUtil.MAX_DATE_VALUE};
+    }
+    constructor(json) {
+      super(...arguments);
+    }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      MAX_VALUES[arg]
+    exec(ctx) {
+      const arg = this.execArgs(ctx);
+      if ((arg == null)) {
+        return null;
+      } else {
+        return MAX_VALUES[arg];
+      }
+    }
+  };
+  MaxValue.initClass();
+  return MaxValue;
+})());
 
-module.exports.Successor = class Successor extends Expression
-  constructor: (json) ->
-    super
+module.exports.Successor = (Successor = class Successor extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      MathUtil.successor arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return MathUtil.successor(arg);
+    }
+  }
+});
 
-module.exports.Predecessor = class Predecessor extends  Expression
-  constructor: (json) ->
-    super
+module.exports.Predecessor = (Predecessor = class Predecessor extends  Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs(ctx)
-    if (not arg?)
-      null
-    else
-      MathUtil.predecessor arg
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if ((arg == null)) {
+      return null;
+    } else {
+      return MathUtil.predecessor(arg);
+    }
+  }
+});

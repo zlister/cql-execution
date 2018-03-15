@@ -1,301 +1,406 @@
-should = require 'should'
-setup = require '../../setup'
-data = require './data'
-
-# TO Comparisons for Dates
-
-describe 'Equal', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be false for 5 = 4', ->
-    @aGtB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 = 5', ->
-    @aEqB_Int.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 = 6', ->
-    @aLtB_Int.exec(@ctx).should.be.false()
-
-  it 'should identify equal/unequal tuples', ->
-    @eqTuples.exec(@ctx).should.be.true()
-    @uneqTuples.exec(@ctx).should.be.false()
-
-  it 'should identify equal/unequal DateTimes in same timezone', ->
-    @eqDateTimes.exec(@ctx).should.be.true()
-    @uneqDateTimes.exec(@ctx).should.be.false()
-
-  it 'should identify equal/unequal DateTimes in different timezones', ->
-    @eqDateTimesTZ.exec(@ctx).should.be.true()
-    @uneqDateTimesTZ.exec(@ctx).should.be.false()
-
-  it 'should identify uncertain/unequal DateTimes when there is imprecision', ->
-    should(@possiblyEqualDateTimes.exec(@ctx)).be.null()
-    @impossiblyEqualDateTimes.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m = 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m = 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m = 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m = 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m = 500 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m = 5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be null for 5 Cel = 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel = 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel = 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-describe 'NotEqual', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be true for 5 <> 4', ->
-    @aGtB_Int.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 <> 5', ->
-    @aEqB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 <> 6', ->
-    @aLtB_Int.exec(@ctx).should.be.true()
-
-  it 'should identify equal/unequal tuples', ->
-    @eqTuples.exec(@ctx).should.be.false()
-    @uneqTuples.exec(@ctx).should.be.true()
-
-  it 'should identify equal/unequal DateTimes in same timezone', ->
-    @eqDateTimes.exec(@ctx).should.be.false()
-    @uneqDateTimes.exec(@ctx).should.be.true()
-
-  it 'should identify equal/unequal DateTimes in different timezones', ->
-    @eqDateTimesTZ.exec(@ctx).should.be.false()
-    @uneqDateTimesTZ.exec(@ctx).should.be.true()
-
-  it 'should identify uncertain/unequal DateTimes when there is imprecision', ->
-    should(@possiblyEqualDateTimes.exec(@ctx)).be.null()
-    @impossiblyEqualDateTimes.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 m != 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m != 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m != 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 m != 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m != 500 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m != 5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be null for 5 Cel != 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel != 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel != 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-describe 'Equivalent', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be false for null ~ 4', ->
-    @aNull_BDefined.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 ~ null', ->
-    @aDefined_BNull.exec(@ctx).should.be.false()
-
-  it 'should be true for null ~ null', ->
-    @aNull_BNull.exec(@ctx).should.be.true()
-
-  it 'should be true for 3 ~ 3', ->
-    @aDefined_BDefined.exec(@ctx).should.be.true()
-
-describe 'Less', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be false for 5 < 4', ->
-    @aGtB_Int.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 < 5', ->
-    @aEqB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 < 6', ->
-    @aLtB_Int.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m < 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m < 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m < 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 m < 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m < 50 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m < 5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be null for 5 Cel < 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel < 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel < 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-describe 'LessOrEqual', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be false for 5 <= 4', ->
-    @aGtB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 <= 5', ->
-    @aEqB_Int.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 <= 6', ->
-    @aLtB_Int.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 m <= 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m <= 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m <= 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 m <= 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m <= 500 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m <= 5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be null for 5 Cel <= 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel <= 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel <= 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-
-describe 'Greater', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be true for 5 > 4', ->
-    @aGtB_Int.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 > 5', ->
-    @aEqB_Int.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 > 6', ->
-    @aLtB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m > 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m > 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m > 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m > 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m > 50 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be false for 5 m > 5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be null for 5 Cel > 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel > 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel > 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-
-describe 'GreaterOrEqual', ->
-  @beforeEach ->
-    setup @, data
-
-  it 'should be true for 5 >= 4', ->
-    @aGtB_Int.exec(@ctx).should.be.true()
-
-  it 'should be true for 5 >= 5', ->
-    @aEqB_Int.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 >= 6', ->
-    @aLtB_Int.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m >= 4 m', ->
-    @aGtB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m  >= 5 m', ->
-    @aEqB_Quantity.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m >= 6 m', ->
-    @aLtB_Quantity.exec(@ctx).should.be.false()
-
-  it 'should be true for 5 m >= 5 cm', ->
-    @aGtB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m  >= 50 cm ', ->
-    @aEqB_Quantity_diff.exec(@ctx).should.be.true()
-
-  it 'should be false for 5 m  >=5 km', ->
-    @aLtB_Quantity_diff.exec(@ctx).should.be.false()
-
-  it 'should be null for 5 Cel >= 4 m', ->
-    should(@aGtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel >= 5 m', ->
-    should(@aEqB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 5 Cel >= 40 m', ->
-    should(@aLtB_Quantity_incompatible.exec(@ctx)).be.null()
-
-  it 'should be null for 100 [nmi_i] / 2 h > 49 mg/[lb_av]', ->
-    should(@divideUcum_incompatible.exec(@ctx)).be.null()
-
-  it 'should be true for 100 mg / 2 [lb_av]  > 49 mg/[lb_av]', ->
-    @divideUcum.exec(@ctx).should.be.true()
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+const should = require('should');
+const setup = require('../../setup');
+const data = require('./data');
+
+// TO Comparisons for Dates
+
+describe('Equal', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be false for 5 = 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 = 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 = 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should identify equal/unequal tuples', function() {
+    this.eqTuples.exec(this.ctx).should.be.true();
+    return this.uneqTuples.exec(this.ctx).should.be.false();
+  });
+
+  it('should identify equal/unequal DateTimes in same timezone', function() {
+    this.eqDateTimes.exec(this.ctx).should.be.true();
+    return this.uneqDateTimes.exec(this.ctx).should.be.false();
+  });
+
+  it('should identify equal/unequal DateTimes in different timezones', function() {
+    this.eqDateTimesTZ.exec(this.ctx).should.be.true();
+    return this.uneqDateTimesTZ.exec(this.ctx).should.be.false();
+  });
+
+  it('should identify uncertain/unequal DateTimes when there is imprecision', function() {
+    should(this.possiblyEqualDateTimes.exec(this.ctx)).be.null();
+    return this.impossiblyEqualDateTimes.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m = 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m = 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m = 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m = 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m = 500 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m = 5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be null for 5 Cel = 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel = 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be null for 5 Cel = 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+});
+
+describe('NotEqual', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be true for 5 <> 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 <> 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 <> 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should identify equal/unequal tuples', function() {
+    this.eqTuples.exec(this.ctx).should.be.false();
+    return this.uneqTuples.exec(this.ctx).should.be.true();
+  });
+
+  it('should identify equal/unequal DateTimes in same timezone', function() {
+    this.eqDateTimes.exec(this.ctx).should.be.false();
+    return this.uneqDateTimes.exec(this.ctx).should.be.true();
+  });
+
+  it('should identify equal/unequal DateTimes in different timezones', function() {
+    this.eqDateTimesTZ.exec(this.ctx).should.be.false();
+    return this.uneqDateTimesTZ.exec(this.ctx).should.be.true();
+  });
+
+  it('should identify uncertain/unequal DateTimes when there is imprecision', function() {
+    should(this.possiblyEqualDateTimes.exec(this.ctx)).be.null();
+    return this.impossiblyEqualDateTimes.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 m != 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m != 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m != 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 m != 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m != 500 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m != 5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be null for 5 Cel != 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel != 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be null for 5 Cel != 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+});
+
+describe('Equivalent', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be false for null ~ 4', function() {
+    return this.aNull_BDefined.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 ~ null', function() {
+    return this.aDefined_BNull.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for null ~ null', function() {
+    return this.aNull_BNull.exec(this.ctx).should.be.true();
+  });
+
+  return it('should be true for 3 ~ 3', function() {
+    return this.aDefined_BDefined.exec(this.ctx).should.be.true();
+  });
+});
+
+describe('Less', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be false for 5 < 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 < 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 < 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m < 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m < 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m < 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 m < 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m < 50 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m < 5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be null for 5 Cel < 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel < 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be null for 5 Cel < 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+});
+
+describe('LessOrEqual', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be false for 5 <= 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 <= 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 <= 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 m <= 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m <= 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m <= 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 m <= 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m <= 500 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m <= 5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be null for 5 Cel <= 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel <= 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be null for 5 Cel <= 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+});
+
+
+describe('Greater', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be true for 5 > 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 > 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 > 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m > 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m > 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m > 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m > 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m > 50 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be false for 5 m > 5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be null for 5 Cel > 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel > 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be null for 5 Cel > 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+});
+
+
+describe('GreaterOrEqual', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
+
+  it('should be true for 5 >= 4', function() {
+    return this.aGtB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be true for 5 >= 5', function() {
+    return this.aEqB_Int.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 >= 6', function() {
+    return this.aLtB_Int.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m >= 4 m', function() {
+    return this.aGtB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m  >= 5 m', function() {
+    return this.aEqB_Quantity.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m >= 6 m', function() {
+    return this.aLtB_Quantity.exec(this.ctx).should.be.false();
+  });
+
+  it('should be true for 5 m >= 5 cm', function() {
+    return this.aGtB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m  >= 50 cm ', function() {
+    return this.aEqB_Quantity_diff.exec(this.ctx).should.be.true();
+  });
+
+  it('should be false for 5 m  >=5 km', function() {
+    return this.aLtB_Quantity_diff.exec(this.ctx).should.be.false();
+  });
+
+  it('should be null for 5 Cel >= 4 m', function() {
+    return should(this.aGtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel >= 5 m', function() {
+    return should(this.aEqB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 5 Cel >= 40 m', function() {
+    return should(this.aLtB_Quantity_incompatible.exec(this.ctx)).be.null();
+  });
+
+  it('should be null for 100 [nmi_i] / 2 h > 49 mg/[lb_av]', function() {
+    return should(this.divideUcum_incompatible.exec(this.ctx)).be.null();
+  });
+
+  return it('should be true for 100 mg / 2 [lb_av]  > 49 mg/[lb_av]', function() {
+    return this.divideUcum.exec(this.ctx).should.be.true();
+  });
+});

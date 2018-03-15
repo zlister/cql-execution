@@ -1,82 +1,111 @@
-{ Expression } = require './expression'
-{ build } = require './builder'
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+let Combine, Concatenate, Lower, PositionOf, Split, Substring, Upper;
+const { Expression } = require('./expression');
+const { build } = require('./builder');
 
-module.exports.Concatenate = class Concatenate extends Expression
-  constructor: (json) ->
-    super
+module.exports.Concatenate = (Concatenate = class Concatenate extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    args = @execArgs(ctx)
-    if (args.some (x) -> not x?) then null else args.reduce (x,y) -> x + y
+  exec(ctx) {
+    const args = this.execArgs(ctx);
+    if (args.some(x => x == null)) { return null; } else { return args.reduce((x,y) => x + y); }
+  }
+});
 
-module.exports.Combine = class Combine extends Expression
-  constructor: (json) ->
-    super
-    @source = build json.source
-    @separator = build json.separator
+module.exports.Combine = (Combine = class Combine extends Expression {
+  constructor(json) {
+    super(...arguments);
+    this.source = build(json.source);
+    this.separator = build(json.separator);
+  }
 
-  exec: (ctx) ->
-    source = @source.execute(ctx)
-    separator = if @separator? then @separator.execute(ctx) else ''
-    if (not source? or source.some (x) -> not x?) then null else source.join(separator)
+  exec(ctx) {
+    const source = this.source.execute(ctx);
+    const separator = (this.separator != null) ? this.separator.execute(ctx) : '';
+    if ((source == null) || source.some(x => x == null)) { return null; } else { return source.join(separator); }
+  }
+});
 
-module.exports.Split = class Split extends Expression
-  constructor: (json) ->
-    super
-    @stringToSplit = build json.stringToSplit
-    @separator = build json.separator
+module.exports.Split = (Split = class Split extends Expression {
+  constructor(json) {
+    super(...arguments);
+    this.stringToSplit = build(json.stringToSplit);
+    this.separator = build(json.separator);
+  }
 
-  exec: (ctx) ->
-    stringToSplit = @stringToSplit.execute(ctx)
-    separator = @separator.execute(ctx)
-    if not (stringToSplit? and separator?) then null else stringToSplit.split(separator)
+  exec(ctx) {
+    const stringToSplit = this.stringToSplit.execute(ctx);
+    const separator = this.separator.execute(ctx);
+    if (!((stringToSplit != null) && (separator != null))) { return null; } else { return stringToSplit.split(separator); }
+  }
+});
 
-# Length is completely handled by overloaded#Length
+// Length is completely handled by overloaded#Length
 
-module.exports.Upper = class Upper extends Expression
-  constructor: (json) ->
-    super
+module.exports.Upper = (Upper = class Upper extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs ctx
-    if arg? then arg.toUpperCase() else null
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if (arg != null) { return arg.toUpperCase(); } else { return null; }
+  }
+});
 
-module.exports.Lower = class Lower extends Expression
-  constructor: (json) ->
-    super
+module.exports.Lower = (Lower = class Lower extends Expression {
+  constructor(json) {
+    super(...arguments);
+  }
 
-  exec: (ctx) ->
-    arg = @execArgs ctx
-    if arg? then arg.toLowerCase() else null
+  exec(ctx) {
+    const arg = this.execArgs(ctx);
+    if (arg != null) { return arg.toLowerCase(); } else { return null; }
+  }
+});
 
-# Indexer is completely handled by overloaded#Indexer
+// Indexer is completely handled by overloaded#Indexer
 
-module.exports.PositionOf = class PositionOf extends Expression
-  constructor: (json) ->
-    super
-    @pattern = build json.pattern
-    @string = build json.string
+module.exports.PositionOf = (PositionOf = class PositionOf extends Expression {
+  constructor(json) {
+    super(...arguments);
+    this.pattern = build(json.pattern);
+    this.string = build(json.string);
+  }
 
-  exec: (ctx) ->
-    pattern = @pattern.execute(ctx)
-    string = @string.execute(ctx)
-    if not (pattern? and string?) then null else string.indexOf(pattern)
+  exec(ctx) {
+    const pattern = this.pattern.execute(ctx);
+    const string = this.string.execute(ctx);
+    if (!((pattern != null) && (string != null))) { return null; } else { return string.indexOf(pattern); }
+  }
+});
 
-module.exports.Substring = class Substring extends Expression
-  constructor: (json) ->
-    super
-    @stringToSub = build json.stringToSub
-    @startIndex = build json.startIndex
-    @length = build json['length']
+module.exports.Substring = (Substring = class Substring extends Expression {
+  constructor(json) {
+    super(...arguments);
+    this.stringToSub = build(json.stringToSub);
+    this.startIndex = build(json.startIndex);
+    this.length = build(json['length']);
+  }
 
-  exec: (ctx) ->
-    stringToSub = @stringToSub.execute(ctx)
-    startIndex = @startIndex.execute(ctx)
-    length = if @length? then @length.execute(ctx) else null
-    # According to spec: If stringToSub or startIndex is null, or startIndex is out of range, the result is null.
-    if not stringToSub? || not startIndex? || startIndex < 0 || startIndex >= stringToSub.length
-      null
-    else if length?
-      stringToSub.substr(startIndex, length)
-    else
-      stringToSub.substr(startIndex)
+  exec(ctx) {
+    const stringToSub = this.stringToSub.execute(ctx);
+    const startIndex = this.startIndex.execute(ctx);
+    const length = (this.length != null) ? this.length.execute(ctx) : null;
+    // According to spec: If stringToSub or startIndex is null, or startIndex is out of range, the result is null.
+    if ((stringToSub == null) || (startIndex == null) || (startIndex < 0) || (startIndex >= stringToSub.length)) {
+      return null;
+    } else if (length != null) {
+      return stringToSub.substr(startIndex, length);
+    } else {
+      return stringToSub.substr(startIndex);
+    }
+  }
+});

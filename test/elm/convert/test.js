@@ -1,146 +1,199 @@
-should = require 'should'
-setup = require '../../setup'
-data = require './data'
-{isNull} = require '../../../lib/util/util'
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+const should = require('should');
+const setup = require('../../setup');
+const data = require('./data');
+const {isNull} = require('../../../lib/util/util');
 
-describe 'FromString', ->
-  @beforeEach ->
-    setup @, data
+describe('FromString', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it "should convert 'str' to 'str'", ->
-    @stringStr.exec(@ctx).should.equal "str"
+  it("should convert 'str' to 'str'", function() {
+    return this.stringStr.exec(this.ctx).should.equal("str");
+  });
 
-  it "should convert null to null", ->
-    isNull(@stringNull.exec(@ctx)).should.equal true
+  it("should convert null to null", function() {
+    return isNull(this.stringNull.exec(this.ctx)).should.equal(true);
+  });
 
-  it "should convert 'true' to true", ->
-    @boolTrue.exec(@ctx).should.equal true
+  it("should convert 'true' to true", function() {
+    return this.boolTrue.exec(this.ctx).should.equal(true);
+  });
 
-  it "should convert 'false' to false", ->
-    @boolFalse.exec(@ctx).should.equal false
+  it("should convert 'false' to false", function() {
+    return this.boolFalse.exec(this.ctx).should.equal(false);
+  });
 
-  it "should convert '10.2' to Decimal", ->
-    @decimalValid.exec(@ctx).should.equal 10.2
+  it("should convert '10.2' to Decimal", function() {
+    return this.decimalValid.exec(this.ctx).should.equal(10.2);
+  });
 
-  it "should convert 'abc' to Decimal NaN", ->
-    isNaN(@decimalInvalid.exec(@ctx)).should.equal true
+  it("should convert 'abc' to Decimal NaN", function() {
+    return isNaN(this.decimalInvalid.exec(this.ctx)).should.equal(true);
+  });
 
-  it "should convert '10' to Integer", ->
-    @integerValid.exec(@ctx).should.equal 10
+  it("should convert '10' to Integer", function() {
+    return this.integerValid.exec(this.ctx).should.equal(10);
+  });
 
-  it "should convert '10.2' to Integer 10", ->
-    @integerDropDecimal.exec(@ctx).should.equal 10
+  it("should convert '10.2' to Integer 10", function() {
+    return this.integerDropDecimal.exec(this.ctx).should.equal(10);
+  });
 
-  it "should convert 'abc' to Integer NaN", ->
-    isNaN(@integerInvalid.exec(@ctx)).should.equal true
+  it("should convert 'abc' to Integer NaN", function() {
+    return isNaN(this.integerInvalid.exec(this.ctx)).should.equal(true);
+  });
 
-  it "should convert \"10 'A'\" to Quantity", ->
-    quantity = @quantityStr.exec(@ctx)
-    quantity.value.should.equal 10
-    quantity.unit.should.equal "A"
+  it("should convert \"10 'A'\" to Quantity", function() {
+    const quantity = this.quantityStr.exec(this.ctx);
+    quantity.value.should.equal(10);
+    return quantity.unit.should.equal("A");
+  });
 
-  it "should convert \"+10 'A'\" to Quantity", ->
-    quantity = @posQuantityStr.exec(@ctx)
-    quantity.value.should.equal 10
-    quantity.unit.should.equal "A"
+  it("should convert \"+10 'A'\" to Quantity", function() {
+    const quantity = this.posQuantityStr.exec(this.ctx);
+    quantity.value.should.equal(10);
+    return quantity.unit.should.equal("A");
+  });
 
-  it "should convert \"-10 'A'\" to Quantity", ->
-    quantity = @negQuantityStr.exec(@ctx)
-    quantity.value.should.equal -10
-    quantity.unit.should.equal "A"
+  it("should convert \"-10 'A'\" to Quantity", function() {
+    const quantity = this.negQuantityStr.exec(this.ctx);
+    quantity.value.should.equal(-10);
+    return quantity.unit.should.equal("A");
+  });
 
-  it "should convert \"10.0'mA'\" to Quantity", ->
-    quantity = @quantityStrDecimal.exec(@ctx)
-    quantity.value.should.equal 10.0
-    quantity.unit.should.equal "mA"
+  it("should convert \"10.0'mA'\" to Quantity", function() {
+    const quantity = this.quantityStrDecimal.exec(this.ctx);
+    quantity.value.should.equal(10.0);
+    return quantity.unit.should.equal("mA");
+  });
 
-  it "should convert '2015-01-02' to DateTime", ->
-    date = @dateStr.exec(@ctx)
-    date.year.should.equal 2015
-    date.month.should.equal 1
-    date.day.should.equal 2
+  return it("should convert '2015-01-02' to DateTime", function() {
+    const date = this.dateStr.exec(this.ctx);
+    date.year.should.equal(2015);
+    date.month.should.equal(1);
+    return date.day.should.equal(2);
+  });
+});
 
-describe 'FromInteger', ->
-  @beforeEach ->
-    setup @, data
+describe('FromInteger', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it "should convert 10 to '10'", ->
-    @string10.exec(@ctx).should.equal "10"
+  it("should convert 10 to '10'", function() {
+    return this.string10.exec(this.ctx).should.equal("10");
+  });
 
-  it "should convert 10 to 10.0", ->
-    @decimal10.exec(@ctx).should.equal 10.0
+  it("should convert 10 to 10.0", function() {
+    return this.decimal10.exec(this.ctx).should.equal(10.0);
+  });
 
-  it "should convert null to null", ->
-    isNull(@intNull.exec(@ctx)).should.equal true
+  it("should convert null to null", function() {
+    return isNull(this.intNull.exec(this.ctx)).should.equal(true);
+  });
 
-  it "should convert 10 to 10", ->
-    @intInt.exec(@ctx).should.equal 10
+  return it("should convert 10 to 10", function() {
+    return this.intInt.exec(this.ctx).should.equal(10);
+  });
+});
 
-describe 'FromQuantity', ->
-  @beforeEach ->
-    setup @, data
+describe('FromQuantity', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it "should convert \"10 'A'\" to \"10 'A'\"", ->
-    @quantityStr.exec(@ctx).should.equal "10 'A'"
+  it("should convert \"10 'A'\" to \"10 'A'\"", function() {
+    return this.quantityStr.exec(this.ctx).should.equal("10 'A'");
+  });
 
-  it "should convert \"+10 'A'\" to \"10 'A'\"", ->
-    @posQuantityStr.exec(@ctx).should.equal "10 'A'"
+  it("should convert \"+10 'A'\" to \"10 'A'\"", function() {
+    return this.posQuantityStr.exec(this.ctx).should.equal("10 'A'");
+  });
 
-  it "should convert \"-10 'A'\" to \"10 'A'\"", ->
-    @negQuantityStr.exec(@ctx).should.equal "-10 'A'"
+  it("should convert \"-10 'A'\" to \"10 'A'\"", function() {
+    return this.negQuantityStr.exec(this.ctx).should.equal("-10 'A'");
+  });
 
-  it "should convert \"10 'A'\" to \"10 'A'\"", ->
-    quantity = @quantityQuantity.exec(@ctx)
-    quantity.value.should.equal 10
-    quantity.unit.should.equal 'A'
+  return it("should convert \"10 'A'\" to \"10 'A'\"", function() {
+    const quantity = this.quantityQuantity.exec(this.ctx);
+    quantity.value.should.equal(10);
+    return quantity.unit.should.equal('A');
+  });
+});
 
-describe 'FromBoolean', ->
-  @beforeEach ->
-    setup @, data
+describe('FromBoolean', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it "should convert true to 'true'", ->
-    @booleanTrueStr.exec(@ctx).should.equal "true"
+  it("should convert true to 'true'", function() {
+    return this.booleanTrueStr.exec(this.ctx).should.equal("true");
+  });
 
-  it "should convert false to 'false'", ->
-    @booleanFalseStr.exec(@ctx).should.equal "false"
+  it("should convert false to 'false'", function() {
+    return this.booleanFalseStr.exec(this.ctx).should.equal("false");
+  });
 
-  it "should convert true to true", ->
-    @booleanTrueBool.exec(@ctx).should.equal true
+  it("should convert true to true", function() {
+    return this.booleanTrueBool.exec(this.ctx).should.equal(true);
+  });
 
-  it "should convert false to false", ->
-    @booleanFalseBool.exec(@ctx).should.equal false
+  return it("should convert false to false", function() {
+    return this.booleanFalseBool.exec(this.ctx).should.equal(false);
+  });
+});
 
-describe 'FromDateTime', ->
-  @beforeEach ->
-    setup @, data
+describe('FromDateTime', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it "should convert @2015-01-02 to '2015-01-02'", ->
-    @dateStr.exec(@ctx).should.equal "2015-01-02"
+  it("should convert @2015-01-02 to '2015-01-02'", function() {
+    return this.dateStr.exec(this.ctx).should.equal("2015-01-02");
+  });
 
-  it "should convert @2015-01-02 to @2015-01-02", ->
-    date = @dateDate.exec(@ctx)
-    date.year.should.equal 2015
-    date.month.should.equal 1
-    date.day.should.equal 2
+  return it("should convert @2015-01-02 to @2015-01-02", function() {
+    const date = this.dateDate.exec(this.ctx);
+    date.year.should.equal(2015);
+    date.month.should.equal(1);
+    return date.day.should.equal(2);
+  });
+});
 
-describe 'FromTime', ->
-  @beforeEach ->
-    setup @, data
+describe('FromTime', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it.skip "should convert @T11:57 to '11:57'", ->
-    @timeStr.exec(@ctx).should.equal "11:57"
+  it.skip("should convert @T11:57 to '11:57'", function() {
+    return this.timeStr.exec(this.ctx).should.equal("11:57");
+  });
 
-  it.skip "should convert @T11:57 to @11:57", ->
-    time = @timeTime.exec(@ctx)
-    time.hour.should.equal 11
-    time.minute.should.equal 57
+  return it.skip("should convert @T11:57 to @11:57", function() {
+    const time = this.timeTime.exec(this.ctx);
+    time.hour.should.equal(11);
+    return time.minute.should.equal(57);
+  });
+});
 
-describe 'FromCode', ->
-  @beforeEach ->
-    setup @, data
+describe('FromCode', function() {
+  this.beforeEach(function() {
+    return setup(this, data);
+  });
 
-  it.skip "should convert hepB to a concept", ->
-    concept = @codeConcept.exec(@ctx)
+  it.skip("should convert hepB to a concept", function() {
+    let concept;
+    return concept = this.codeConcept.exec(this.ctx);
+  });
 
-  it.skip "should convert hepB to a code", ->
-    code = @codeCode.exec(@ctx)
+  return it.skip("should convert hepB to a code", function() {
+    let code;
+    return code = this.codeCode.exec(this.ctx);
+  });
+});

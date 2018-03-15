@@ -1,286 +1,328 @@
+/*
+ * decaffeinate suggestions:
+ * DS001: Remove Babel/TypeScript constructor workaround
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
 
-# Copyright (c) 2014 The MITRE Corporation
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without modification, 
-# are permitted provided that the following conditions are met:
-# 
-#     * Redistributions of source code must retain the above copyright notice, this 
-#       list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright notice, 
-#       this list of conditions and the following disclaimer in the documentation 
-#       and/or other materials provided with the distribution.
-#     * Neither the name of HL7 nor the names of its contributors may be used to 
-#       endorse or promote products derived from this software without specific 
-#       prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-# POSSIBILITY OF SUCH DAMAGE.
-DT = require '../cql-datatypes'
-CORE = require('./core')
-Element = CORE.Element
-Resource = CORE.Resource
-Timing = CORE.Timing
-Period = CORE.Period
-Parameters = CORE.Parameters
-Coding = CORE.Coding
-Resource = CORE.Resource
-Range = CORE.Range
-Quantity = CORE.Quantity
-Attachment = CORE.Attachment
-BackboneElement = CORE.BackboneElement
-DomainResource = CORE.DomainResource
-ContactPoint = CORE.ContactPoint
-ElementDefinition = CORE.ElementDefinition
-Extension = CORE.Extension
-HumanName = CORE.HumanName
-Address = CORE.Address
-Ratio = CORE.Ratio
-SampledData = CORE.SampledData
-Reference = CORE.Reference
-CodeableConcept = CORE.CodeableConcept
-Identifier = CORE.Identifier
-Narrative = CORE.Narrative
-Element = CORE.Element
+// Copyright (c) 2014 The MITRE Corporation
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without modification, 
+// are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright notice, this 
+//       list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright notice, 
+//       this list of conditions and the following disclaimer in the documentation 
+//       and/or other materials provided with the distribution.
+//     * Neither the name of HL7 nor the names of its contributors may be used to 
+//       endorse or promote products derived from this software without specific 
+//       prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+const DT = require('../cql-datatypes');
+const CORE = require('./core');
+let { Element } = CORE;
+let { Resource } = CORE;
+const { Timing } = CORE;
+const { Period } = CORE;
+const { Parameters } = CORE;
+const { Coding } = CORE;
+({ Resource } = CORE);
+const { Range } = CORE;
+const { Quantity } = CORE;
+const { Attachment } = CORE;
+const { BackboneElement } = CORE;
+const { DomainResource } = CORE;
+const { ContactPoint } = CORE;
+const { ElementDefinition } = CORE;
+const { Extension } = CORE;
+const { HumanName } = CORE;
+const { Address } = CORE;
+const { Ratio } = CORE;
+const { SampledData } = CORE;
+const { Reference } = CORE;
+const { CodeableConcept } = CORE;
+const { Identifier } = CORE;
+const { Narrative } = CORE;
+({ Element } = CORE);
 
-###* 
+/** 
 Embedded class
 @class ObservationReferenceRangeComponent
 @exports  ObservationReferenceRangeComponent as ObservationReferenceRangeComponent
-###
-class ObservationReferenceRangeComponent extends BackboneElement
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class ObservationReferenceRangeComponent extends BackboneElement {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   The value of the low bound of the reference range. If this is omitted, the low bound of the reference range is assumed to be meaningless. E.g. <2.3.
   @returns {Quantity}
-  ###
-  low: -> if @json['low'] then new Quantity(@json['low'])
+  */
+  low() { if (this.json['low']) { return new Quantity(this.json['low']); } }
   
-  ###*
+  /**
   The value of the high bound of the reference range. If this is omitted, the high bound of the reference range is assumed to be meaningless. E.g. >5.
   @returns {Quantity}
-  ###
-  high: -> if @json['high'] then new Quantity(@json['high'])
+  */
+  high() { if (this.json['high']) { return new Quantity(this.json['high']); } }
   
-  ###*
+  /**
   Code for the meaning of the reference range.
   @returns {CodeableConcept}
-  ###
-  meaning: -> if @json['meaning'] then new CodeableConcept(@json['meaning'])
+  */
+  meaning() { if (this.json['meaning']) { return new CodeableConcept(this.json['meaning']); } }
   
-  ###*
+  /**
   The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
   @returns {Range}
-  ###
-  age: -> if @json['age'] then new Range(@json['age'])
+  */
+  age() { if (this.json['age']) { return new Range(this.json['age']); } }
   
-  ###*
+  /**
   Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
   @returns {Array} an array of {@link String} objects
-  ###
-  text:-> @json['text']
+  */
+  text() { return this.json['text']; }
+}
   
 
-###* 
+/** 
 Embedded class
 @class ObservationRelatedComponent
 @exports  ObservationRelatedComponent as ObservationRelatedComponent
-###
-class ObservationRelatedComponent extends BackboneElement
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class ObservationRelatedComponent extends BackboneElement {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   A code specifying the kind of relationship that exists with the target observation.
   @returns {Array} an array of {@link String} objects
-  ###
-  type:-> @json['type']
+  */
+  type() { return this.json['type']; }
   
-  ###*
+  /**
   A reference to the observation that is related to this observation.
   @returns {Reference}
-  ###
-  target: -> if @json['target'] then new Reference(@json['target'])
+  */
+  target() { if (this.json['target']) { return new Reference(this.json['target']); } }
+}
   
-###*
+/**
 Measurements and simple assertions made about a patient, device or other subject.
 @class Observation
 @exports Observation as Observation
-###
-class Observation extends DomainResource
-  constructor: (@json) ->
-    super(@json)
-  ###*
+*/
+class Observation extends DomainResource {
+  constructor(json) {
+    {
+      // Hack: trick Babel/TypeScript into allowing this before super.
+      if (false) { super(); }
+      let thisFn = (() => { this; }).toString();
+      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
+      eval(`${thisName} = this;`);
+    }
+    this.json = json;
+    super(this.json);
+  }
+  /**
   Describes what was observed. Sometimes this is called the observation "code".
   @returns {CodeableConcept}
-  ###
-  name: -> if @json['name'] then new CodeableConcept(@json['name'])
+  */
+  name() { if (this.json['name']) { return new CodeableConcept(this.json['name']); } }
   
-  ###*
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Quantity}
-  ###
-  valueQuantity: -> if @json['valueQuantity'] then new Quantity(@json['valueQuantity'])
-  ###*
+  */
+  valueQuantity() { if (this.json['valueQuantity']) { return new Quantity(this.json['valueQuantity']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {CodeableConcept}
-  ###
-  valueCodeableConcept: -> if @json['valueCodeableConcept'] then new CodeableConcept(@json['valueCodeableConcept'])
-  ###*
+  */
+  valueCodeableConcept() { if (this.json['valueCodeableConcept']) { return new CodeableConcept(this.json['valueCodeableConcept']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Attachment}
-  ###
-  valueAttachment: -> if @json['valueAttachment'] then new Attachment(@json['valueAttachment'])
-  ###*
+  */
+  valueAttachment() { if (this.json['valueAttachment']) { return new Attachment(this.json['valueAttachment']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Ratio}
-  ###
-  valueRatio: -> if @json['valueRatio'] then new Ratio(@json['valueRatio'])
-  ###*
+  */
+  valueRatio() { if (this.json['valueRatio']) { return new Ratio(this.json['valueRatio']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Array} an array of {@link Date} objects
-  ###
-  valueDateTime:-> if @json['valueDateTime'] then DT.DateTime.parse(@json['valueDateTime'])
-  ###*
+  */
+  valueDateTime() { if (this.json['valueDateTime']) { return DT.DateTime.parse(this.json['valueDateTime']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Period}
-  ###
-  valuePeriod: -> if @json['valuePeriod'] then new Period(@json['valuePeriod'])
-  ###*
+  */
+  valuePeriod() { if (this.json['valuePeriod']) { return new Period(this.json['valuePeriod']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {SampledData}
-  ###
-  valueSampledData: -> if @json['valueSampledData'] then new SampledData(@json['valueSampledData'])
-  ###*
+  */
+  valueSampledData() { if (this.json['valueSampledData']) { return new SampledData(this.json['valueSampledData']); } }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {Array} an array of {@link String} objects
-  ###
-  valueString:-> @json['valueString']
-  ###*
+  */
+  valueString() { return this.json['valueString']; }
+  /**
   The information determined as a result of making the observation, if the information has a simple value.
   @returns {time}
-  ###
-  valueTime: -> if @json['valueTime'] then new time(@json['valueTime'])
+  */
+  valueTime() { if (this.json['valueTime']) { return new time(this.json['valueTime']); } }
   
-  ###*
+  /**
   Provides a reason why the expected value in the element Observation.value[x] is missing.
   @returns {Array} an array of {@link String} objects
-  ###
-  dataAbsentReason:-> @json['dataAbsentReason']
+  */
+  dataAbsentReason() { return this.json['dataAbsentReason']; }
   
-  ###*
+  /**
   The assessment made based on the result of the observation.
   @returns {CodeableConcept}
-  ###
-  interpretation: -> if @json['interpretation'] then new CodeableConcept(@json['interpretation'])
+  */
+  interpretation() { if (this.json['interpretation']) { return new CodeableConcept(this.json['interpretation']); } }
   
-  ###*
+  /**
   May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.
   @returns {Array} an array of {@link String} objects
-  ###
-  comments:-> @json['comments']
+  */
+  comments() { return this.json['comments']; }
   
-  ###*
+  /**
   The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
   @returns {Array} an array of {@link Date} objects
-  ###
-  appliesDateTime:-> if @json['appliesDateTime'] then DT.DateTime.parse(@json['appliesDateTime'])
-  ###*
+  */
+  appliesDateTime() { if (this.json['appliesDateTime']) { return DT.DateTime.parse(this.json['appliesDateTime']); } }
+  /**
   The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
   @returns {Period}
-  ###
-  appliesPeriod: -> if @json['appliesPeriod'] then new Period(@json['appliesPeriod'])
+  */
+  appliesPeriod() { if (this.json['appliesPeriod']) { return new Period(this.json['appliesPeriod']); } }
   
-  ###*
+  /**
   The date and time this observation was made available.
   @returns {Array} an array of {@link Date} objects
-  ###
-  issued:-> if @json['issued'] then DT.DateTime.parse(@json['issued'])
+  */
+  issued() { if (this.json['issued']) { return DT.DateTime.parse(this.json['issued']); } }
   
-  ###*
+  /**
   The status of the result value.
   @returns {Array} an array of {@link String} objects
-  ###
-  status:-> @json['status']
+  */
+  status() { return this.json['status']; }
   
-  ###*
+  /**
   An estimate of the degree to which quality issues have impacted on the value reported.
   @returns {Array} an array of {@link String} objects
-  ###
-  reliability:-> @json['reliability']
+  */
+  reliability() { return this.json['reliability']; }
   
-  ###*
+  /**
   Indicates the site on the subject's body where the observation was made ( i.e. the target site).
   @returns {CodeableConcept}
-  ###
-  bodySite: -> if @json['bodySite'] then new CodeableConcept(@json['bodySite'])
+  */
+  bodySite() { if (this.json['bodySite']) { return new CodeableConcept(this.json['bodySite']); } }
   
-  ###*
+  /**
   Indicates the mechanism used to perform the observation.
   @returns {CodeableConcept}
-  ###
-  method: -> if @json['method'] then new CodeableConcept(@json['method'])
+  */
+  method() { if (this.json['method']) { return new CodeableConcept(this.json['method']); } }
   
-  ###*
+  /**
   A unique identifier for the simple observation.
   @returns {Identifier}
-  ###
-  identifier: -> if @json['identifier'] then new Identifier(@json['identifier'])
+  */
+  identifier() { if (this.json['identifier']) { return new Identifier(this.json['identifier']); } }
   
-  ###*
+  /**
   The thing the observation is being made about.
   @returns {Reference}
-  ###
-  subject: -> if @json['subject'] then new Reference(@json['subject'])
+  */
+  subject() { if (this.json['subject']) { return new Reference(this.json['subject']); } }
   
-  ###*
+  /**
   The specimen that was used when this observation was made.
   @returns {Reference}
-  ###
-  specimen: -> if @json['specimen'] then new Reference(@json['specimen'])
+  */
+  specimen() { if (this.json['specimen']) { return new Reference(this.json['specimen']); } }
   
-  ###*
+  /**
   Who was responsible for asserting the observed value as "true".
   @returns {Array} an array of {@link Reference} objects
-  ###
-  performer: ->
-    if @json['performer']
-      for item in @json['performer']
-        new Reference(item)
+  */
+  performer() {
+    if (this.json['performer']) {
+      return this.json['performer'].map((item) =>
+        new Reference(item));
+    }
+  }
   
-  ###*
+  /**
   The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.
   @returns {Reference}
-  ###
-  encounter: -> if @json['encounter'] then new Reference(@json['encounter'])
+  */
+  encounter() { if (this.json['encounter']) { return new Reference(this.json['encounter']); } }
   
-  ###*
+  /**
   Guidance on how to interpret the value by comparison to a normal or recommended range.
   @returns {Array} an array of {@link ObservationReferenceRangeComponent} objects
-  ###
-  referenceRange: ->
-    if @json['referenceRange']
-      for item in @json['referenceRange']
-        new ObservationReferenceRangeComponent(item)
+  */
+  referenceRange() {
+    if (this.json['referenceRange']) {
+      return this.json['referenceRange'].map((item) =>
+        new ObservationReferenceRangeComponent(item));
+    }
+  }
   
-  ###*
+  /**
   Related observations - either components, or previous observations, or statements of derivation.
   @returns {Array} an array of {@link ObservationRelatedComponent} objects
-  ###
-  related: ->
-    if @json['related']
-      for item in @json['related']
-        new ObservationRelatedComponent(item)
+  */
+  related() {
+    if (this.json['related']) {
+      return this.json['related'].map((item) =>
+        new ObservationRelatedComponent(item));
+    }
+  }
+}
   
 
 
 
-module.exports.Observation = Observation
+module.exports.Observation = Observation;

@@ -1,5 +1,5 @@
-# Born in 1980
-p1 = {
+// Born in 1980
+const p1 = {
   "resourceType": "Bundle",
   "id": "example1",
   "meta": {
@@ -18,11 +18,11 @@ p1 = {
         "birthDate" : "1980-02-17T06:15"}
         }
   ]
-}
-module.exports.P1 = p1
+};
+module.exports.P1 = p1;
 
-# Born in 2007
-p2 = {
+// Born in 2007
+const p2 = {
   "resourceType": "Bundle",
   "id": "example1",
   "meta": {
@@ -30,7 +30,7 @@ p2 = {
     "lastUpdated": "2014-08-18T01:43:30Z"
   },
   "base": "http://example.com/base",
-  "entry" : [
+  "entry" : [{
       "resource": {
       "resourceType" : "Patient",
       "meta" :{ "profile" : ["cqf-patient"]},
@@ -39,12 +39,13 @@ p2 = {
       "name": {"given":["Sally"], "family": ["Smith"]},
       "gender": "F",
       "birthDate" : "2007-08-02T11:47"
-      }]
-}
-module.exports.P2 = p2
+      }
+    }]
+};
+module.exports.P2 = p2;
 
-# Acute Pharyngitis and ED/Ambulatory Visits
-p3 = {
+// Acute Pharyngitis and ED/Ambulatory Visits
+const p3 = {
   "resourceType": "Bundle",
   "id": "example2",
   "meta": {
@@ -115,11 +116,11 @@ p3 = {
           }
     }
   ]
-}
-module.exports.P3 = p3
+};
+module.exports.P3 = p3;
 
-# ED/Ambulatory Visit
-p4 = {
+// ED/Ambulatory Visit
+const p4 = {
   "resourceType": "Bundle",
   "id": "example3",
   "meta": {
@@ -151,7 +152,7 @@ p4 = {
       }
     }
   ]
-}
-module.exports.P4 = p4
+};
+module.exports.P4 = p4;
 
-module.exports.P1AndP2 = [p1, p2]
+module.exports.P1AndP2 = [p1, p2];
