@@ -1,18 +1,20 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### If
+/* eslint-disable */
+
+/* If
 library TestSnippet version '1'
 using QUICK
 parameter var Boolean
 context Patient
 define exp: if var then 'true return' else 'false return'
-###
+*/
 
 module.exports['If'] = {
    "library" : {
@@ -126,7 +128,7 @@ module.exports['If'] = {
    }
 }
 
-### Case
+/* Case
 library TestSnippet version '1'
 using QUICK
 parameter var Integer
@@ -148,7 +150,7 @@ define standard:
     when X < Y then 'X < Y'
     else 'X == Y'
   end
-###
+*/
 
 module.exports['Case'] = {
    "library" : {

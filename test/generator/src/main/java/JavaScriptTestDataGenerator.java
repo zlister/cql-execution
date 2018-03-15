@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 
-public class CoffeeScriptTestDataGenerator {
+public class JavaScriptTestDataGenerator {
     private static final Pattern SNIPPET_START = Pattern.compile("^\\s*\\/\\/\\s+\\@Test\\:\\s+(.*\\S)\\s*$");
     private static final Pattern LIBRARY_CHECK = Pattern.compile("^\\s*library\\s*\\S.*$", Pattern.MULTILINE);
     private static final Pattern USING_CHECK = Pattern.compile("^\\s*using\\s*\\S.*$", Pattern.MULTILINE);
@@ -65,27 +65,28 @@ public class CoffeeScriptTestDataGenerator {
         return snippets;
     }
 
-    private static void writeSnippetsToCoffeeFile(Map<String,StringBuilder> snippets, Path file) throws IOException {
-        // Write to a temp file and then move, else the coffee compiler can get confused if it's watching the file
+    private static void writeSnippetsToJavaScriptFile(Map<String, StringBuilder> snippets, Path file) throws IOException {
         File tempFile = new File(file.toFile().getAbsolutePath() + ".tmp");
 
         PrintWriter pw = new PrintWriter(tempFile, "UTF-8");
-        pw.println("###");
+        pw.println("/*");
         pw.println("   WARNING: This is a GENERATED file.  Do not manually edit!");
         pw.println();
         pw.println("   To generate this file:");
-        pw.println("       - Edit " + file.toFile().getName().replace(".coffee", ".cql") + " to add a CQL Snippet");
-        pw.println("       - From java dir: ./gradlew :cql-to-elm:generateTestData");
-        pw.println("###");
+        pw.println("       - Edit " + file.toFile().getName().replace(".js", ".cql") + " to add a CQL Snippet");
+        pw.println("       - From generator dir: ./gradlew generateTestData");
+        pw.println("*/");
+        pw.println();
+        pw.println("/* eslint-disable */");
         pw.println();
 
         for (Map.Entry<String, StringBuilder> entry : snippets.entrySet()) {
             updateSnippet(entry.getValue());
             String name = entry.getKey();
             String snippet = entry.getValue().toString();
-            pw.println("### " + name);
+            pw.println("/* " + name);
             pw.println(snippet);
-            pw.println("###");
+            pw.println("*/");
             pw.println();
             try {
                 ModelManager modelManager = new ModelManager();
@@ -94,7 +95,7 @@ public class CoffeeScriptTestDataGenerator {
                 CqlTranslator.Options[] options = {CqlTranslator.Options.EnableDateRangeOptimization, CqlTranslator.Options.EnableAnnotations};
                 CqlTranslator cqlt = CqlTranslator.fromText(snippet, modelManager, libraryManager, options);
                 if (! cqlt.getErrors().isEmpty()) {
-                    pw.println("###");
+                    pw.println("/*");
                     pw.println("Translation Error(s):");
                     for (CqlTranslatorException e : cqlt.getErrors()) {
                         TrackBack tb = e.getLocator();
@@ -103,13 +104,13 @@ public class CoffeeScriptTestDataGenerator {
                         pw.printf("%s %s%n", lines, e.getMessage());
                         System.err.printf("<%s#%s%s> %s%n", file.toFile().getName(), name, lines, e.getMessage());
                     }
-                    pw.println("###");
+                    pw.println("*/");
                 }
                 pw.println("module.exports['" + name + "'] = " + cqlt.toJson());
             } catch (Exception e) {
-                pw.println("###");
+                pw.println("/*");
                 pw.println("Translation Exception: " + e.getMessage());
-                pw.println("###");
+                pw.println("*/");
                 System.err.printf("<%s#%s> %s%n", file.toFile().getName(), name, e.getMessage());
                 pw.println("module.exports['" + name + "'] = {}");
             }
@@ -138,15 +139,15 @@ public class CoffeeScriptTestDataGenerator {
         }
     }
 
-    private static void fileToCoffee(Path input) throws IOException, InterruptedException {
-        // Use input filename with ".coffee" extension
+    private static void fileToJavaScript(Path input) throws IOException, InterruptedException {
+        // Use input filename with ".js" extension
         String name = input.toFile().getName();
         if (name.lastIndexOf('.') != -1) {
             name = name.substring(0, name.lastIndexOf('.'));
         }
-        name = name + ".coffee";
+        name = name + ".js";
 
-        writeSnippetsToCoffeeFile(getCqlSnippets(input), input.resolveSibling(name));
+        writeSnippetsToJavaScriptFile(getCqlSnippets(input), input.resolveSibling(name));
     }
 
     private static boolean isCQL(Path file) {
@@ -173,7 +174,7 @@ public class CoffeeScriptTestDataGenerator {
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     if (isCQL(file)) {
                         try {
-                            fileToCoffee(file);
+                            fileToJavaScript(file);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -195,7 +196,7 @@ public class CoffeeScriptTestDataGenerator {
                 throw new IllegalArgumentException("Non-recursive mode requires the input to be a file");
             }
             Path inputPath = inputFile.toPath();
-            fileToCoffee(inputPath);
+            fileToJavaScript(inputPath);
             if (watcher != null) {
                 Path dir = inputPath.getParent();
                 if (dir != null) {
@@ -215,7 +216,7 @@ public class CoffeeScriptTestDataGenerator {
                         Path file = watchKeys.get(watchKey).resolve(event.context().toString());
                         if (isCQL(file)) {
                             if (inputFile.isDirectory() || (inputFile.isFile() && file.equals(inputFile.toPath()))) {
-                                fileToCoffee(file);
+                                fileToJavaScript(file);
                             }
                         } else if (event.kind() == StandardWatchEventKinds.ENTRY_CREATE && file.toFile().isDirectory()) {
                             WatchKey key = file.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY, StandardWatchEventKinds.ENTRY_CREATE);

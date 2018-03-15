@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### In Age Demographic
+/* eslint-disable */
+
+/* In Age Demographic
 library TestSnippet version '1'
 using QUICK
 parameter MeasurementPeriod default Interval[DateTime(2013, 1, 1), DateTime(2014, 1, 1))
@@ -15,7 +17,7 @@ context Patient
 
 define InDemographic:
 AgeInYearsAt(start of MeasurementPeriod) >= 2 and AgeInYearsAt(start of MeasurementPeriod) < 18
-###
+*/
 
 module.exports['In Age Demographic'] = {
    "library" : {
@@ -237,7 +239,7 @@ module.exports['In Age Demographic'] = {
    }
 }
 
-### CommonLib
+/* CommonLib
 library Common
 using QUICK
 parameter MeasurementPeriod default Interval[DateTime(2013, 1, 1), DateTime(2014, 1, 1))
@@ -249,7 +251,7 @@ AgeInYearsAt(start of MeasurementPeriod) >= 2 and AgeInYearsAt(start of Measurem
 
 define function foo (a Integer, b Integer) :
   a + b
-###
+*/
 
 module.exports['CommonLib'] = {
    "library" : {
@@ -545,7 +547,7 @@ module.exports['CommonLib'] = {
    }
 }
 
-### Using CommonLib
+/* Using CommonLib
 library TestSnippet version '1'
 using QUICK
 include Common called common
@@ -557,7 +559,7 @@ define ID: common.InDemographic
 
 define L : Length(Patient.name[0].given[0])
 define FuncTest : common.foo(2, 5)
-###
+*/
 
 module.exports['Using CommonLib'] = {
    "library" : {
@@ -834,7 +836,7 @@ module.exports['Using CommonLib'] = {
    }
 }
 
-### CommonLib2
+/* CommonLib2
 library Common2
 using QUICK
 parameter SomeNumber default 17
@@ -867,7 +869,7 @@ define TwoPlusOne:
 
 define SortUsingFunction:
   ({1, 3, 2, 5, 4}) N return Tuple{N: N} sort by square(N)
-###
+*/
 
 module.exports['CommonLib2'] = {
    "library" : {
@@ -1451,7 +1453,7 @@ module.exports['CommonLib2'] = {
    }
 }
 
-### Using CommonLib2
+/* Using CommonLib2
 library TestSnippet version '1'
 using QUICK
 include Common2 called common2
@@ -1466,7 +1468,7 @@ define FuncCallsFunc: common2.square(5)
 define ExprUsesExpr: common2.TwoPlusOne
 define FuncUsesExpr: common2.addTwo(5)
 define ExprSortsOnFunc: common2.SortUsingFunction
-###
+*/
 
 module.exports['Using CommonLib2'] = {
    "library" : {

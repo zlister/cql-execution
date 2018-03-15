@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Age
+/* eslint-disable */
+
+/* Age
 library TestSnippet version '1'
 using QUICK
 parameter MeasurementPeriod default Interval[DateTime(2013, 1, 1), DateTime(2014, 1, 1))
@@ -26,7 +28,7 @@ define AgeSum: Sum(Age)
 define DEMO: Count(InDemographic w where w is true )
 
 define AgeSumRef : AgeSum
-###
+*/
 
 module.exports['Age'] = {
    "library" : {

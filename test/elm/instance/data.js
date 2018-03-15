@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Instance
+/* eslint-disable */
+
+/* Instance
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -33,7 +35,7 @@ define Med : Medication {
 }
 
 define val: QuantityA.value
-###
+*/
 
 module.exports['Instance'] = {
    "library" : {

@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### DateRangeOptimizedQuery
+/* eslint-disable */
+
+/* DateRangeOptimizedQuery
 library TestSnippet version '1'
 using QUICK
 valueset "Ambulatory/ED Visit": '2.16.840.1.113883.3.464.1003.101.12.1061'
@@ -15,7 +17,7 @@ context Patient
 define EncountersDuringMP: [Encounter] E where E.period during MeasurementPeriod
 define AmbulatoryEncountersDuringMP: [Encounter: "Ambulatory/ED Visit"] E where E.period during MeasurementPeriod
 define AmbulatoryEncountersIncludedInMP: [Encounter: "Ambulatory/ED Visit"] E where E.period included in MeasurementPeriod
-###
+*/
 
 module.exports['DateRangeOptimizedQuery'] = {
    "library" : {
@@ -407,14 +409,14 @@ module.exports['DateRangeOptimizedQuery'] = {
    }
 }
 
-### IncludesQuery
+/* IncludesQuery
 library TestSnippet version '1'
 using QUICK
 valueset "Ambulatory/ED Visit": '2.16.840.1.113883.3.464.1003.101.12.1061'
 parameter MeasurementPeriod default Interval[DateTime(2013, 1, 1), DateTime(2014, 1, 1))
 context Patient
 define MPIncludedAmbulatoryEncounters: [Encounter: "Ambulatory/ED Visit"] E where MeasurementPeriod includes E.period
-###
+*/
 
 module.exports['IncludesQuery'] = {
    "library" : {
@@ -628,7 +630,7 @@ module.exports['IncludesQuery'] = {
    }
 }
 
-### MultiSourceQuery
+/* MultiSourceQuery
 library TestSnippet version '1'
 using QUICK
 parameter MeasurementPeriod default Interval[DateTime(2013, 1, 1), DateTime(2014, 1, 1))
@@ -641,7 +643,7 @@ define msQueryWhere2: from [Encounter] E, [Condition] C
 where  E.period  included in MeasurementPeriod and C.id = 'http://cqframework.org/3/2'
 
 define msQuery: from [Encounter] E, [Condition] C return {E: E, C:C}
-###
+*/
 
 module.exports['MultiSourceQuery'] = {
    "library" : {
@@ -1171,7 +1173,7 @@ module.exports['MultiSourceQuery'] = {
    }
 }
 
-### QueryRelationship
+/* QueryRelationship
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1186,7 +1188,7 @@ without [Condition] C such that C.id = 'http://cqframework.org/3/'
 
 define withOutQuery2:  [Encounter] E
 without [Condition] C such that C.id = 'http://cqframework.org/3/2'
-###
+*/
 
 module.exports['QueryRelationship'] = {
    "library" : {
@@ -1701,14 +1703,14 @@ module.exports['QueryRelationship'] = {
    }
 }
 
-### QueryLet
+/* QueryLet
 library TestSnippet version '1'
 using QUICK
 context Patient
 define query:  [Encounter] E
 let a: E
 return {E: E, a:a}
-###
+*/
 
 module.exports['QueryLet'] = {
    "library" : {
@@ -1875,12 +1877,12 @@ module.exports['QueryLet'] = {
    }
 }
 
-### Tuple
+/* Tuple
 library TestSnippet version '1'
 using QUICK
 context Patient
 define query:  [Encounter] E return {id: E.id, thing: E.status}
-###
+*/
 
 module.exports['Tuple'] = {
    "library" : {
@@ -2044,12 +2046,12 @@ module.exports['Tuple'] = {
    }
 }
 
-### QueryFilterNulls
+/* QueryFilterNulls
 library TestSnippet version '1'
 using QUICK
 context Patient
 define query:  (List{null, 'One', null, 'Two', null}) I where I is not null
-###
+*/
 
 module.exports['QueryFilterNulls'] = {
    "library" : {
@@ -2212,7 +2214,7 @@ module.exports['QueryFilterNulls'] = {
    }
 }
 
-### Sorting
+/* Sorting
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2232,7 +2234,7 @@ define stringDesc: ({'jenny', 'dont', 'change', 'your', 'number'}) S sort desc
 define stringReturnDesc: ({'jenny', 'dont', 'change', 'your', 'number'}) S return S sort desc
 define five: 5
 define sortByExpression: ({8, 6, 7, 5, 3, 0, 9}) N return Tuple{N: N} sort by (five + N)
-###
+*/
 
 module.exports['Sorting'] = {
    "library" : {
@@ -3985,7 +3987,7 @@ module.exports['Sorting'] = {
    }
 }
 
-### Distinct
+/* Distinct
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3998,7 +4000,7 @@ define distinctTuples: ({Tuple{a: 1, b:2}, Tuple{a: 2, b: 3}, Tuple{a: 1, b: 2}}
 define allNumbers: ({1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 2, 2, 1}) N return all N
 define allStrings: ({'foo', 'bar', 'baz', 'bar'}) S return all S
 define allTuples: ({Tuple{a: 1, b:2}, Tuple{a: 2, b: 3}, Tuple{a: 1, b: 2}}) T return all T
-###
+*/
 
 module.exports['Distinct'] = {
    "library" : {
@@ -5408,7 +5410,7 @@ module.exports['Distinct'] = {
    }
 }
 
-### SingleObjectAlias
+/* SingleObjectAlias
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5434,7 +5436,7 @@ define nullQuery: asNull N
 //                        such that C.id is null
 define singleAliasReturnTuple: firstEncounter E return Tuple{a:1}
 define singleAliasReturnList: firstEncounter E return {'foo', 'bar', 'baz', 'bar'}
-###
+*/
 
 module.exports['SingleObjectAlias'] = {
    "library" : {

@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Literal
+/* eslint-disable */
+
+/* Literal
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -17,7 +19,7 @@ define DecimalTenth: 0.1
 define StringTrue: 'true'
 define DateTimeX: @2012-02-15T12:10:59.456Z
 define TimeX: @T12:10:59.456Z
-###
+*/
 
 module.exports['Literal'] = {
    "library" : {

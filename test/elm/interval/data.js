@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Interval
+/* eslint-disable */
+
+/* Interval
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -14,7 +16,7 @@ define Open: Interval(DateTime(2012, 1, 1), DateTime(2013, 1, 1))
 define LeftOpen: Interval(DateTime(2012, 1, 1), DateTime(2013, 1, 1)]
 define RightOpen: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1))
 define Closed: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)]
-###
+*/
 
 module.exports['Interval'] = {
    "library" : {
@@ -385,7 +387,7 @@ module.exports['Interval'] = {
    }
 }
 
-### Equal
+/* Equal
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -405,7 +407,7 @@ define EqualDates: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 
 define EqualDatesOpenClosed: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)) = Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2012, 12, 31, 23, 59, 59, 999)]
 define SameDays: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)) = Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1))
 define DifferentDays: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)) = Interval[DateTime(2012, 1, 1), DateTime(2012, 7, 1))
-###
+*/
 
 module.exports['Equal'] = {
    "library" : {
@@ -2260,7 +2262,7 @@ module.exports['Equal'] = {
    }
 }
 
-### NotEqual
+/* NotEqual
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2280,7 +2282,7 @@ define EqualDates: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 
 define EqualDatesOpenClosed: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)) != Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2012, 12, 31, 23, 59, 59, 999)]
 define SameDays: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)) != Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1))
 define DifferentDays: Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)) != Interval[DateTime(2012, 1, 1), DateTime(2012, 7, 1))
-###
+*/
 
 module.exports['NotEqual'] = {
    "library" : {
@@ -4183,7 +4185,7 @@ module.exports['NotEqual'] = {
    }
 }
 
-### Contains
+/* Contains
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -4238,7 +4240,7 @@ define PosInfEndNotContainsDate: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null
 define UnknownEndContainsDate: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) contains DateTime(2013, 1, 1, 0, 0, 0, 0)
 define UnknownEndMayContainDate: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) contains DateTime(2014, 1, 1, 0, 0, 0, 0)
 define UnknownEndNotContainsDate: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) contains DateTime(2012, 1, 1, 0, 0, 0, 0)
-###
+*/
 
 module.exports['Contains'] = {
    "library" : {
@@ -8452,7 +8454,7 @@ module.exports['Contains'] = {
    }
 }
 
-### In
+/* In
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -8507,7 +8509,7 @@ define PosInfEndNotContainsDate: DateTime(2012, 1, 1, 0, 0, 0, 0) in Interval[Da
 define UnknownEndContainsDate: DateTime(2013, 1, 1, 0, 0, 0, 0) in Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
 define UnknownEndMayContainDate: DateTime(2014, 1, 1, 0, 0, 0, 0) in Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
 define UnknownEndNotContainsDate: DateTime(2012, 1, 1, 0, 0, 0, 0) in Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
-###
+*/
 
 module.exports['In'] = {
    "library" : {
@@ -12731,7 +12733,7 @@ module.exports['In'] = {
    }
 }
 
-### Includes
+/* Includes
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -12782,7 +12784,7 @@ define PosInfEndNotIncludesDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), n
 define UnknownEndIncludesDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) includes Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define UnknownEndMayIncludeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) includes Interval[DateTime(2014, 1, 1, 0, 0, 0, 0), DateTime(2015, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotIncludesDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) includes Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2014, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['Includes'] = {
    "library" : {
@@ -18612,7 +18614,7 @@ module.exports['Includes'] = {
    }
 }
 
-### ProperlyIncludes
+/* ProperlyIncludes
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -18637,7 +18639,7 @@ define MayProperlyIncludeDayOfIvlVeryImpreciseLow: PrecisionDateIvl properly inc
 define MayProperlyIncludeDayOfIvlVeryImpreciseHigh: PrecisionDateIvl properly includes day of Interval[DateTime(2012, 6), DateTime(2012, 9)]
 define MayProperlyIncludeDayOfIvlVeryImpreciseLowAndHigh: PrecisionDateIvl properly includes day of Interval[DateTime(2012, 3), DateTime(2012, 9)]
 define MayProperlyIncludeDayOfIvlVeryImpreciseSurrounding: PrecisionDateIvl properly includes day of Interval[DateTime(2012), DateTime(2012)]
-###
+*/
 
 module.exports['ProperlyIncludes'] = {
    "library" : {
@@ -20804,7 +20806,7 @@ module.exports['ProperlyIncludes'] = {
    }
 }
 
-### IncludedIn
+/* IncludedIn
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -20855,7 +20857,7 @@ define PosInfEndNotIncludedInDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0),
 define UnknownEndIncludedInDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) included in Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), null]
 define UnknownEndMayBeIncludedInDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) included in Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2020, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotIncludedInDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) included in Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['IncludedIn'] = {
    "library" : {
@@ -26546,7 +26548,7 @@ module.exports['IncludedIn'] = {
    }
 }
 
-### ProperlyIncludedIn
+/* ProperlyIncludedIn
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -26571,7 +26573,7 @@ define MayProperlyIncludeDayOfIvlVeryImpreciseLow: Interval[DateTime(2012, 3), D
 define MayProperlyIncludeDayOfIvlVeryImpreciseHigh: Interval[DateTime(2012, 6), DateTime(2012, 9)] properly included in day of PrecisionDateIvl
 define MayProperlyIncludeDayOfIvlVeryImpreciseLowAndHigh: Interval[DateTime(2012, 3), DateTime(2012, 9)] properly included in day of PrecisionDateIvl
 define MayProperlyIncludeDayOfIvlVeryImpreciseSurrounding: Interval[DateTime(2012), DateTime(2012)] properly included in day of PrecisionDateIvl
-###
+*/
 
 module.exports['ProperlyIncludedIn'] = {
    "library" : {
@@ -29114,7 +29116,7 @@ module.exports['ProperlyIncludedIn'] = {
    }
 }
 
-### After
+/* After
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -29153,7 +29155,7 @@ define PosInfEndAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null] a
 define PosInfEndNotAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null] after Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2020, 1, 1, 0, 0, 0, 0)]
 define UnknownEndAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) after Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2010, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) after Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['After'] = {
    "library" : {
@@ -33632,7 +33634,7 @@ module.exports['After'] = {
    }
 }
 
-### Before
+/* Before
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -33671,7 +33673,7 @@ define UnknownBegNotBeforeDateIvl: Interval(null, DateTime(2013, 1, 1, 0, 0, 0, 
 define PosInfEndNotBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null] before Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2020, 1, 1, 0, 0, 0, 0)]
 define UnknownEndMayBeBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) before Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) before Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['Before'] = {
    "library" : {
@@ -38073,7 +38075,7 @@ module.exports['Before'] = {
    }
 }
 
-### Meets
+/* Meets
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -38129,7 +38131,7 @@ define UnknownEndMeetsAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), n
 define UnknownEndMayMeetBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotMeetsDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateIvlMayMeetAfterUnknownEnd: Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)] meets Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
-###
+*/
 
 module.exports['Meets'] = {
    "library" : {
@@ -44735,7 +44737,7 @@ module.exports['Meets'] = {
    }
 }
 
-### MeetsAfter
+/* MeetsAfter
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -44791,7 +44793,7 @@ define UnknownEndMeetsAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), n
 define UnknownEndMayMeetBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets after Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotMeetsDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets after Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateIvlMayMeetAfterUnknownEnd: Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)] meets after Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
-###
+*/
 
 module.exports['MeetsAfter'] = {
    "library" : {
@@ -51397,7 +51399,7 @@ module.exports['MeetsAfter'] = {
    }
 }
 
-### MeetsBefore
+/* MeetsBefore
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -51453,7 +51455,7 @@ define UnknownEndMeetsAfterDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), n
 define UnknownEndMayMeetBeforeDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets before Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)]
 define UnknownEndNotMeetsDateIvl: Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null) meets before Interval[DateTime(2000, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateIvlMayMeetAfterUnknownEnd: Interval[DateTime(2020, 1, 1, 0, 0, 0, 0), DateTime(2040, 1, 1, 0, 0, 0, 0)] meets before Interval[DateTime(2013, 1, 1, 0, 0, 0, 0), null)
-###
+*/
 
 module.exports['MeetsBefore'] = {
    "library" : {
@@ -58059,7 +58061,7 @@ module.exports['MeetsBefore'] = {
    }
 }
 
-### Overlaps
+/* Overlaps
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -58071,7 +58073,7 @@ define OverlapsBeforeRealIvl: Interval[1.234, 1.567] overlaps Interval[1.345, 1.
 define OverlapsAfterRealIvl: Interval[1.345, 1.678] overlaps Interval[1.234, 1.567]
 define OverlapsBoundaryRealIvl: Interval[1.0, 1.234] overlaps Interval[1.234, 2.0]
 define NoOverlapsRealIvl: Interval[1.0, 1.23456789) overlaps Interval[1.23456789, 2.0]
-###
+*/
 
 module.exports['Overlaps'] = {
    "library" : {
@@ -58654,7 +58656,7 @@ module.exports['Overlaps'] = {
    }
 }
 
-### OverlapsDateTime
+/* OverlapsDateTime
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -58683,7 +58685,7 @@ define NotOverlapsDayOfIvl: PrecisionDateIvl overlaps day of Interval[DateTime(2
 define OverlapsAfterDayOfImpreciseInterval: PrecisionDateIvl overlaps day of Interval[DateTime(2012, 1), DateTime(2012, 4)]
 define MayOverlapBeforeDayOfImpreciseIvl: PrecisionDateIvl overlaps day of Interval[DateTime(2012, 9), DateTime(2012, 10)]
 define MayOverlapAfterDayOfImpreciseIvl: PrecisionDateIvl overlaps day of Interval[DateTime(2012, 1), DateTime(2012, 3)]
-###
+*/
 
 module.exports['OverlapsDateTime'] = {
    "library" : {
@@ -60910,7 +60912,7 @@ module.exports['OverlapsDateTime'] = {
    }
 }
 
-### OverlapsAfter
+/* OverlapsAfter
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -60922,7 +60924,7 @@ define OverlapsBeforeRealIvl: Interval[1.234, 1.567] overlaps after Interval[1.3
 define OverlapsAfterRealIvl: Interval[1.345, 1.678] overlaps after Interval[1.234, 1.567]
 define OverlapsBoundaryRealIvl: Interval[1.234, 2.0] overlaps after Interval[1.0, 1.234]
 define NoOverlapsRealIvl: Interval[1.0, 1.23456789) overlaps after Interval[1.23456789, 2.0]
-###
+*/
 
 module.exports['OverlapsAfter'] = {
    "library" : {
@@ -61505,7 +61507,7 @@ module.exports['OverlapsAfter'] = {
    }
 }
 
-### OverlapsAfterDateTime
+/* OverlapsAfterDateTime
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -61534,7 +61536,7 @@ define NotOverlapsDayOfIvl: PrecisionDateIvl overlaps after day of Interval[Date
 define OverlapsAfterDayOfImpreciseInterval: PrecisionDateIvl overlaps after day of Interval[DateTime(2012, 1), DateTime(2012, 4)]
 define MayOverlapBeforeDayOfImpreciseIvl: PrecisionDateIvl overlaps after day of Interval[DateTime(2012, 9), DateTime(2012, 10)]
 define MayOverlapAfterDayOfImpreciseIvl: PrecisionDateIvl overlaps after day of Interval[DateTime(2012, 1), DateTime(2012, 3)]
-###
+*/
 
 module.exports['OverlapsAfterDateTime'] = {
    "library" : {
@@ -63803,7 +63805,7 @@ module.exports['OverlapsAfterDateTime'] = {
    }
 }
 
-### OverlapsBefore
+/* OverlapsBefore
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -63815,7 +63817,7 @@ define OverlapsBeforeRealIvl: Interval[1.234, 1.567] overlaps before Interval[1.
 define OverlapsAfterRealIvl: Interval[1.345, 1.678] overlaps before Interval[1.234, 1.567]
 define OverlapsBoundaryRealIvl: Interval[1.0, 1.234] overlaps before Interval[1.234, 2.0]
 define NoOverlapsRealIvl: Interval[1.0, 1.23456789) overlaps before Interval[1.23456789, 2.0]
-###
+*/
 
 module.exports['OverlapsBefore'] = {
    "library" : {
@@ -64398,7 +64400,7 @@ module.exports['OverlapsBefore'] = {
    }
 }
 
-### OverlapsBeforeDateTime
+/* OverlapsBeforeDateTime
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -64427,7 +64429,7 @@ define NotOverlapsDayOfIvl: PrecisionDateIvl overlaps before day of Interval[Dat
 define OverlapsAfterDayOfImpreciseInterval: PrecisionDateIvl overlaps before day of Interval[DateTime(2012, 1), DateTime(2012, 4)]
 define MayOverlapBeforeDayOfImpreciseIvl: PrecisionDateIvl overlaps before day of Interval[DateTime(2012, 9), DateTime(2012, 10)]
 define MayOverlapAfterDayOfImpreciseIvl: PrecisionDateIvl overlaps before day of Interval[DateTime(2012, 1), DateTime(2012, 3)]
-###
+*/
 
 module.exports['OverlapsBeforeDateTime'] = {
    "library" : {
@@ -66696,7 +66698,7 @@ module.exports['OverlapsBeforeDateTime'] = {
    }
 }
 
-### Width
+/* Width
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -66708,7 +66710,7 @@ define IntWidthThreeToUnknown: width of Interval[3, null)
 define IntWidthUnknownToThree: width of Interval(null, 3]
 define RealWidth: width of Interval[1.23, 4.56]
 define RealOpenWidth: width of Interval(1.23, 4.56)
-###
+*/
 
 module.exports['Width'] = {
    "library" : {
@@ -67145,12 +67147,12 @@ module.exports['Width'] = {
    }
 }
 
-### Start
+/* Start
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Foo: start of Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)]
-###
+*/
 
 module.exports['Start'] = {
    "library" : {
@@ -67281,12 +67283,12 @@ module.exports['Start'] = {
    }
 }
 
-### End
+/* End
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Foo: end of Interval[DateTime(2012, 1, 1), DateTime(2013, 1, 1)]
-###
+*/
 
 module.exports['End'] = {
    "library" : {
@@ -67417,7 +67419,7 @@ module.exports['End'] = {
    }
 }
 
-### IntegerIntervalUnion
+/* IntegerIntervalUnion
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -67433,7 +67435,7 @@ define IntOverlapsUnion: Interval[0,7] union Interval[3,10]
 define IntBeginsUnion: Interval[0,5] union Interval[0,10]
 define IntDuringUnion: Interval[3,5] union Interval[0,10]
 define IntEndsUnion: Interval[5,10] union Interval[0,10]
-###
+*/
 
 module.exports['IntegerIntervalUnion'] = {
    "library" : {
@@ -68257,7 +68259,7 @@ module.exports['IntegerIntervalUnion'] = {
    }
 }
 
-### DateTimeIntervalUnion
+/* DateTimeIntervalUnion
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -68273,7 +68275,7 @@ define DateTimeOverlapsUnion: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTim
 define DateTimeBeginsUnion: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2012, 6, 1, 0, 0, 0, 0)] union Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeDuringUnion: Interval[DateTime(2012, 3, 1, 0, 0, 0, 0), DateTime(2012, 5, 1, 0, 0, 0, 0)] union Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeEndsUnion: Interval[DateTime(2012, 6, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)] union Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['DateTimeIntervalUnion'] = {
    "library" : {
@@ -71259,7 +71261,7 @@ module.exports['DateTimeIntervalUnion'] = {
    }
 }
 
-### IntegerIntervalExcept
+/* IntegerIntervalExcept
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -71272,7 +71274,7 @@ define IntOverlapsExcept: Interval[0,7] except Interval[5,10]
 define IntBeginsExcept: Interval[0,5] except Interval[0,10]
 define IntDuringExcept: Interval[3,5] except Interval[0,10]
 define IntEndsExcept: Interval[5,10] except Interval[0,10]
-###
+*/
 
 module.exports['IntegerIntervalExcept'] = {
    "library" : {
@@ -71861,7 +71863,7 @@ module.exports['IntegerIntervalExcept'] = {
    }
 }
 
-### DateTimeIntervalExcept
+/* DateTimeIntervalExcept
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -71874,7 +71876,7 @@ define DateTimeOverlapsExcept: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTi
 define DateTimeBeginsExcept: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2012, 6, 1, 0, 0, 0, 0)] except Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeDuringExcept: Interval[DateTime(2012, 3, 1, 0, 0, 0, 0), DateTime(2012, 5, 1, 0, 0, 0, 0)] except Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeEndsExcept: Interval[DateTime(2012, 6, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)] except Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['DateTimeIntervalExcept'] = {
    "library" : {
@@ -73967,7 +73969,7 @@ module.exports['DateTimeIntervalExcept'] = {
    }
 }
 
-### IntegerIntervalIntersect
+/* IntegerIntervalIntersect
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -73984,7 +73986,7 @@ define IntOverlapsIntersect: Interval[0,7] intersect Interval[5,10]
 define IntBeginsIntersect: Interval[0,5] intersect Interval[0,10]
 define IntDuringIntersect: Interval[3,5] intersect Interval[0,10]
 define IntEndsIntersect: Interval[5,10] intersect Interval[0,10]
-###
+*/
 
 module.exports['IntegerIntervalIntersect'] = {
    "library" : {
@@ -74721,7 +74723,7 @@ module.exports['IntegerIntervalIntersect'] = {
    }
 }
 
-### DateTimeIntervalIntersect
+/* DateTimeIntervalIntersect
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -74738,7 +74740,7 @@ define DateTimeOverlapsIntersect: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), Dat
 define DateTimeBeginsIntersect: Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2012, 6, 1, 0, 0, 0, 0)] intersect Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeDuringIntersect: Interval[DateTime(2012, 3, 1, 0, 0, 0, 0), DateTime(2012, 5, 1, 0, 0, 0, 0)] intersect Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
 define DateTimeEndsIntersect: Interval[DateTime(2012, 6, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)] intersect Interval[DateTime(2012, 1, 1, 0, 0, 0, 0), DateTime(2013, 1, 1, 0, 0, 0, 0)]
-###
+*/
 
 module.exports['DateTimeIntervalIntersect'] = {
    "library" : {
@@ -77355,7 +77357,7 @@ module.exports['DateTimeIntervalIntersect'] = {
    }
 }
 
-### IntegerIntervalCollapse
+/* IntegerIntervalCollapse
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -77382,7 +77384,7 @@ define IntCollapseOverlapContained: collapse { Int1_15Interval, Int5_12Interval 
 define IntCollapseOverlapContainedEdge: collapse { Int1_10Interval, Int5_10Interval }
 define IntCollapseOverlapContainedEdge2: collapse { Int1_15Interval, Int1_10Interval }
 define IntCollapseOverlapMultipleCombine: collapse { Int1_6Interval, Int5_12Interval, Int10_15Interval }
-###
+*/
 
 module.exports['IntegerIntervalCollapse'] = {
    "library" : {
@@ -78400,7 +78402,7 @@ module.exports['IntegerIntervalCollapse'] = {
    }
 }
 
-### DateTimeIntervalCollapse
+/* DateTimeIntervalCollapse
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -78429,7 +78431,7 @@ define DateTimeCollapseOverlapContainedEdge: collapse { DateTime1_10Interval, Da
 define DateTimeCollapseOverlapContainedEdge2: collapse { DateTime1_15Interval, DateTime1_10Interval }
 define DateTimeCollapseOverlapMultipleCombine: collapse { DateTime1_6Interval, DateTime5_12Interval, DateTime10_15Interval }
 define DateTimeCollapseImpreciseBoundary: collapse { DateTime1_3ImpreciseInterval, DateTime1_10Interval }
-###
+*/
 
 module.exports['DateTimeIntervalCollapse'] = {
    "library" : {

@@ -1,17 +1,19 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### ExpressionDef
+/* eslint-disable */
+
+/* ExpressionDef
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Foo: 'Bar'
-###
+*/
 
 module.exports['ExpressionDef'] = {
    "library" : {
@@ -75,13 +77,13 @@ module.exports['ExpressionDef'] = {
    }
 }
 
-### ExpressionRef
+/* ExpressionRef
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Life: 42
 define Foo: Life
-###
+*/
 
 module.exports['ExpressionRef'] = {
    "library" : {
@@ -164,7 +166,7 @@ module.exports['ExpressionRef'] = {
    }
 }
 
-### FunctionDefinitions
+/* FunctionDefinitions
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -172,7 +174,7 @@ define function "foo bar"(a Integer, b Integer) :
   a + b
 
 define testValue: "foo bar" (1,2)
-###
+*/
 
 module.exports['FunctionDefinitions'] = {
    "library" : {
@@ -321,7 +323,7 @@ module.exports['FunctionDefinitions'] = {
    }
 }
 
-### FunctionOverloads
+/* FunctionOverloads
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -333,7 +335,7 @@ define function "foo bar" (a System.String) :
 
 define testValue1: "foo bar"(1)
 define testValue2: "foo bar"('World')
-###
+*/
 
 module.exports['FunctionOverloads'] = {
    "library" : {

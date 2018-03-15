@@ -1,17 +1,19 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Nil
+/* eslint-disable */
+
+/* Nil
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Nil: null
-###
+*/
 
 module.exports['Nil'] = {
    "library" : {
@@ -68,7 +70,7 @@ module.exports['Nil'] = {
    }
 }
 
-### IsNull
+/* IsNull
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -78,7 +80,7 @@ define NullIsNull: null is null
 define NullVarIsNull: Nil is null
 define StringIsNull: '' is null
 define NonNullVarIsNull: One is null
-###
+*/
 
 module.exports['IsNull'] = {
    "library" : {
@@ -283,7 +285,7 @@ module.exports['IsNull'] = {
    }
 }
 
-### Coalesce
+/* Coalesce
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -297,7 +299,7 @@ define ListExpressionRef: Coalesce(ListWithNull)
 define RetrieveAsList: Coalesce([Encounter])
 define ListA: List{null, null, 3}
 define UnionAsList: Coalesce(ListA union ListWithNull)
-###
+*/
 
 module.exports['Coalesce'] = {
    "library" : {

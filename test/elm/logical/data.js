@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### And
+/* eslint-disable */
+
+/* And
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -19,7 +21,7 @@ define FN: false and null
 define NN: null and null
 define NT: null and true
 define NF: null and false
-###
+*/
 
 module.exports['And'] = {
    "library" : {
@@ -385,7 +387,7 @@ module.exports['And'] = {
    }
 }
 
-### Or
+/* Or
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -398,7 +400,7 @@ define FN: false or null
 define NN: null or null
 define NT: null or true
 define NF: null or false
-###
+*/
 
 module.exports['Or'] = {
    "library" : {
@@ -764,7 +766,7 @@ module.exports['Or'] = {
    }
 }
 
-### XOr
+/* XOr
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -777,7 +779,7 @@ define FN: false xor null
 define NN: null xor null
 define NT: null xor true
 define NF: null xor false
-###
+*/
 
 module.exports['XOr'] = {
    "library" : {
@@ -1143,14 +1145,14 @@ module.exports['XOr'] = {
    }
 }
 
-### Not
+/* Not
 library TestSnippet version '1'
 using QUICK
 context Patient
 define NotTrue: not true
 define NotFalse: not false
 define NotNull: not null
-###
+*/
 
 module.exports['Not'] = {
    "library" : {
@@ -1278,14 +1280,14 @@ module.exports['Not'] = {
    }
 }
 
-### IsTrue
+/* IsTrue
 library TestSnippet version '1'
 using QUICK
 context Patient
 define TrueIsTrue: true is true
 define FalseIsTrue: false is true
 define NullIsTrue: null is true
-###
+*/
 
 module.exports['IsTrue'] = {
    "library" : {
@@ -1416,14 +1418,14 @@ module.exports['IsTrue'] = {
    }
 }
 
-### IsFalse
+/* IsFalse
 library TestSnippet version '1'
 using QUICK
 context Patient
 define TrueIsFalse: true is false
 define FalseIsFalse: false is false
 define NullIsFalse: null is false
-###
+*/
 
 module.exports['IsFalse'] = {
    "library" : {

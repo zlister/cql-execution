@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### FromString
+/* eslint-disable */
+
+/* FromString
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -24,7 +26,7 @@ define posQuantityStr: convert '+10 \'A\'' to Quantity
 define negQuantityStr: convert '-10 \'A\'' to Quantity
 define quantityStrDecimal: convert '10.0 \'mA\'' to Quantity
 define dateStr: convert '2015-01-02' to DateTime
-###
+*/
 
 module.exports['FromString'] = {
    "library" : {
@@ -625,7 +627,7 @@ module.exports['FromString'] = {
    }
 }
 
-### FromInteger
+/* FromInteger
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -633,7 +635,7 @@ define string10: convert 10 to String
 define decimal10: convert 10 to Decimal
 define intNull: convert null to Decimal
 define intInt: convert 10 to Integer
-###
+*/
 
 module.exports['FromInteger'] = {
    "library" : {
@@ -803,7 +805,7 @@ module.exports['FromInteger'] = {
    }
 }
 
-### FromQuantity
+/* FromQuantity
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -811,7 +813,7 @@ define quantityStr: convert 10 'A' to String
 define negQuantityStr: convert -10 'A' to String
 define posQuantityStr: convert +10 'A' to String
 define quantityQuantity: convert 10 'A' to Quantity
-###
+*/
 
 module.exports['FromQuantity'] = {
    "library" : {
@@ -1024,7 +1026,7 @@ module.exports['FromQuantity'] = {
    }
 }
 
-### FromBoolean
+/* FromBoolean
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1032,7 +1034,7 @@ define booleanTrueStr: convert true to String
 define booleanFalseStr: convert false to String
 define booleanTrueBool: convert true to Boolean
 define booleanFalseBool: convert false to Boolean
-###
+*/
 
 module.exports['FromBoolean'] = {
    "library" : {
@@ -1199,13 +1201,13 @@ module.exports['FromBoolean'] = {
    }
 }
 
-### FromDateTime
+/* FromDateTime
 library TestSnippet version '1'
 using QUICK
 context Patient
 define dateStr: convert @2015-01-02 to String
 define dateDate: convert @2015-01-02 to DateTime
-###
+*/
 
 module.exports['FromDateTime'] = {
    "library" : {
@@ -1334,13 +1336,13 @@ module.exports['FromDateTime'] = {
    }
 }
 
-### FromTime
+/* FromTime
 library TestSnippet version '1'
 using QUICK
 context Patient
 define timeStr: convert @T11:57 to String
 define timeTime: convert @T11:57 to Time
-###
+*/
 
 module.exports['FromTime'] = {
    "library" : {
@@ -1459,7 +1461,7 @@ module.exports['FromTime'] = {
    }
 }
 
-### FromCode
+/* FromCode
 library TestSnippet version '1'
 using QUICK
 // define hepB: Code '66071002' from "SNOMED-CT" display 'Type B viral hepatitis'
@@ -1467,7 +1469,7 @@ using QUICK
 // define codeCode: convert hepB to Code
 context Patient
 define foo: 'bar'
-###
+*/
 
 module.exports['FromCode'] = {
    "library" : {

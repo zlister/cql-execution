@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### ValueSetDef
+/* eslint-disable */
+
+/* ValueSetDef
 library TestSnippet version '1'
 using QUICK
 valueset "Known": '2.16.840.1.113883.3.464.1003.101.12.1061'
@@ -14,7 +16,7 @@ valueset "Unknown One Arg": '1.2.3.4.5.6.7.8.9'
 valueset "Unknown Two Arg": '1.2.3.4.5.6.7.8.9' version '1'
 context Patient
 define Foo: 'Bar'
-###
+*/
 
 module.exports['ValueSetDef'] = {
    "library" : {
@@ -97,13 +99,13 @@ module.exports['ValueSetDef'] = {
    }
 }
 
-### ValueSetRef
+/* ValueSetRef
 library TestSnippet version '1'
 using QUICK
 valueset "Acute Pharyngitis": '2.16.840.1.113883.3.464.1003.101.12.1001'
 context Patient
 define Foo: "Acute Pharyngitis"
-###
+*/
 
 module.exports['ValueSetRef'] = {
    "library" : {
@@ -174,7 +176,7 @@ module.exports['ValueSetRef'] = {
    }
 }
 
-### InValueSet
+/* InValueSet
 library TestSnippet version '1'
 using QUICK
 valueset "Female": '2.16.840.1.113883.3.560.100.2'
@@ -191,7 +193,7 @@ define WrongShortCode: Code { code: 'M' } in "Female"
 define WrongMediumCode: Code { code: 'F', system: '3.16.840.1.113883.18.2' } in "Female"
 define LongCodeDifferentVersion: Code { code: 'F', system: '2.16.840.1.113883.18.2', version: 'HL7V2.6' } in "Female"
 define NullCode: Code { code: null, system: '2.16.840.1.113883.18.2', version: 'HL7V2.6' } in "Female"
-###
+*/
 
 module.exports['InValueSet'] = {
    "library" : {
@@ -999,13 +1001,13 @@ module.exports['InValueSet'] = {
    }
 }
 
-### Patient Property In ValueSet
+/* Patient Property In ValueSet
 library TestSnippet version '1'
 using QUICK
 valueset "Female": '2.16.840.1.113883.3.560.100.2'
 context Patient
 define IsFemale: Patient.gender in "Female"
-###
+*/
 
 module.exports['Patient Property In ValueSet'] = {
    "library" : {
@@ -1109,14 +1111,14 @@ module.exports['Patient Property In ValueSet'] = {
    }
 }
 
-### CodeDef
+/* CodeDef
 library TestSnippet version '1'
 using QUICK
 codesystem "LOINC": 'http://loinc.org'
 code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smoking status'
 context Patient
 define Foo: 'Bar'
-###
+*/
 
 module.exports['CodeDef'] = {
    "library" : {
@@ -1201,14 +1203,14 @@ module.exports['CodeDef'] = {
    }
 }
 
-### CodeRef
+/* CodeRef
 library TestSnippet version '1'
 using QUICK
 codesystem "LOINC": 'http://loinc.org'
 code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smoking status'
 context Patient
 define Foo: "Tobacco smoking status code"
-###
+*/
 
 module.exports['CodeRef'] = {
    "library" : {
@@ -1292,7 +1294,7 @@ module.exports['CodeRef'] = {
    }
 }
 
-### ConceptDef
+/* ConceptDef
 library TestSnippet version '1'
 using QUICK
 codesystem "LOINC": 'http://loinc.org'
@@ -1300,7 +1302,7 @@ code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smok
 concept "Tobacco smoking status": { "Tobacco smoking status code" } display 'Tobacco smoking status'
 context Patient
 define Foo: 'Bar'
-###
+*/
 
 module.exports['ConceptDef'] = {
    "library" : {
@@ -1397,7 +1399,7 @@ module.exports['ConceptDef'] = {
    }
 }
 
-### ConceptRef
+/* ConceptRef
 library TestSnippet version '1'
 using QUICK
 codesystem "LOINC": 'http://loinc.org'
@@ -1405,7 +1407,7 @@ code "Tobacco smoking status code": '72166-2' from "LOINC" display 'Tobacco smok
 concept "Tobacco smoking status": { "Tobacco smoking status code" } display 'Tobacco smoking status'
 context Patient
 define Foo: "Tobacco smoking status"
-###
+*/
 
 module.exports['ConceptRef'] = {
    "library" : {
@@ -1501,7 +1503,7 @@ module.exports['ConceptRef'] = {
    }
 }
 
-### CalculateAge
+/* CalculateAge
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1513,7 +1515,7 @@ define Days: AgeInDays()
 define Hours: AgeInHours()
 define Minutes: AgeInMinutes()
 define Seconds: AgeInSeconds()
-###
+*/
 
 module.exports['CalculateAge'] = {
    "library" : {
@@ -1744,14 +1746,14 @@ module.exports['CalculateAge'] = {
    }
 }
 
-### CalculateAgeAt
+/* CalculateAgeAt
 library TestSnippet version '1'
 using QUICK
 context Patient
 define AgeAt2012: AgeInYearsAt(DateTime(2012))
 define AgeAt19810216: AgeInYearsAt(DateTime(1981, 2, 16))
 define AgeAt1975: AgeInYearsAt(DateTime(1975))
-###
+*/
 
 module.exports['CalculateAgeAt'] = {
    "library" : {

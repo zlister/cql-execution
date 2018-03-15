@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Add
+/* eslint-disable */
+
+/* Add
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -15,7 +17,7 @@ define Eleven: 11
 define OnePlusTwo: 1 + 2
 define AddMultiple: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
 define AddVariables: Ten + Eleven
-###
+*/
 
 module.exports['Add'] = {
    "library" : {
@@ -318,7 +320,7 @@ module.exports['Add'] = {
    }
 }
 
-### Subtract
+/* Subtract
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -327,7 +329,7 @@ define Eleven: 11
 define FiveMinusTwo: 5 - 2
 define SubtractMultiple: 100 - 50 - 25 - 10
 define SubtractVariables: Eleven - Ten
-###
+*/
 
 module.exports['Subtract'] = {
    "library" : {
@@ -546,7 +548,7 @@ module.exports['Subtract'] = {
    }
 }
 
-### Multiply
+/* Multiply
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -555,7 +557,7 @@ define Eleven: 11
 define FiveTimesTwo: 5 * 2
 define MultiplyMultiple: 1 * 2 * 3 * 4 * 5
 define MultiplyVariables: Eleven * Ten
-###
+*/
 
 module.exports['Multiply'] = {
    "library" : {
@@ -788,7 +790,7 @@ module.exports['Multiply'] = {
    }
 }
 
-### Divide
+/* Divide
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -798,7 +800,7 @@ define TenDividedByTwo: 10 / 2
 define TenDividedByFour: 10 / 4
 define DivideMultiple: 1000 / 4 / 10 / 5
 define DivideVariables: Hundred / Four
-###
+*/
 
 module.exports['Divide'] = {
    "library" : {
@@ -1082,12 +1084,12 @@ module.exports['Divide'] = {
    }
 }
 
-### Negate
+/* Negate
 library TestSnippet version '1'
 using QUICK
 context Patient
 define NegativeOne: -1
-###
+*/
 
 module.exports['Negate'] = {
    "library" : {
@@ -1155,13 +1157,13 @@ module.exports['Negate'] = {
    }
 }
 
-### MathPrecedence
+/* MathPrecedence
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Mixed: 1 + 5 * 10 - 15 / 3
 define Parenthetical: (1 + 5) * (10 - 15) / 3
-###
+*/
 
 module.exports['MathPrecedence'] = {
    "library" : {
@@ -1386,12 +1388,12 @@ module.exports['MathPrecedence'] = {
    }
 }
 
-### Power
+/* Power
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Pow: 3 ^ 4
-###
+*/
 
 module.exports['Power'] = {
    "library" : {
@@ -1465,13 +1467,13 @@ module.exports['Power'] = {
    }
 }
 
-### TruncatedDivide
+/* TruncatedDivide
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Trunc: 10 div 3
 define Even: 9 div 3
-###
+*/
 
 module.exports['TruncatedDivide'] = {
    "library" : {
@@ -1580,12 +1582,12 @@ module.exports['TruncatedDivide'] = {
    }
 }
 
-### Modulo
+/* Modulo
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Mod: 3 mod 2
-###
+*/
 
 module.exports['Modulo'] = {
    "library" : {
@@ -1659,13 +1661,13 @@ module.exports['Modulo'] = {
    }
 }
 
-### Ceiling
+/* Ceiling
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Ceil: Ceiling(10.1)
 define Even: Ceiling(10)
-###
+*/
 
 module.exports['Ceiling'] = {
    "library" : {
@@ -1765,13 +1767,13 @@ module.exports['Ceiling'] = {
    }
 }
 
-### Floor
+/* Floor
 library TestSnippet version '1'
 using QUICK
 context Patient
 define flr: Floor(10.1)
 define Even: Floor(10)
-###
+*/
 
 module.exports['Floor'] = {
    "library" : {
@@ -1871,13 +1873,13 @@ module.exports['Floor'] = {
    }
 }
 
-### Truncate
+/* Truncate
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Trunc: Truncate(10.1)
 define Even: Truncate(10)
-###
+*/
 
 module.exports['Truncate'] = {
    "library" : {
@@ -1977,14 +1979,14 @@ module.exports['Truncate'] = {
    }
 }
 
-### Abs
+/* Abs
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Pos: Abs(10)
 define Neg: Abs(-10)
 define Zero: Abs(0)
-###
+*/
 
 module.exports['Abs'] = {
    "library" : {
@@ -2121,7 +2123,7 @@ module.exports['Abs'] = {
    }
 }
 
-### Round
+/* Round
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2129,7 +2131,7 @@ define Up: Round(4.56)
 define Up_percent: Round(4.56,1)
 define Down: Round(4.49)
 define Down_percent: Round(4.43,1)
-###
+*/
 
 module.exports['Round'] = {
    "library" : {
@@ -2296,12 +2298,12 @@ module.exports['Round'] = {
    }
 }
 
-### Ln
+/* Ln
 library TestSnippet version '1'
 using QUICK
 context Patient
 define ln: Ln(4)
-###
+*/
 
 module.exports['Ln'] = {
    "library" : {
@@ -2372,12 +2374,12 @@ module.exports['Ln'] = {
    }
 }
 
-### Log
+/* Log
 library TestSnippet version '1'
 using QUICK
 context Patient
 define log: Log(10,10000)
-###
+*/
 
 module.exports['Log'] = {
    "library" : {
@@ -2456,7 +2458,7 @@ module.exports['Log'] = {
    }
 }
 
-### Successor
+/* Successor
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2471,7 +2473,7 @@ define ymdhm_date: successor of DateTime(2015,01,01,0,0)
 define ymdhms_date: successor of DateTime(2015,01,01,0,0,0)
 define ymdhmsm_date: successor of  DateTime(2015,01,01,0,0,0,0)
 define max_date: successor of DateTime(9999,12,31,23,59,59,999)
-###
+*/
 
 module.exports['Successor'] = {
    "library" : {
@@ -3063,7 +3065,7 @@ module.exports['Successor'] = {
    }
 }
 
-### Predecessor
+/* Predecessor
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3078,7 +3080,7 @@ define ymdhm_date: predecessor of DateTime(2015,01,01,0,0)
 define ymdhms_date: predecessor of DateTime(2015,01,01,0,0,0)
 define ymdhmsm_date: predecessor of DateTime(2015,01,01,0,0,0,0)
 define min_date: predecessor of DateTime(0001,01,01,0,0,0,0)
-###
+*/
 
 module.exports['Predecessor'] = {
    "library" : {
@@ -3679,7 +3681,7 @@ module.exports['Predecessor'] = {
    }
 }
 
-### Quantity
+/* Quantity
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3706,7 +3708,7 @@ define MultiplyUcum: (5 'm' * 25 'km') = 125000 'm2'
 define DivideUcum: (20 'm2' / 5 'm') = 4 'm'
 define AddUcum: (5 'm' + 5 'km') = 5005 'm'
 define SubtractUcum: (25 'km' - 5 'm') = 24995 'm'
-###
+*/
 
 module.exports['Quantity'] = {
    "library" : {

@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### DateTime
+/* eslint-disable */
+
+/* DateTime
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -18,7 +20,7 @@ define Minute: DateTime(2012, 2, 15, 12, 10)
 define Second: DateTime(2012, 2, 15, 12, 10, 59)
 define Millisecond: DateTime(2012, 2, 15, 12, 10, 59, 456)
 define TimezoneOffset: DateTime(2012, 2, 15, 12, 10, 59, 456, -8.0)
-###
+*/
 
 module.exports['DateTime'] = {
    "library" : {
@@ -468,7 +470,7 @@ module.exports['DateTime'] = {
    }
 }
 
-### Time
+/* Time
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -477,7 +479,7 @@ define Minute: Time(12, 10)
 define Second: Time(12, 10, 59)
 define Millisecond: Time(12, 10, 59, 456)
 define TimezoneOffset: Time(12, 10, 59, 456, -8.0)
-###
+*/
 
 module.exports['Time'] = {
    "library" : {
@@ -732,12 +734,12 @@ module.exports['Time'] = {
    }
 }
 
-### Today
+/* Today
 library TestSnippet version '1'
 using QUICK
 context Patient
 define TodayVar: Today()
-###
+*/
 
 module.exports['Today'] = {
    "library" : {
@@ -799,12 +801,12 @@ module.exports['Today'] = {
    }
 }
 
-### Now
+/* Now
 library TestSnippet version '1'
 using QUICK
 context Patient
 define NowVar: Now()
-###
+*/
 
 module.exports['Now'] = {
    "library" : {
@@ -866,12 +868,12 @@ module.exports['Now'] = {
    }
 }
 
-### TimeOfDay
+/* TimeOfDay
 library TestSnippet version '1'
 using QUICK
 context Patient
 define TimeOfDayVar: TimeOfDay()
-###
+*/
 
 module.exports['TimeOfDay'] = {
    "library" : {
@@ -933,7 +935,7 @@ module.exports['TimeOfDay'] = {
    }
 }
 
-### DateTimeComponentFrom
+/* DateTimeComponentFrom
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -956,7 +958,7 @@ define ImpreciseComponentTuple: Tuple {
   Millisecond: millisecond from ImpreciseIdesOfMarch
 }
 define NullDate: year from (null as DateTime)
-###
+*/
 
 module.exports['DateTimeComponentFrom'] = {
    "library" : {
@@ -1628,14 +1630,14 @@ module.exports['DateTimeComponentFrom'] = {
    }
 }
 
-### DateFrom
+/* DateFrom
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Date: date from DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define ImpreciseDate: date from DateTime(2000)
 define NullDate: date from (null as DateTime)
-###
+*/
 
 module.exports['DateFrom'] = {
    "library" : {
@@ -1854,14 +1856,14 @@ module.exports['DateFrom'] = {
    }
 }
 
-### TimeFrom
+/* TimeFrom
 library TestSnippet version '1'
 using QUICK
 context Patient
 define Time: time from DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NoTime: time from DateTime(2000, 3, 15)
 define NullDate: time from null
-###
+*/
 
 module.exports['TimeFrom'] = {
    "library" : {
@@ -2068,7 +2070,7 @@ module.exports['TimeFrom'] = {
    }
 }
 
-### TimezoneFrom
+/* TimezoneFrom
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2076,7 +2078,7 @@ define CentralEuropean: timezone from DateTime(2000, 3, 15, 13, 30, 25, 200, +1.
 define EasternStandard: timezone from DateTime(2000, 3, 15, 13, 30, 25, 200, -5.0)
 define DefaultTimezone: timezone from DateTime(2000, 3, 15, 13, 30, 25, 200)
 define NullDate: timezone from (null as DateTime)
-###
+*/
 
 module.exports['TimezoneFrom'] = {
    "library" : {
@@ -2422,7 +2424,7 @@ module.exports['TimezoneFrom'] = {
    }
 }
 
-### SameAs
+/* SameAs
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2455,7 +2457,7 @@ define ImpreciseHourWrongDay: DateTime(2000, 3, 15, 13, 30, 25, 200) same hour a
 define NullLeft: null same as DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NullRight: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) same as (null as DateTime)
 define NullBoth: (null as DateTime) same as null
-###
+*/
 
 module.exports['SameAs'] = {
    "library" : {
@@ -6600,7 +6602,7 @@ module.exports['SameAs'] = {
    }
 }
 
-### SameOrAfter
+/* SameOrAfter
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -6640,7 +6642,7 @@ define HourBeforeNormalizeZones: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) sa
 define NullLeft: null same or after DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NullRight: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) same or after null
 define NullBoth: (null as DateTime) same or after null
-###
+*/
 
 module.exports['SameOrAfter'] = {
    "library" : {
@@ -11754,7 +11756,7 @@ module.exports['SameOrAfter'] = {
    }
 }
 
-### SameOrBefore
+/* SameOrBefore
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -11794,7 +11796,7 @@ define HourBeforeNormalizeZones: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) sa
 define NullLeft: null same or before DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NullRight: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) same or before null
 define NullBoth: (null as DateTime) same or before null
-###
+*/
 
 module.exports['SameOrBefore'] = {
    "library" : {
@@ -16908,7 +16910,7 @@ module.exports['SameOrBefore'] = {
    }
 }
 
-### After
+/* After
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -16945,7 +16947,7 @@ define HourBeforeNormalizeZones: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) af
 define NullLeft: null after DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NullRight: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) after null
 define NullBoth: (null as DateTime) after null
-###
+*/
 
 module.exports['After'] = {
    "library" : {
@@ -21606,7 +21608,7 @@ module.exports['After'] = {
    }
 }
 
-### Before
+/* Before
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -21643,7 +21645,7 @@ define HourBeforeNormalizeZones: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) be
 define NullLeft: null before DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0)
 define NullRight: DateTime(2000, 3, 15, 13, 30, 25, 200, +1.0) before null
 define NullBoth: (null as DateTime) before null
-###
+*/
 
 module.exports['Before'] = {
    "library" : {
@@ -26304,7 +26306,7 @@ module.exports['Before'] = {
    }
 }
 
-### DifferenceBetween
+/* DifferenceBetween
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -26331,7 +26333,7 @@ define MillisecondsBetweenUncertainty: difference in milliseconds between NewYea
 define MillisecondsBetweenReversedUncertainty: difference in milliseconds between January2014 and NewYear2014
 define HoursBetween1and3CrossingSpringDST: difference in hours between DateTime(2017, 3, 12, 1, 0, 0, 0, -5.0) and DateTime(2017, 3, 12, 3, 0, 0, 0, -4.0)
 define HoursBetween1and3CrossingFallDST: difference in hours between DateTime(2017, 11, 5, 1, 0, 0, 0, -4.0) and DateTime(2017, 11, 5, 3, 0, 0, 0, -5.0)
-###
+*/
 
 module.exports['DifferenceBetween'] = {
    "library" : {
@@ -27667,7 +27669,7 @@ module.exports['DifferenceBetween'] = {
    }
 }
 
-### DifferenceBetween Comparisons
+/* DifferenceBetween Comparisons
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -27693,7 +27695,7 @@ define FortyDaysEqualToDaysBetween: 40 = difference in days between NewYear2014 
 define TwentyFiveDaysGreaterThanDaysBetween: 25 > difference in days between NewYear2014 and February2014
 define BonnieTestCase: difference in months between DateTime(2012, 9, 13, 14, 50, 0, 0, -4.0) and DateTime(2012, 12, 31, 23, 59, 59, 999, -5.0) <= 2
 define BonnieTestCaseZulu: difference in months between DateTime(2012, 9, 13, 14, 50, 0, 0, 0.0) and DateTime(2012, 12, 31, 23, 59, 59, 999, 0.0) <= 2
-###
+*/
 
 module.exports['DifferenceBetween Comparisons'] = {
    "library" : {
@@ -29225,7 +29227,7 @@ module.exports['DifferenceBetween Comparisons'] = {
    }
 }
 
-### DurationBetween
+/* DurationBetween
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -29252,7 +29254,7 @@ define MillisecondsBetweenUncertainty: milliseconds between JanOne2015 and Janua
 define MillisecondsBetweenReversedUncertainty: milliseconds between January2015 and JanOne2015
 define HoursBetween1and3CrossingSpringDST: hours between DateTime(2017, 3, 12, 1, 0, 0, 0, -5.0) and DateTime(2017, 3, 12, 3, 0, 0, 0, -4.0)
 define HoursBetween1and3CrossingFallDST: hours between DateTime(2017, 11, 5, 1, 0, 0, 0, -4.0) and DateTime(2017, 11, 5, 3, 0, 0, 0, -5.0)
-###
+*/
 
 module.exports['DurationBetween'] = {
    "library" : {
@@ -30588,7 +30590,7 @@ module.exports['DurationBetween'] = {
    }
 }
 
-### DateMath
+/* DateMath
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -30609,7 +30611,7 @@ define PlusThreeSeconds: June15th2013 + 3 seconds
 define MinusThreeSeconds: June15th2013 - 3 seconds
 define PlusThreeMilliseconds: June15th2013 + 3 milliseconds
 define MinusThreeMilliseconds: June15th2013 - 3 milliseconds
-###
+*/
 
 module.exports['DateMath'] = {
    "library" : {

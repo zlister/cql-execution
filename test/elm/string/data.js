@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Concat
+/* eslint-disable */
+
+/* Concat
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -17,7 +19,7 @@ define ConcatNull: 'Hello' + null
 define Hello: 'Hello'
 define World: 'World'
 define HelloWorldVariables: Hello + World
-###
+*/
 
 module.exports['Concat'] = {
    "library" : {
@@ -562,7 +564,7 @@ module.exports['Concat'] = {
    }
 }
 
-### Combine
+/* Combine
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -570,7 +572,7 @@ define NoSeparator: Combine({ 'abc', 'def', 'ghi', 'jkl' })
 define Separator: Combine({ 'abc', 'def', 'ghi', 'jkl' }, ';')
 define CombineNull: Combine(null, ';')
 define CombineNullItem: Combine({ 'abc', 'def', null, 'jkl' }, ';')
-###
+*/
 
 module.exports['Combine'] = {
    "library" : {
@@ -929,7 +931,7 @@ module.exports['Combine'] = {
    }
 }
 
-### Split
+/* Split
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -937,7 +939,7 @@ define CommaSeparated: Split('a,b,c,,1,2,3', ',')
 define SeparatorNotUsed: Split('a,b,c,,1,2,3', ';')
 define SeparateNull: Split(null, ',')
 define SeparateUsingNull: Split('a,b,c', null)
-###
+*/
 
 module.exports['Split'] = {
    "library" : {
@@ -1162,13 +1164,13 @@ module.exports['Split'] = {
    }
 }
 
-### Length
+/* Length
 library TestSnippet version '1'
 using QUICK
 context Patient
 define ElevenLetters: Length('Hello World')
 define NullString: Length(null as String)
-###
+*/
 
 module.exports['Length'] = {
    "library" : {
@@ -1293,7 +1295,7 @@ module.exports['Length'] = {
    }
 }
 
-### Upper
+/* Upper
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1301,7 +1303,7 @@ define LowerC: Upper('abcdefg123')
 define UpperC: Upper('ABCDEFG123')
 define CamelC: Upper('aBcDeFg123')
 define NullString: Upper(null)
-###
+*/
 
 module.exports['Upper'] = {
    "library" : {
@@ -1479,7 +1481,7 @@ module.exports['Upper'] = {
    }
 }
 
-### Lower
+/* Lower
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1487,7 +1489,7 @@ define LowerC: Lower('abcdefg123')
 define UpperC: Lower('ABCDEFG123')
 define CamelC: Lower('aBcDeFg123')
 define NullString: Lower(null)
-###
+*/
 
 module.exports['Lower'] = {
    "library" : {
@@ -1665,7 +1667,7 @@ module.exports['Lower'] = {
    }
 }
 
-### Indexer
+/* Indexer
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1674,7 +1676,7 @@ define HelloWorldZero: 'HelloWorld'[0]
 define HelloWorldTwenty: 'HelloWorld'[20]
 define NullString: (null as String)[4]
 define NullIndex: 'HelloWorld'[null]
-###
+*/
 
 module.exports['Indexer'] = {
    "library" : {
@@ -1931,7 +1933,7 @@ module.exports['Indexer'] = {
    }
 }
 
-### PositionOf
+/* PositionOf
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1939,7 +1941,7 @@ define found: PositionOf('cde', 'abcdefg')
 define notFound: PositionOf('fgh', 'abcdefg')
 define nullPattern: PositionOf(null, 'abcdefg')
 define nullString: PositionOf('cde', null)
-###
+*/
 
 module.exports['PositionOf'] = {
    "library" : {
@@ -2164,7 +2166,7 @@ module.exports['PositionOf'] = {
    }
 }
 
-### Substring
+/* Substring
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2177,7 +2179,7 @@ define TooMuchLength: Substring('HelloWorld', 7, 25)
 define NegativeLength: Substring('HelloWorld', 7, -1)
 define NullString: Substring(null, 5)
 define NullStart: Substring('HelloWorld', null)
-###
+*/
 
 module.exports['Substring'] = {
    "library" : {

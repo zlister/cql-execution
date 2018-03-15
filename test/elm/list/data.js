@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### List
+/* eslint-disable */
+
+/* List
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -15,7 +17,7 @@ define IntList: { 9, 7, 8 }
 define StringList: { 'a', 'bee', 'see' }
 define MixedList: List<Any>{ 1, 'two', Three }
 define EmptyList: List<Integer>{}
-###
+*/
 
 module.exports['List'] = {
    "library" : {
@@ -277,13 +279,13 @@ module.exports['List'] = {
    }
 }
 
-### Exists
+/* Exists
 library TestSnippet version '1'
 using QUICK
 context Patient
 define EmptyList: exists (List<Integer>{})
 define FullList: exists ({ 1, 2, 3 })
-###
+*/
 
 module.exports['Exists'] = {
    "library" : {
@@ -423,7 +425,7 @@ module.exports['Exists'] = {
    }
 }
 
-### Equal
+/* Equal
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -434,7 +436,7 @@ define EqualStringList: {'hello', 'world'} = {'hello', 'world'}
 define UnequalStringList: {'hello', 'world'} = {'foo', 'bar'}
 define EqualTupleList: List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} } = List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} }
 define UnequalTupleList: List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} } = List<Any>{ Tuple{a: 1, b: Tuple{c: -1}}, Tuple{x: 'y', z: 2} }
-###
+*/
 
 module.exports['Equal'] = {
    "library" : {
@@ -1389,7 +1391,7 @@ module.exports['Equal'] = {
    }
 }
 
-### NotEqual
+/* NotEqual
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1400,7 +1402,7 @@ define EqualStringList: {'hello', 'world'} != {'hello', 'world'}
 define UnequalStringList: {'hello', 'world'} != {'foo', 'bar'}
 define EqualTupleList: List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} } != List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} }
 define UnequalTupleList: List<Any>{ Tuple{a: 1, b: Tuple{c: 1}}, Tuple{x: 'y', z: 2} } != List<Any>{ Tuple{a: 1, b: Tuple{c: -1}}, Tuple{x: 'y', z: 2} }
-###
+*/
 
 module.exports['NotEqual'] = {
    "library" : {
@@ -2376,7 +2378,7 @@ module.exports['NotEqual'] = {
    }
 }
 
-### Union
+/* Union
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2386,7 +2388,7 @@ define Disjoint: {1, 2} union {4, 5}
 define NestedToFifteen: {1, 2, 3} union {4, 5, 6} union {7 ,8 , 9} union {10, 11, 12} union {13, 14, 15}
 define NullUnion: null union {1, 2, 3}
 define UnionNull: {1, 2, 3} union null
-###
+*/
 
 module.exports['Union'] = {
    "library" : {
@@ -2950,7 +2952,7 @@ module.exports['Union'] = {
    }
 }
 
-### Except
+/* Except
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2964,7 +2966,7 @@ define NothingExceptSomething: List<Integer>{} except {1, 2, 3, 4, 5}
 define ExceptTuples: {Tuple{a: 1}, Tuple{a: 2}, Tuple{a: 3}} except {Tuple{a: 2}}
 define ExceptNull: {1, 2, 3, 4, 5} except null
 define NullExcept: null except {1, 2, 3, 4, 5}
-###
+*/
 
 module.exports['Except'] = {
    "library" : {
@@ -3849,7 +3851,7 @@ module.exports['Except'] = {
    }
 }
 
-### Intersect
+/* Intersect
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3861,7 +3863,7 @@ define NestedIntersects: {1, 2, 3, 4, 5} intersect {2, 3, 4, 5, 6} intersect {3,
 define IntersectTuples: {Tuple{a:1, b:'d'}, Tuple{a:1, b:'c'}, Tuple{a:2, b:'c'}} intersect {Tuple{a:2, b:'d'}, Tuple{a:1, b:'c'}, Tuple{a:2, b:'c'}, Tuple{a:5, b:'e'}}
 define NullIntersect: null intersect {1, 2, 3}
 define IntersectNull: {1, 2, 3} intersect null
-###
+*/
 
 module.exports['Intersect'] = {
    "library" : {
@@ -4919,7 +4921,7 @@ module.exports['Intersect'] = {
    }
 }
 
-### IndexOf
+/* IndexOf
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -4929,7 +4931,7 @@ define MultipleMatches: IndexOf({'a', 'b', 'c', 'd', 'd', 'e', 'd'}, 'd')
 define ItemNotFound: IndexOf({'a', 'b', 'c'}, 'd')
 define NullList: IndexOf(null, 'a')
 define NullItem: IndexOf({'a', 'b', 'c'}, null)
-###
+*/
 
 module.exports['IndexOf'] = {
    "library" : {
@@ -5545,7 +5547,7 @@ module.exports['IndexOf'] = {
    }
 }
 
-### Indexer
+/* Indexer
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5554,7 +5556,7 @@ define ZeroIndex: {'a', 'b', 'c', 'd'}[0]
 define OutOfBounds: {'a', 'b', 'c', 'd'}[100]
 define NullList: (null as List<String>)[1]
 define NullIndexer: {'a', 'b', 'c', 'd'}[null]
-###
+*/
 
 module.exports['Indexer'] = {
    "library" : {
@@ -6010,7 +6012,7 @@ module.exports['Indexer'] = {
    }
 }
 
-### In
+/* In
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -6020,7 +6022,7 @@ define TupleIsIn: Tuple{a: 1, b: 'c'} in {Tuple{a:1, b:'d'}, Tuple{a:1, b:'c'}, 
 define TupleIsNotIn: Tuple{a: 1, b: 'c'} in {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}}
 define NullIn: null in {1, 2, 3}
 define InNull: 1 in null
-###
+*/
 
 module.exports['In'] = {
    "library" : {
@@ -6680,7 +6682,7 @@ module.exports['In'] = {
    }
 }
 
-### Contains
+/* Contains
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -6690,7 +6692,7 @@ define TupleIsIn: {Tuple{a:1, b:'d'}, Tuple{a:1, b:'c'}, Tuple{a:2, b:'c'}} cont
 define TupleIsNotIn: {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}} contains Tuple{a: 1, b: 'c'}
 define InNull: (null as List<Integer>) contains 1
 define NullIn: {1, 2, 3} contains null
-###
+*/
 
 module.exports['Contains'] = {
    "library" : {
@@ -7375,7 +7377,7 @@ module.exports['Contains'] = {
    }
 }
 
-### Includes
+/* Includes
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -7387,7 +7389,7 @@ define TuplesIncluded: {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}}
 define TuplesNotIncluded: {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}} includes {Tuple{a:2, b:'d'}, Tuple{a:3, b:'c'}}
 define NullIncluded: {1, 2, 3, 4, 5} includes null
 define NullIncludes: null includes {1, 2, 3, 4, 5}
-###
+*/
 
 module.exports['Includes'] = {
    "library" : {
@@ -8425,7 +8427,7 @@ module.exports['Includes'] = {
    }
 }
 
-### IncludedIn
+/* IncludedIn
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -8437,7 +8439,7 @@ define TuplesIncluded: {Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}} included in {Tuple
 define TuplesNotIncluded: {Tuple{a:2, b:'d'}, Tuple{a:3, b:'c'}} included in {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}}
 define NullIncludes: {1, 2, 3, 4, 5} included in null
 define NullIncluded: null included in {1, 2, 3, 4, 5}
-###
+*/
 
 module.exports['IncludedIn'] = {
    "library" : {
@@ -9471,7 +9473,7 @@ module.exports['IncludedIn'] = {
    }
 }
 
-### ProperIncludes
+/* ProperIncludes
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -9483,7 +9485,7 @@ define TuplesIncluded: {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}}
 define TuplesNotIncluded: {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}} properly includes {Tuple{a:2, b:'d'}, Tuple{a:3, b:'c'}}
 define NullIncluded: {1, 2, 3, 4, 5} properly includes null
 define NullIncludes: null properly includes {1, 2, 3, 4, 5}
-###
+*/
 
 module.exports['ProperIncludes'] = {
    "library" : {
@@ -10536,7 +10538,7 @@ module.exports['ProperIncludes'] = {
    }
 }
 
-### ProperIncludedIn
+/* ProperIncludedIn
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -10548,7 +10550,7 @@ define TuplesIncluded: {Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}} properly included 
 define TuplesNotIncluded: {Tuple{a:2, b:'d'}, Tuple{a:3, b:'c'}} properly included in {Tuple{a:1, b:'d'}, Tuple{a:2, b:'d'}, Tuple{a:2, b:'c'}}
 define NullIncludes: {1, 2, 3, 4, 5} properly included in null
 define NullIncluded: (null as List<Integer>) properly included in {1, 2, 3, 4, 5}
-###
+*/
 
 module.exports['ProperIncludedIn'] = {
    "library" : {
@@ -11620,13 +11622,13 @@ module.exports['ProperIncludedIn'] = {
    }
 }
 
-### Flatten
+/* Flatten
 library TestSnippet version '1'
 using QUICK
 context Patient
 define ListOfLists: flatten { {1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {9, 8, 7, 6, 5}, {4}, {3, 2, 1} }
 define NullValue: flatten null
-###
+*/
 
 module.exports['Flatten'] = {
    "library" : {
@@ -11894,7 +11896,7 @@ module.exports['Flatten'] = {
    }
 }
 
-### Distinct
+/* Distinct
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -11902,7 +11904,7 @@ define LotsOfDups: distinct {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 4, 3, 
 define NoDups: distinct {2, 4, 6, 8, 10}
 define DupsTuples: distinct { Tuple{ hello: 'world' }, Tuple{ hello: 'cleveland' }, Tuple{ hello: 'world' }, Tuple{ hello: 'dolly' } }
 define NoDupsTuples: distinct { Tuple{ hello: 'world' }, Tuple{ hello: 'cleveland' } }
-###
+*/
 
 module.exports['Distinct'] = {
    "library" : {
@@ -12373,7 +12375,7 @@ module.exports['Distinct'] = {
    }
 }
 
-### First
+/* First
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -12384,7 +12386,7 @@ define Tuples: First({ Tuple{a: 1, b: 2, c: 3}, Tuple{a: 24, b: 25, c: 26} })
 define Unordered: First({3, 1, 4, 2})
 define Empty: First(List<Integer>{})
 define NullValue: First(null as List<Integer>)
-###
+*/
 
 module.exports['First'] = {
    "library" : {
@@ -12976,7 +12978,7 @@ module.exports['First'] = {
    }
 }
 
-### Last
+/* Last
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -12987,7 +12989,7 @@ define Tuples: Last({ Tuple{a: 1, b: 2, c: 3}, Tuple{a: 24, b: 25, c: 26} })
 define Unordered: Last({3, 1, 4, 2})
 define Empty: Last(List<Integer>{})
 define NullValue: Last(null as List<Integer>)
-###
+*/
 
 module.exports['Last'] = {
    "library" : {
@@ -13579,7 +13581,7 @@ module.exports['Last'] = {
    }
 }
 
-### Length
+/* Length
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -13588,7 +13590,7 @@ define Lists: Length({ {1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}})
 define Tuples: Length({ Tuple{a: 1, b: 2, c: 3}, Tuple{a: 24, b: 25, c: 26} })
 define Empty: Length(List<Integer>{})
 define NullValue: Length(null as List<Integer>)
-###
+*/
 
 module.exports['Length'] = {
    "library" : {
@@ -14069,14 +14071,14 @@ module.exports['Length'] = {
    }
 }
 
-### ToList
+/* ToList
 library TestSnippet version '1'
 using QUICK
 context Patient
 define FiveInFive: 5 in 5 // CQL-to-ELM will promote the second 5 to a list via ToList
 define FourInFive: 4 in 5 // CQL-to-ELM will promote the 5 to a list via ToList
 define LengthOfNull: Length(null as Integer) // CQL-to-ELM will promote the null to a list via ToList
-###
+*/
 
 module.exports['ToList'] = {
    "library" : {

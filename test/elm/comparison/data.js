@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Equal
+/* eslint-disable */
+
+/* Equal
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -30,7 +32,7 @@ define ALtB_Quantity_diff: 5 'm' = 5 'km'
 define AGtB_Quantity_incompatible: 5 'Cel' = 4 'm'
 define AEqB_Quantity_incompatible: 5 'Cel' = 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' = 40 'm'
-###
+*/
 
 module.exports['Equal'] = {
    "library" : {
@@ -1581,7 +1583,7 @@ module.exports['Equal'] = {
    }
 }
 
-### NotEqual
+/* NotEqual
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1605,7 +1607,7 @@ define ALtB_Quantity_diff: 5 'm' != 5 'km'
 define AGtB_Quantity_incompatible: 5 'Cel' != 4 'm'
 define AEqB_Quantity_incompatible: 5 'Cel' != 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' != 40 'm'
-###
+*/
 
 module.exports['NotEqual'] = {
    "library" : {
@@ -3216,7 +3218,7 @@ module.exports['NotEqual'] = {
    }
 }
 
-### Equivalent
+/* Equivalent
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3224,7 +3226,7 @@ define ANull_BDefined: null ~ 4
 define ADefined_BNull: 5 ~ null
 define ANull_BNull: null ~ null
 define ADefined_BDefined: 3 ~ 3
-###
+*/
 
 module.exports['Equivalent'] = {
    "library" : {
@@ -3395,7 +3397,7 @@ module.exports['Equivalent'] = {
    }
 }
 
-### Less
+/* Less
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3411,7 +3413,7 @@ define ALtB_Quantity_diff: 5 'm' < 5 'km'
 define AGtB_Quantity_incompatible: 5 'Cel' < 4 'm'
 define AEqB_Quantity_incompatible: 5 'Cel' < 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' < 40 'm'
-###
+*/
 
 module.exports['Less'] = {
    "library" : {
@@ -3951,7 +3953,7 @@ module.exports['Less'] = {
    }
 }
 
-### LessOrEqual
+/* LessOrEqual
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -3967,7 +3969,7 @@ define ALtB_Quantity_diff: 5 'm' <= 5 'km'
 define AGtB_Quantity_incompatible: 5 'Cel' <= 4 'm'
 define AEqB_Quantity_incompatible: 5 'Cel' <= 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' <= 40 'm'
-###
+*/
 
 module.exports['LessOrEqual'] = {
    "library" : {
@@ -4507,7 +4509,7 @@ module.exports['LessOrEqual'] = {
    }
 }
 
-### Greater
+/* Greater
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -4523,7 +4525,7 @@ define ALtB_Quantity_diff: 5 'm' > 5 'km'
 define AGtB_Quantity_incompatible: 5 'Cel' > 4 'm'
 define AEqB_Quantity_incompatible: 5 'Cel' > 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' > 40 'm'
-###
+*/
 
 module.exports['Greater'] = {
    "library" : {
@@ -5063,7 +5065,7 @@ module.exports['Greater'] = {
    }
 }
 
-### GreaterOrEqual
+/* GreaterOrEqual
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5081,7 +5083,7 @@ define AEqB_Quantity_incompatible: 5 'Cel' >= 5 'm'
 define ALtB_Quantity_incompatible: 5 'Cel' >= 40 'm'
 define DivideUcum_incompatible: (100 '[nmi_i]' / 2 'h') > 49 'mg/[lb_av]'
 define DivideUcum: (100 'mg' / 2 '[lb_av]') > 49 'mg/[lb_av]'
-###
+*/
 
 module.exports['GreaterOrEqual'] = {
    "library" : {

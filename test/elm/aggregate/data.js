@@ -1,19 +1,21 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Count
+/* eslint-disable */
+
+/* Count
 library TestSnippet version '1'
 using QUICK
 context Patient
 define not_null: Count({1,2,3,4,5})
 define has_null: Count({1,null,null,null,2})
 define empty: Count({})
-###
+*/
 
 module.exports['Count'] = {
    "library" : {
@@ -205,7 +207,7 @@ module.exports['Count'] = {
    }
 }
 
-### Sum
+/* Sum
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -216,7 +218,7 @@ define has_null_q: Sum({1 'ml',null,null,null,2 'ml'})
 define unmatched_units_q: Min({1 'ml',2 'L',3 'ml',4 'ml',5 'ml',0 'ml'})
 define empty: Sum(List<Integer>{})
 define q_diff_units: Sum({1 'ml',0.002 'l',0.03 'dl',4 'ml',0.005 'l'})
-###
+*/
 
 module.exports['Sum'] = {
    "library" : {
@@ -799,7 +801,7 @@ module.exports['Sum'] = {
    }
 }
 
-### Min
+/* Min
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -811,7 +813,7 @@ define has_null_q: Min({1 'ml',null,-1 'ml',null,2 'ml'})
 define q_diff_units: Min({1 'ml',2 'dl',3 'l',4 'l',5 'l',0 'ml'})
 define q_throw1: Min({1 'ml',2 'm',3 'ml',4 'ml',5 'ml',0 'ml'})
 define q_throw2: Min({1 ,2 'ml',3 'ml',4 'ml',5 'ml',0 'ml'})
-###
+*/
 
 module.exports['Min'] = {
    "library" : {
@@ -1546,7 +1548,7 @@ module.exports['Min'] = {
    }
 }
 
-### Max
+/* Max
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -1559,7 +1561,7 @@ define q_throw1: Max({10 'ml',1 'm',2 'ml',3 'ml',4 'ml',5 'ml'})
 define q_throw2: Max({10 ,1 'ml',2 'ml',3 'ml',4 'ml',5 'ml'})
 
 define empty: Max(List<Integer>{})
-###
+*/
 
 module.exports['Max'] = {
    "library" : {
@@ -2257,7 +2259,7 @@ module.exports['Max'] = {
    }
 }
 
-### Avg
+/* Avg
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2268,7 +2270,7 @@ define has_null_q: Avg({1 'ml',null,null,2 'ml'})
 define empty: Avg(List<Integer>{})
 define q_diff_units: Avg({1 'ml',0.002 'l',0.03 'dl',4 'ml',5 'ml'})
 define q_throw1: Avg({1 'ml',0.002 'm',0.03 'dl',4 'ml',5 'ml'})
-###
+*/
 
 module.exports['Avg'] = {
    "library" : {
@@ -2873,7 +2875,7 @@ module.exports['Avg'] = {
    }
 }
 
-### Median
+/* Median
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -2892,7 +2894,7 @@ define dup_vals_odd:  Median({3,1,2,2,2,3,4,5,6})
 define has_null_q: Median({1 'ml',null,null,2 'ml'})
 define dup_vals_even_q: Median({3 'ml',1 'ml',2 'ml',2 'ml',2 'ml',3 'ml',4 'ml',5 'ml'})
 define dup_vals_odd_q:  Median({3 'ml',1 'ml',2 'ml',2 'ml',2 'ml',3 'ml',4 'ml',5 'ml',6 'ml'})
-###
+*/
 
 module.exports['Median'] = {
    "library" : {
@@ -4249,7 +4251,7 @@ module.exports['Median'] = {
    }
 }
 
-### Mode
+/* Mode
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -4258,7 +4260,7 @@ define has_null: Mode({1,null,null,2,2})
 define empty: Mode({})
 
 define bi_modal: Mode({1,2,2,2,3,3,3,4,5})
-###
+*/
 
 module.exports['Mode'] = {
    "library" : {
@@ -4538,7 +4540,7 @@ module.exports['Mode'] = {
    }
 }
 
-### Variance
+/* Variance
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -4547,7 +4549,7 @@ define v_q: Variance({1 'ml',2 'ml',3 'ml',4 'ml',5 'ml'})
 define q_diff_units: Variance({1.0 'ml',0.002 'l',0.003 'l',0.04 'dl',5.0 'ml'})
 define q_throw1: Variance({1.0 'm',2.0 'l',3.0 'h',4.0 'ml',5.0 'ml'})
 define q_throw2: Variance({1.0 ,2.0 ,3.0 ,4.0 'ml',5.0 'ml'})
-###
+*/
 
 module.exports['Variance'] = {
    "library" : {
@@ -5021,7 +5023,7 @@ module.exports['Variance'] = {
    }
 }
 
-### PopulationVariance
+/* PopulationVariance
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5030,7 +5032,7 @@ define v_q: PopulationVariance({1.0 'ml',2.0 'ml',3.0 'ml',4.0 'ml',5.0 'ml'})
 define q_diff_units: PopulationVariance({1.0 'ml',0.002 'l',0.003 'l',0.04 'dl',5.0 'ml'})
 define q_throw1: PopulationVariance({1.0 'm',2.0 'l',3.0 'h',4.0 'ml',5.0 'ml'})
 define q_throw2: PopulationVariance({1.0 ,2.0 ,3.0 ,4.0 'ml',5.0 'ml'})
-###
+*/
 
 module.exports['PopulationVariance'] = {
    "library" : {
@@ -5488,7 +5490,7 @@ module.exports['PopulationVariance'] = {
    }
 }
 
-### StdDev
+/* StdDev
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5497,7 +5499,7 @@ define std_q: StdDev({1 'ml',2 'ml',3 'ml',4 'ml',5 'ml'})
 define q_diff_units: StdDev({1 'ml', 0.002 'l',3 'ml',4 'ml', 0.05 'dl'})
 define sq_throw1: StdDev({1 'ml',2 'ml',3 'ml',4 'ml',5 'm'})
 define q_throw2: StdDev({1 ,2 ,3 ,4 'ml',5 })
-###
+*/
 
 module.exports['StdDev'] = {
    "library" : {
@@ -5980,7 +5982,7 @@ module.exports['StdDev'] = {
    }
 }
 
-### PopulationStdDev
+/* PopulationStdDev
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -5989,7 +5991,7 @@ define dev_q: PopulationStdDev({1 'ml',2 'ml',3 'ml',4 'ml',5 'ml'})
 define q_diff_units: PopulationStdDev({1 'ml', 0.002 'l',3 'ml',4 'ml', 0.05 'dl'})
 define q_throw1: PopulationStdDev({1 'ml',2 'ml',3 'ml',4 'ml',5 'm'})
 define q_throw2: PopulationStdDev({1 ,2 ,3 ,4 'ml',5 })
-###
+*/
 
 module.exports['PopulationStdDev'] = {
    "library" : {
@@ -6472,7 +6474,7 @@ module.exports['PopulationStdDev'] = {
    }
 }
 
-### AllTrue
+/* AllTrue
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -6481,7 +6483,7 @@ define atwn: AllTrue({true,true,null,null,true,true})
 
 define atf: AllTrue({true,true,true,false})
 define atfwn: AllTrue({true,true,null,null,true,false})
-###
+*/
 
 module.exports['AllTrue'] = {
    "library" : {
@@ -6768,7 +6770,7 @@ module.exports['AllTrue'] = {
    }
 }
 
-### AnyTrue
+/* AnyTrue
 library TestSnippet version '1'
 using QUICK
 context Patient
@@ -6777,7 +6779,7 @@ define atwn: AnyTrue({true,false,null,null,false,true})
 
 define atf: AnyTrue({false,false,false,false})
 define atfwn: AnyTrue({false,false,null,null,false,false})
-###
+*/
 
 module.exports['AnyTrue'] = {
    "library" : {

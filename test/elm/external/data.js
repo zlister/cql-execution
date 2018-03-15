@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### Retrieve
+/* eslint-disable */
+
+/* Retrieve
 library TestSnippet version '1'
 using QUICK
 codesystem "SNOMED": '2.16.840.1.113883.6.96'
@@ -25,7 +27,7 @@ define WrongValueSet: [Condition: "Ambulatory/ED Visit"]
 define WrongCodeProperty: [Encounter: class in "Ambulatory/ED Visit"]
 define ConditionsByCode: [Condition: "Viral pharyngitis code"]
 define ConditionsByConcept: [Condition: "Viral pharyngitis"]
-###
+*/
 
 module.exports['Retrieve'] = {
    "library" : {

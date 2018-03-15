@@ -1,12 +1,14 @@
-###
+/*
    WARNING: This is a GENERATED file.  Do not manually edit!
 
    To generate this file:
        - Edit data.cql to add a CQL Snippet
-       - From java dir: ./gradlew :cql-to-elm:generateTestData
-###
+       - From generator dir: ./gradlew generateTestData
+*/
 
-### ParameterDef
+/* eslint-disable */
+
+/* ParameterDef
 library TestSnippet version '1'
 using QUICK
 parameter MeasureYear default 2012
@@ -15,7 +17,7 @@ parameter ListParameter List<String>
 parameter TupleParameter Tuple{a Integer, b String, c Boolean, d List<Integer>, e Tuple{ f String, g Boolean}}
 context Patient
 define foo: 'bar'
-###
+*/
 
 module.exports['ParameterDef'] = {
    "library" : {
@@ -183,13 +185,13 @@ module.exports['ParameterDef'] = {
    }
 }
 
-### ParameterRef
+/* ParameterRef
 library TestSnippet version '1'
 using QUICK
 parameter FooP default 'Bar'
 context Patient
 define Foo: FooP
-###
+*/
 
 module.exports['ParameterRef'] = {
    "library" : {
@@ -265,7 +267,7 @@ module.exports['ParameterRef'] = {
    }
 }
 
-### BooleanParameterTypes
+/* BooleanParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Boolean
@@ -273,7 +275,7 @@ parameter FooDP default true
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['BooleanParameterTypes'] = {
    "library" : {
@@ -382,7 +384,7 @@ module.exports['BooleanParameterTypes'] = {
    }
 }
 
-### DecimalParameterTypes
+/* DecimalParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Decimal
@@ -390,7 +392,7 @@ parameter FooDP default 1.5
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['DecimalParameterTypes'] = {
    "library" : {
@@ -499,7 +501,7 @@ module.exports['DecimalParameterTypes'] = {
    }
 }
 
-### IntegerParameterTypes
+/* IntegerParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Integer
@@ -507,7 +509,7 @@ parameter FooDP default 2
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['IntegerParameterTypes'] = {
    "library" : {
@@ -616,7 +618,7 @@ module.exports['IntegerParameterTypes'] = {
    }
 }
 
-### StringParameterTypes
+/* StringParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP String
@@ -624,7 +626,7 @@ parameter FooDP default 'Hello'
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['StringParameterTypes'] = {
    "library" : {
@@ -733,7 +735,7 @@ module.exports['StringParameterTypes'] = {
    }
 }
 
-### ConceptParameterTypes
+/* ConceptParameterTypes
 library TestSnippet version '1'
 using QUICK
 codesystem "FOOTESTCS": 'http://footest.org'
@@ -742,7 +744,7 @@ parameter FooDP default Concept { Code 'FooTest' from "FOOTESTCS" } display 'Foo
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['ConceptParameterTypes'] = {
    "library" : {
@@ -866,7 +868,7 @@ module.exports['ConceptParameterTypes'] = {
    }
 }
 
-### DateTimeParameterTypes
+/* DateTimeParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP DateTime
@@ -874,7 +876,7 @@ parameter FooDP default @2012-04-01
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['DateTimeParameterTypes'] = {
    "library" : {
@@ -996,7 +998,7 @@ module.exports['DateTimeParameterTypes'] = {
    }
 }
 
-### QuantityParameterTypes
+/* QuantityParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Quantity
@@ -1004,7 +1006,7 @@ parameter FooDP default 10 'dL'
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['QuantityParameterTypes'] = {
    "library" : {
@@ -1113,7 +1115,7 @@ module.exports['QuantityParameterTypes'] = {
    }
 }
 
-### TimeParameterTypes
+/* TimeParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Time
@@ -1121,7 +1123,7 @@ parameter FooDP default @T12:00:00
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['TimeParameterTypes'] = {
    "library" : {
@@ -1243,7 +1245,7 @@ module.exports['TimeParameterTypes'] = {
    }
 }
 
-### ListParameterTypes
+/* ListParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP List<String>
@@ -1251,7 +1253,7 @@ parameter FooDP default { 'a', 'b', 'c' }
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['ListParameterTypes'] = {
    "library" : {
@@ -1378,7 +1380,7 @@ module.exports['ListParameterTypes'] = {
    }
 }
 
-### IntervalParameterTypes
+/* IntervalParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Interval<Integer>
@@ -1386,7 +1388,7 @@ parameter FooDP default Interval[2,6]
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['IntervalParameterTypes'] = {
    "library" : {
@@ -1511,7 +1513,7 @@ module.exports['IntervalParameterTypes'] = {
    }
 }
 
-### TupleParameterTypes
+/* TupleParameterTypes
 library TestSnippet version '1'
 using QUICK
 parameter FooP Tuple { Hello String, MeaningOfLife Integer }
@@ -1519,7 +1521,7 @@ parameter FooDP default Tuple { Hello: 'Universe', MeaningOfLife: 24 }
 context Patient
 define Foo: FooP
 define Foo2: FooDP
-###
+*/
 
 module.exports['TupleParameterTypes'] = {
    "library" : {
@@ -1659,7 +1661,7 @@ module.exports['TupleParameterTypes'] = {
    }
 }
 
-### DefaultAndNoDefault
+/* DefaultAndNoDefault
 library TestSnippet version '1'
 using QUICK
 parameter FooWithNoDefault Integer
@@ -1667,7 +1669,7 @@ parameter FooWithDefault default 5
 context Patient
 define Foo: FooWithNoDefault
 define Foo2: FooWithDefault
-###
+*/
 
 module.exports['DefaultAndNoDefault'] = {
    "library" : {
@@ -1776,13 +1778,13 @@ module.exports['DefaultAndNoDefault'] = {
    }
 }
 
-### MeasurementPeriodParameter
+/* MeasurementPeriodParameter
 library TestSnippet version '1'
 using QUICK
 parameter "Measurement Period" Interval<DateTime>
 context Patient
 define MeasurementPeriod: Interval[DateTime(2011, 1, 1), DateTime(2013, 1, 1)] overlaps "Measurement Period"
-###
+*/
 
 module.exports['MeasurementPeriodParameter'] = {
    "library" : {
