@@ -29,7 +29,7 @@ module.exports.Add = (Add = class Add extends Expression {
       return null;
     } else {
       return (args != null ? args.reduce(function(x,y) {
-        if ((x.constructor.name === 'Quantity')  || (x.constructor.name === 'DateTime')) {
+        if (x.isQuantity || x.isDateTime) {
           return Quantity.doAddition(x,y);
         } else {
           return x + y;
@@ -50,7 +50,7 @@ module.exports.Subtract = (Subtract = class Subtract extends Expression {
       return null;
     } else {
       return args.reduce(function(x,y) {
-        if ((x.constructor.name === 'Quantity') || (x.constructor.name === 'DateTime')) {
+        if (x.isQuantity || x.isDateTime) {
           return Quantity.doSubtraction(x,y);
         } else {
           return x - y;
@@ -71,7 +71,7 @@ module.exports.Multiply = (Multiply = class Multiply extends Expression {
       return null;
     } else {
       return (args != null ? args.reduce(function(x,y) {
-        if ((x.constructor.name === 'Quantity') || (y.constructor.name === 'Quantity')) {
+        if (x.isQuantity || y.isQuantity) {
           return Quantity.doMultiplication(x,y);
         } else {
           return x * y;
@@ -92,7 +92,7 @@ module.exports.Divide = (Divide = class Divide extends Expression {
       return null;
     } else {
       return (args != null ? args.reduce(function(x,y) {
-        if (x.constructor.name === 'Quantity') {
+        if (x.isQuantity) {
           return Quantity.doDivision(x,y);
         } else {
           return x / y;
@@ -173,7 +173,7 @@ module.exports.Abs = (Abs = class Abs extends  Expression {
     const arg = this.execArgs(ctx);
     if ((arg == null)) {
       return null;
-    } else if (arg.constructor.name === 'Quantity') {
+    } else if (arg.isQuantity) {
       return Quantity.createQuantity( Math.abs(arg.value), arg.unit);
     } else {
       return Math.abs(arg);
@@ -190,7 +190,7 @@ module.exports.Negate = (Negate = class Negate extends Expression {
     const arg = this.execArgs(ctx);
     if ((arg == null)) {
       return null;
-    } else if (arg.constructor.name === 'Quantity') {
+    } else if (arg.isQuantity) {
       return Quantity.createQuantity(arg.value * -1, arg.unit);
     } else {
       return arg * -1;

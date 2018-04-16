@@ -219,7 +219,7 @@ module.exports.Context = (Context = (function() {
     }
 
     matchesIntervalTypeSpecifier(val, spec) {
-      return ((val.constructor != null ? val.constructor.name : undefined) === 'Interval') &&
+      return val.isInterval &&
         (((val.low == null)) || this.matchesTypeSpecifier(val.low, spec.pointType)) &&
         (((val.high == null)) || this.matchesTypeSpecifier(val.high, spec.pointType));
     }
@@ -267,7 +267,7 @@ module.exports.Context = (Context = (function() {
 
     matchesIntervalInstanceType(val, ivl) {
       const pointType = ivl.low != null ? ivl.low : ivl.high;
-      return ((val.constructor != null ? val.constructor.name : undefined) === 'Interval') &&
+      return val.isInterval &&
         (((val.low == null)) || this.matchesInstanceType(val.low, pointType)) &&
         (((val.high == null)) || this.matchesInstanceType(val.high, pointType));
     }

@@ -12,6 +12,8 @@ class Interval {
     this.highClosed = highClosed;
   }
 
+  get isInterval() { return true; }
+
   contains(item, precision) {
     if (item instanceof Interval) {
       throw new Error('Argument to contains must be a point');
@@ -270,7 +272,7 @@ class Interval {
 
   toClosed() {
     const point = this.low != null ? this.low : this.high;
-    if (typeof point === 'number' || point instanceof DateTime || (point && point.constructor && point.constructor.name === 'Quantity')) {
+    if (typeof point === 'number' || point instanceof DateTime || point.isQuantity) {
       let low, high;
 
       if (this.lowClosed && this.low == null) {

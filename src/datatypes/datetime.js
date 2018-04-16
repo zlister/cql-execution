@@ -66,6 +66,8 @@ class DateTime {
     }
   }
 
+  get isDateTime() { return true; }
+
   copy() {
     return new DateTime(this.year, this.month, this.day, this.hour, this.minute, this.second, this.millisecond, this.timezoneOffset);
   }

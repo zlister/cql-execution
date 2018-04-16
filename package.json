@@ -72,10 +72,7 @@
     "moment": "^2.20.1",
     "ucum": "0.0.7"
   },
-  "main": "lib/cql",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "src/cql",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec --recursive",
     "test:nyc": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/mocha --reporter spec --recursive",

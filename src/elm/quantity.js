@@ -47,6 +47,8 @@ module.exports.Quantity = (Quantity = class Quantity extends Expression {
     }
   }
 
+  get isQuantity() { return true; }
+
   clone() {
     return new Quantity({value: this.value, unit: this.unit});
   }

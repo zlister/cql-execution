@@ -29,9 +29,9 @@ module.exports.Retrieve = (Retrieve = class Retrieve extends Expression {
   exec(ctx) {
     let r;
     let records = ctx.findRecords(this.templateId != null ? this.templateId : this.datatype);
-    let { codes } = this;
-    if (this.codes && (typeof this.codes.exec === 'function')) {
-      codes = this.codes.execute(ctx);
+    let codes = this.codes;
+    if (codes && (typeof codes.exec === 'function')) {
+      codes = codes.execute(ctx);
     }
     if (codes) {
       records = records.filter(r => this.recordMatchesCodesOrVS(r, codes));

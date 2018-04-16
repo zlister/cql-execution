@@ -24,8 +24,8 @@ const quantitiesOrArg = function(arr) {
     return arr;
   }
 
-  const allQs = arr.every(x => x.constructor.name === 'Quantity');
-  const someQs = arr.some(x => x.constructor.name === 'Quantity');
+  const allQs = arr.every(x => x.isQuantity);
+  const someQs = arr.some(x => x.isQuantity);
   if (allQs) {
     const { unit } = arr[0];
     const values = [];
