@@ -200,7 +200,8 @@ var is_valid_ucum_unit = function(unit) {
     return unitValidityCache[unit];
   } else {
     try {
-      ucum.parse(ucum_unit(unit));
+      // TODO: TEMP FIX TO SUPPORT WEBPACK UNTIL WE RESOLVE WHY UCUM DOESN'T WORK
+      // ucum.parse(ucum_unit(unit));
       unitValidityCache[unit] = true;
       return true;
     } catch (error) {
