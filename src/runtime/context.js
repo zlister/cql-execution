@@ -239,20 +239,18 @@ module.exports.Context = (Context = (function() {
     }
 
     matchesInstanceType(val, inst) {
-      switch ((inst.constructor != null ? inst.constructor.name : undefined)) {
-      case 'BooleanLiteral': return typeof val === 'boolean';
-      case 'DecimalLiteral': return typeof val === 'number';
-      case 'IntegerLiteral': return (typeof val === 'number') && (Math.floor(val) === val);
-      case 'StringLiteral': return typeof val === 'string';
-      case 'Concept': return __guard__(val != null ? val.constructor : undefined, x => x.name) === 'Concept';
-      case 'DateTime': return __guard__(val != null ? val.constructor : undefined, x1 => x1.name) === 'DateTime';
-      case 'Quantity': return __guard__(val != null ? val.constructor : undefined, x2 => x2.name) === 'Quantity';
-      case 'Time': return (__guard__(val != null ? val.constructor : undefined, x3 => x3.name) === 'DateTime') && val.isTime();
-      case 'List': return this.matchesListInstanceType(val, inst);
-      case 'Tuple': return this.matchesTupleInstanceType(val, inst);
-      case 'Interval': return this.matchesIntervalInstanceType(val, inst);
-      default: return true; // default to true when we don't know for sure
-      }
+      if (inst.isBooleanLiteral) return typeof val === 'boolean';
+      else if (inst.isDecimalLiteral) return typeof val === 'number';
+      else if (inst.isIntegerLiteral) return (typeof val === 'number') && (Math.floor(val) === val);
+      else if (inst.isStringLiteral) return typeof val === 'string';
+      else if (inst.isConcept) return val.isConcept;
+      else if (inst.isDateTime) return val.isDateTime;
+      else if (inst.isQuantity) return val.isQuantity;
+      else if (inst.isTime) return val.isDateTime && val.isTime();
+      else if (inst.isList) return this.matchesListInstanceType(val, inst);
+      else if (inst.isTuple) return this.matchesTupleInstanceType(val, inst);
+      else if (inst.isInterval) return this.matchesIntervalInstanceType(val, inst);
+      else return true; // default to true when we don't know for sure
     }
 
     matchesListInstanceType(val, list) {

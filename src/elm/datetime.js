@@ -29,6 +29,8 @@ module.exports.DateTime = (DateTime = (function() {
       }
     }
 
+    get isDateTime() { return true; }
+
     exec(ctx) {
       const args = ((() => {
         const result = [];
@@ -56,6 +58,8 @@ module.exports.Time = (Time = (function() {
         if (json[property] != null) { this[property] = build(json[property]); }
       }
     }
+
+    get isTime() { return true; }
 
     exec(ctx) {
       const args = ((() => {

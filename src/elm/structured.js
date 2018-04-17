@@ -50,6 +50,8 @@ module.exports.Tuple = (Tuple = class Tuple extends Expression {
     }));
   }
 
+  get isTuple() { return true; }
+
   exec(ctx) {
     const val = {};
     for (let el of this.elements) {

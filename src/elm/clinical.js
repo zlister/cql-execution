@@ -141,6 +141,8 @@ module.exports.Concept = (Concept = class Concept extends Expression {
     this.display = json.display;
   }
 
+  get isConcept() { return true; }
+
   toCode(ctx, code) {
     const system = __guard__(ctx.getCodeSystem(code.system.name), x => x.id);
     return new dt.Code(code.code, system, code.version, code.display);

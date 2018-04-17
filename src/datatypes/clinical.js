@@ -19,6 +19,8 @@ class Concept {
     this.display = display;
   }
 
+  get isConcept() { return true; }
+
   hasMatch(code) {
     return codesInList(toCodeList(code), this.codes);
   }

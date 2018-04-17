@@ -12,7 +12,7 @@ const data = require('./data');
 const Q = require('../../../src/elm/quantity');
 
 const validateQuantity = function(object,expectedValue,expectedUnit) {
-  object.constructor.name.should.equal('Quantity');
+  object.isQuantity.should.be.true();
   const q = Q.createQuantity(expectedValue,expectedUnit);
   return q.equals(object).should.be.true(`Expected ${object} to equal ${q}`);
 };
@@ -459,7 +459,7 @@ describe('Quantity', function() {
   it('should be able to perform Quantity Addition', function() {
     validateQuantity(this.add_q_q.exec(this.ctx), 20 , 'days');
     const adq = this.add_d_q.exec(this.ctx);
-    adq.constructor.name.should.equal('DateTime');
+    adq.isDateTime.should.be.true();
     adq.year.should.equal(2000);
     adq.month.should.equal(1);
     adq.day.should.equal(11);
@@ -471,7 +471,7 @@ describe('Quantity', function() {
   it('should be able to perform Quantity Subtraction', function() {
     validateQuantity(this.sub_q_q.exec(this.ctx), 0, 'days');
     const sdq = this.sub_d_q.exec(this.ctx);
-    sdq.constructor.name.should.equal('DateTime');
+    sdq.isDateTime.should.be.true();
     sdq.year.should.equal(1999);
     sdq.month.should.equal(12);
     sdq.day.should.equal(22);

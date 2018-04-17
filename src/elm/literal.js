@@ -38,6 +38,8 @@ module.exports.BooleanLiteral = (BooleanLiteral = class BooleanLiteral extends L
     this.value = this.value === 'true';
   }
 
+  get isBooleanLiteral() { return true; }
+
   exec(ctx) {
     return this.value;
   }
@@ -48,6 +50,8 @@ module.exports.IntegerLiteral = (IntegerLiteral = class IntegerLiteral extends L
     super(...arguments);
     this.value = parseInt(this.value, 10);
   }
+
+  get isIntegerLiteral() { return true; }
 
   exec(ctx) {
     return this.value;
@@ -60,6 +64,8 @@ module.exports.DecimalLiteral = (DecimalLiteral = class DecimalLiteral extends L
     this.value = parseFloat(this.value);
   }
 
+  get isDecimalLiteral() { return true; }
+
   exec(ctx) {
     return this.value;
   }
@@ -69,6 +75,8 @@ module.exports.StringLiteral = (StringLiteral = class StringLiteral extends Lite
   constructor(json) {
     super(...arguments);
   }
+
+  get isStringLiteral() { return true; }
 
   exec(ctx) {
     // TODO: Remove these replacements when CQL-to-ELM fixes bug: https://github.com/cqframework/clinical_quality_language/issues/82

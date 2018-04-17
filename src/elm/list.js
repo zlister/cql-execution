@@ -26,6 +26,8 @@ module.exports.List = (List = class List extends Expression {
     this.elements = ((left = build(json.element))) != null ? left : [];
   }
 
+  get isList() { return true; }
+
   exec(ctx) {
     return (this.elements.map((item) => item.execute(ctx)));
   }

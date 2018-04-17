@@ -28,6 +28,8 @@ module.exports.Interval = (Interval = class Interval extends Expression {
     this.high = build(json.high);
   }
 
+  get isInterval() { return true; }
+
   exec(ctx) {
     return new dtivl.Interval(this.low.execute(ctx), this.high.execute(ctx), this.lowClosed, this.highClosed);
   }

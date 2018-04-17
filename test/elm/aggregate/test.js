@@ -13,7 +13,7 @@ const should = require('should');
 const setup = require('../../setup');
 const data = require('./data');
 const validateQuantity = function(object,expectedValue,expectedUnit) {
-  object.constructor.name.should.equal('Quantity');
+  object.isQuantity.should.be.true();
   object.value.should.equal(expectedValue);
   return object.unit.should.equal(expectedUnit);
 };
