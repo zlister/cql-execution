@@ -1163,5 +1163,19 @@ define DateTimeSecondPrecisionNotSame: Interval[DateTime(2018,01,01,01,01,01), D
 define DateTimeMillisecondPrecisionSame: Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,01)] same millisecond as Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,01)]
 define DateTimeMillisecondPrecisionNotSame: Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,01)] same millisecond as Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,09)]
 
+// @Test: SameOrAfter
+define Same: Interval[DateTime(2018,01,01), DateTime(2018,01,02)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,02)]
+define StartSameEndBefore: Interval[DateTime(2018,01,01), DateTime(2018,01,02)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartSameEndAfter: Interval[DateTime(2018,01,01), DateTime(2018,01,04)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartBeforeEndBefore: Interval[DateTime(2017,01,01), DateTime(2018,01,02)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartBeforeEndAfter: Interval[DateTime(2017,01,01), DateTime(2018,01,04)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartAfterEndBefore: Interval[DateTime(2018,01,02), DateTime(2018,01,03)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,04)]
+define StartAfterEndAfter: Interval[DateTime(2018,01,02), DateTime(2018,01,04)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartBeforeEndSame: Interval[DateTime(2017,01,01), DateTime(2018,01,03)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartAfterEndSame: Interval[DateTime(2018,01,02), DateTime(2018,01,03)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define After: Interval[DateTime(2019,01,01), DateTime(2019,01,02)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define StartEqualsEnd: Interval[DateTime(2018,01,03), DateTime(2018,01,05)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define Before: Interval[DateTime(2017,01,01), DateTime(2017,01,02)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
+define EndEqualsStart: Interval[DateTime(2017,01,01), DateTime(2018,01,01)] same or after Interval[DateTime(2018,01,01), DateTime(2018,01,03)]
 
 

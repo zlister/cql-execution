@@ -2232,3 +2232,46 @@ describe 'SameAs', ->
     # define DateTimeMillisecondPrecisionNotSame: Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,01)] same millisecond as Interval[DateTime(2018,01,01,01,01,01,01), DateTime(2019,01,01,01,01,01,09)]
     @dateTimeMillisecondPrecisionNotSame.exec(@ctx).should.be.false()
 
+describe 'SameOrAfter', ->
+  @beforeEach ->
+    setup @, data
+
+  it 'should return true if a is same as b', ->
+	  @same.exec(@ctx).should.be.true()
+
+  it 'should return true if a.low is b.low and a.high < b.high', ->
+	  @startSameEndBefore.exec(@ctx).should.be.true()
+
+  it 'should return true if a.low is b.low and a.high > b.high', ->
+	  @startSameEndAfter.exec(@ctx).should.be.true()
+
+  it 'should return false if a starts before and ends before b but still overlaps ', ->
+	  @startBeforeEndBefore.exec(@ctx).should.be.false()
+
+  it 'should return true if a starts before and ends after b', ->
+	  @startBeforeEndAfter.exec(@ctx).should.be.true()
+
+  it 'should return true if a starts after but ends before b', ->
+	  @startAfterEndBefore.exec(@ctx).should.be.true()
+
+  it 'should return true if a starts and ends after b', ->
+	  @startAfterEndAfter.exec(@ctx).should.be.true()
+
+  it 'should return false if a starts before and ends at the end of b', ->
+	  @startBeforeEndSame.exec(@ctx).should.be.false()
+
+  it 'should return true if a starts after and ends the same as b', ->
+	  @startAfterEndSame.exec(@ctx).should.be.true()
+
+  it 'should return true if a after b', ->
+	  @after.exec(@ctx).should.be.true()
+
+  it 'should return true if a after b except a.low = b.high', ->
+	  @startEqualsEnd.exec(@ctx).should.be.true()
+
+  it 'should return false if a before b', ->
+	  @before.exec(@ctx).should.be.false()
+
+  it 'should return false if a is before b except a.high = b.low', ->
+	  @endEqualsStart.exec(@ctx).should.be.true()
+
