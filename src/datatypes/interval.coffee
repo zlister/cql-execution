@@ -173,7 +173,12 @@ module.exports.Interval = class Interval
   sameOrAfter: (other, precision) ->
     if (@ == null or other == null) then return null
     if (@low == null or @high == null or other.low == null or other.high == null) then return null
-    @.sameAs(other, precision) or @.overlapsAfter(other, precision)
+    # These should return true  [ @ ]
+    # as they are the same.     [ # ]
+    # Shifting either bracket of @   ->[@]  [ @ ->]  ->[ @ ->]
+    # to the right still is true.    [ # ]  [ # ]    [ # ]
+
+    @.low >= other.low and @.high >= other.high
 
   equals: (other) ->
     if other instanceof Interval
@@ -277,4 +282,4 @@ module.exports.Interval = class Interval
     start = if @lowClosed then '[' else '('
     end = if @highClosed then ']' else ')'
     return start + @low.toString() + ', ' + @high.toString() + end
-    
+

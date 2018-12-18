@@ -154,6 +154,15 @@ module.exports.Ends = class Ends extends Expression
     [a, b] = @execArgs ctx
     if a? and b? then a.ends(b, @precision) else null
 
+module.exports.SameAs = class SameAs extends Expression
+  constructor: (json) ->
+    super
+    @precision = json.precision
+
+  exec: (ctx) ->
+    [d1, d2] = @execArgs(ctx)
+    if d1? and d2? then d1.sameAs(d2, @precision?.toLowerCase()) else null
+
 intervalListType = (intervals) ->
   # Returns one of null, 'time', 'date', 'datetime', 'quantity', 'integer', 'decimal' or 'mismatch'
   type = null;
@@ -319,7 +328,7 @@ module.exports.Expand = class Expand extends Expression
     if results.length > 0 and !results[results.length-1].high.sameOrBefore(high)
       results.pop()
     return results
-    
+
   expandQuantityInterval: (interval, per) ->
     # we want to convert everything to the more precise of the interval.low or per
     if compare_units(interval.low.unit, per.unit) > 0 #interval.low.unit is 'bigger' aka les precise
