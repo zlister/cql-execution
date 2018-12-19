@@ -2022,7 +2022,7 @@
       if (this.low === null || this.high === null || other.low === null || other.high === null) {
         return null;
       }
-      return this.low >= other.low && this.high >= other.high;
+      return cmp.greaterThan(this.low, other.low, precision) && cmp.greaterThan(this.high, other.high, precision);
     };
 
     Interval.prototype.equals = function(other) {
