@@ -178,7 +178,7 @@ module.exports.Interval = class Interval
     # Shifting either bracket of @   ->[@]  [ @ ->]  ->[ @ ->]
     # to the right still is true.    [ # ]  [ # ]    [ # ]
 
-    cmp.greaterThan(@.low, other.low, precision) and cmp.greaterThan(@.high, other.high, precision)
+    cmp.greaterThanOrEquals(@.low, other.low, precision) and cmp.greaterThanOrEquals(@.high, other.high, precision)
 
   equals: (other) ->
     if other instanceof Interval
