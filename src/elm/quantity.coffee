@@ -18,12 +18,12 @@ module.exports.Quantity = class Quantity extends Expression
       throw new Error("Cannot create a quantity with an undefined value")
     else
       @value = parseFloat json.value
-      if !isValidDecimal(@value)
-        throw new Error("Cannot create a quantity with an invalid decimal value")
+      # if !isValidDecimal(@value)
+        # throw new Error("Cannot create a quantity with an invalid decimal value")
 
     # Attempt to parse the unit with UCUM. If it fails, throw a friendly error.
-    if @unit? and !is_valid_ucum_unit(@unit)
-      throw new Error("\'#{@unit}\' is not a valid UCUM unit.")
+    # if @unit? and !is_valid_ucum_unit(@unit)
+      # throw new Error("\'#{@unit}\' is not a valid UCUM unit.")
 
   # Define a simple getter to allow type-checking of this class without instanceof
   # and in a way that survives minification (as opposed to checking constructor.name)

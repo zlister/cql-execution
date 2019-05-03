@@ -6712,12 +6712,6 @@
         throw new Error("Cannot create a quantity with an undefined value");
       } else {
         this.value = parseFloat(json.value);
-        if (!isValidDecimal(this.value)) {
-          throw new Error("Cannot create a quantity with an invalid decimal value");
-        }
-      }
-      if ((this.unit != null) && !is_valid_ucum_unit(this.unit)) {
-        throw new Error("\'" + this.unit + "\' is not a valid UCUM unit.");
       }
     }
 
